@@ -1,0 +1,126 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>index</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <link rel="stylesheet" href="css/comon0.css">
+    <link rel="stylesheet" href="plugins/bootstrap-4.5.2/css/bootstrap.min.css">
+</head>
+<script>
+
+    $(document).ready(function () {
+        var whei = $(window).width()
+        $("html").css({ fontSize: whei / 20 })
+        $(window).resize(function () {
+            var whei = $(window).width()
+            $("html").css({ fontSize: whei / 20 })
+        });
+    });
+</script>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script language="JavaScript" src="js/js.js"></script>
+<body>
+    <!--<div class="canvas" style="opacity: .2">
+        <iframe frameborder="0" src="js/index.html" style="width: 100%; height: 100%"></iframe>
+    </div>-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 head">
+                <h1>宜遂高速公路隧道工程</h1>
+                <div class="weather"><span id="showTime"></span></div>
+
+                <script>
+                    var t = null;
+                    t = setTimeout(time, 1000);
+                    function time() {
+                        clearTimeout(t);
+                        var dt = new Date();
+                        var y = dt.getFullYear();
+                        var mt = dt.getMonth() + 1;
+                        var day = dt.getDate();
+                        var h = dt.getHours();
+                        var m = dt.getMinutes();
+                        var s = dt.getSeconds();
+                        document.getElementById("showTime").innerHTML = y + "年" + mt + "月" + day + "-" + h + "时" + m + "分" + s + "秒";
+                        t = setTimeout(time, 1000);
+                    }
+
+                </script>
+            </div>
+        </div>
+        <div class="row mainbox">
+            <div class="col-md-3">
+                <div class="boxall" style="height: 270px;">
+                    <div class="alltitle">模块标题样式</div>
+                    <div class="allnav" id="echart1"></div>
+                    <div class="boxfoot"></div>
+                </div>
+                <div class="boxall" style="height: 270px;">
+                    <div class="alltitle">模块标题样式</div>
+                    <div class="allnav" id="echart2"></div>
+                    <div class="boxfoot"></div>
+                </div>
+                <div class="boxall" style="height: 270px;">
+                    <div style="height:100%; width: 100%;">
+                        <div class="sy" id="fb1"></div>
+                        <div class="sy" id="fb2"></div>
+                        <div class="sy" id="fb3"></div>
+                    </div>
+                    <div class="boxfoot">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" id="webgl">
+                <canvas id="model_webgl" style="width:100%; height:100%; opacity: .8;"></canvas>
+            </div>
+            <div class="col-md-3">
+                <div class="boxall" style="height: 270px;">
+                    <div class="alltitle">模块标题样式</div>
+                    <div class="allnav" id="echart4"></div>
+                    <div class="boxfoot"></div>
+                </div>
+                <div class="boxall" style="height: 270px;">
+                    <div class="alltitle">模块标题样式</div>
+                    <div class="allnav" id="echart5"></div>
+                    <div class="boxfoot"></div>
+                </div>
+                <div class="boxall" style="height: 270px;">
+                    <div class="alltitle">模块标题样式</div>
+                    <div class="allnav" id="echart6"></div>
+                    <div class="boxfoot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="plugins/jquery.1.12.4.min.js"></script>
+    <script src="plugins/bootstrap-4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="plugins/bootstrap-4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="plugins/build/three.min.js"></script>
+    <script src='plugins/threejs/js/libs/dat.gui.min.js'></script>
+    <script src='plugins/threejs/js/libs/stats.min.js'></script>
+    <script src="plugins/threejs/js/controls/TrackballControls.js"></script>
+    <script src="plugins/threejs/js/controls/OrbitControls.js"></script>
+    <script src="plugins/threejs/js/loaders/MTLLoader.js"></script>
+    <script src="plugins/threejs/js/loaders/OBJLoader.js"></script>
+    <script src="plugins/threejs/js/loaders/DDSLoader.js"></script>
+    <script src="plugins/threejs/js/loaders/DRACOLoader.js"></script>
+    <script src="plugins/threejs/js/loaders/ColladaLoader.js"></script>
+    <script src="plugins/threejs/js/math/Lut.js"></script>
+    <script src="plugins/tween.min.js"></script>
+
+    <script src="js/ThreeJs/globalVar.js"></script>
+    <script src="js/ThreeJs/structureObject/model_Father.js"></script>
+    <script src="js/ThreeJs/structureObject/model.js"></script>
+    <script src="js/ThreeJs/structureObject/model_operation.js"></script>
+    <script src="js/ThreeJs/tool/cloudPic.js"></script>
+    <script src="js/ThreeJs/initThree.js"></script>
+
+
+
+</body>
+</html>
