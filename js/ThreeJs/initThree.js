@@ -52,7 +52,7 @@ function init() {
     //加载模型
     currentModel = new model('tunnel', 1, 0);
     //currentModel.load("model/1111.obj","model/1111.mtl");
-    currentModel.load("model/ming.obj");
+    currentModel.load("model/618_all.obj");
     console.log(currentModel);
 
     raycaster = new THREE.Raycaster();

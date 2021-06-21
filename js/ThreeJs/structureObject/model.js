@@ -13,7 +13,7 @@ class model extends model_Father {
 					//thisObject.setScaleAndOffset(result)
 					console.log(result);
 					thisObject.three3dObject.totalModel = result;
-					//CloudPicture.getAllData(thisObject.three3dObject.totalModel);
+					CloudPicture.getAllData(thisObject.three3dObject.totalModel);
 					scene.add(thisObject.three3dObject.totalModel);
 			});
 		}

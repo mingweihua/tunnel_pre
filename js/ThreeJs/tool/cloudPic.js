@@ -17,9 +17,17 @@ class CloudPicture {
             for (let j = 0; j < size; j++) {
                 let location_json = {};
                 //obj中属性坐标
+                /*
+                 注意！！！
+                 注意！！！
+                 Three.js中y坐标是高度，但是在数值模拟分析中高度是z坐标
+                 因此这边直接在前端处理。
+                 */
                 location_json.x = (group.children[i].geometry.attributes.position.array[j*3+0]);
-                location_json.y = (group.children[i].geometry.attributes.position.array[j*3+1]);
-                location_json.z = (group.children[i].geometry.attributes.position.array[j*3+2]);
+                //Three.js坐标中的y是高度，因此传数据时定义为z
+                location_json.z = (group.children[i].geometry.attributes.position.array[j*3+1]);
+                //Three.js坐标中的z，在3dmax中是y，并且应该乘以-1
+                location_json.y = (group.children[i].geometry.attributes.position.array[j*3+2]*-1);
                 positionArr.location.push(location_json);
             }
             modelSpaceData.push(positionArr);
@@ -46,8 +54,8 @@ class CloudPicture {
 
                     mesh.geometry = group.children[i].geometry;
                     let values = data[i].numericalDatas;
-                    lut.setMax( -10);
-                    lut.setMin( -176);
+                    lut.setMax( 325);
+                    lut.setMin( 0);
 
                     // default color attribute
                     const colors = [];
@@ -75,7 +83,7 @@ class CloudPicture {
 
                         for ( let i = 0; i < values.length; i ++ ) {
 
-                            const colorValue = (values[ i ] * 1000);
+                            const colorValue = (values[ i ]);
 
                             const color = lut.getColor( colorValue );
 
