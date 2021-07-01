@@ -1,4 +1,4 @@
-function init() {
+function init() { 
     // init renderer
     renderer = new THREE.WebGLRenderer({
         canvas: document.getElementById('model_webgl'),
