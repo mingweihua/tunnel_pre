@@ -98,7 +98,7 @@ a:hover{ color:#06c; text-decoration: none!important}
     display: inline-block;
     margin-left: 0px;
     padding:.05rem .2rem;
-    color: #898989;
+    color: white;
     transition: all .3s ease-out 0s;
     /* font-size: 14px; */
 }

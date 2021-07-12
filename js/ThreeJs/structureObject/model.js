@@ -3,9 +3,9 @@ class model extends model_Father {
 		super(name, scale, position);
 	}
 
-	load(obj_url, mtl_url, keyName) {
+	load(obj_url, mtl_url, keyName,scale) {
 		if (mtl_url != undefined) {
-			super.load(obj_url, mtl_url, keyName);
+			super.load(obj_url, mtl_url, keyName,scale);
 		} else {
 			var thisObject = this;
 			new THREE.OBJLoader()
@@ -13,7 +13,7 @@ class model extends model_Father {
 					//thisObject.setScaleAndOffset(result)
 					console.log(result);
 					thisObject.three3dObject.totalModel = result;
-					CloudPicture.getAllData(thisObject.three3dObject.totalModel);
+					//CloudPicture.getAllData(thisObject.three3dObject.totalModel);
 					scene.add(thisObject.three3dObject.totalModel);
 			});
 		}

@@ -50,33 +50,11 @@ function init() {
     scene.add(three_helper);
 
     //加载模型
-    currentModel = new model('tunnel', 1, 0);
-    //currentModel.load("model/1111.obj","model/1111.mtl");
-    currentModel.load("model/618_all.obj");
-    console.log(currentModel);
+    globalModel = new model('tunnel');
+    globalModel.load("model/白鹭山.obj","model/白鹭山.mtl","BLSModel",10);
+    //globalModel.load("model/618_all.obj");
+    console.log(globalModel);
 
-    raycaster = new THREE.Raycaster();
-    mouseVector = new THREE.Vector3();
-
-    pointer = new THREE.Vector2();
-    window.addEventListener( 'click', onPointerMove,false );
-
-    function onPointerMove( event ) {
-        event.preventDefault();
-        var intersects = currentModel.getIntersects(event.offsetX, event.offsetY, currentModel.three3dObject.totalModel);
-        if(intersects.length>0){
-            console.log(intersects);
-            var geometry = new THREE.SphereGeometry( 1, 50, 50 );
-            var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
-            var sphere = new THREE.Mesh( geometry, material );
-            sphere.position.x = intersects[0].point.x;
-            sphere.position.y = intersects[0].point.y;
-            sphere.position.z = intersects[0].point.z;
-            scene.add( sphere );
-        }
-
-
-    }
 
     //设置云图需要的对象
     lut = new THREE.Lut( colorMap, numberOfColors );

@@ -1,15 +1,15 @@
 class model_Father {
     //constructor是一个构造方法，用来接收参数
-    constructor(name, scale, y) {
+    constructor(name) {
         //this代表的是实例对象
         this.name = name;
-        // 存放模型需要调整大小参数后在Three世界坐标中显示
-        this.scale = scale;
-        // 存放模型需要调整位置参数后在Three世界坐标中显示
-        this.coordinateOffset = y || 0;
-
         // 存放整个模型；
         this.three3dObject = {
+            currentModel : undefined,
+            //白鹭山模型
+            BLSModel : undefined,
+            XBModel : undefined,
+            ZZModel : undefined,
             totalModel : undefined,
             cloudModel : undefined,
         };
@@ -23,15 +23,8 @@ class model_Father {
         }
     }
 
-    setScaleAndOffset(group) {
-        group.scale.x = this.scale;
-        group.scale.y = this.scale;
-        group.scale.z = this.scale;
-        group.position.y = this.coordinateOffset;
-    }
 
-
-    load(obj_url, mtl_url, keyName) {
+    load(obj_url, mtl_url, keyName, scale) {
         var thisObject = this;
         const onProgress = function (xhr) {
 
@@ -57,27 +50,15 @@ class model_Father {
                 new THREE.OBJLoader(manager)
                     .setMaterials(materials)
                     .load(obj_url, function (object) {
-
-                        // object.position.y = - 95;
                         thisObject.three3dObject[keyName] = object;
-                        thisObject.setScaleAndOffset(thisObject.three3dObject[keyName]);
-                        scene.add(thisObject.three3dObject[keyName]);
+                        thisObject.three3dObject.currentModel = object;
+                        Model_operation.setScale(object,scale);
+                        scene.add(thisObject.three3dObject.currentModel);
                     }, onProgress, onError);
 
             });
     }
 
-
-    getIntersects(x, y, group) {
-
-
-        x = (x / $('#model_webgl').width()) * 2 - 1;
-        y = - (y / $('#model_webgl').height()) * 2 + 1;
-        mouseVector.set(x, y, 0.5);
-        raycaster.setFromCamera(mouseVector, camera);
-
-        return raycaster.intersectObject(group, true);
-    }
 
 
     showSingelGroup(group) {

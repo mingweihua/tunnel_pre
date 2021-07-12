@@ -5,6 +5,11 @@ let three_helper;
 let tween;
 let dracoLoader;
 
+//全局Model变量
+let globalModel;
+
+
+
 var pointer;
 
 
