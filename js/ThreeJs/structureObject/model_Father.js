@@ -6,10 +6,15 @@ class model_Father {
         // 存放整个模型；
         this.three3dObject = {
             currentModel : undefined,
-            //白鹭山模型
+            //---以下模型为拼音开头---
             BLSModel : undefined,
             XBModel : undefined,
             ZZModel : undefined,
+            XFDModel : undefined,
+            YM1Model : undefined,
+            YM2Model : undefined,
+            YTModel : undefined,
+            //---以下模型为拼音开头---
             totalModel : undefined,
             cloudModel : undefined,
         };

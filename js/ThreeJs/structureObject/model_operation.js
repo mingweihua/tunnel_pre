@@ -8,6 +8,18 @@
 
 
 class Model_operation {
+
+    static changeModel(group,modelName) {
+        scene.remove(group.currentModel);
+        if(group[modelName] != undefined){
+            group.currentModel = group[modelName];
+            scene.add(group.currentModel);
+        } else {
+            globalModel.load(modelName_url[modelName].objUrl,modelName_url[modelName].mtlUrl,modelName,10);
+        }
+    }
+
+
     static separation(group, h) {
         //controls.maxPolarAngle = Math.PI;
         for (var i = 1; i <= 9; i++) {
