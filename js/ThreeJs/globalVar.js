@@ -9,13 +9,16 @@ let dracoLoader;
 let globalModel;
 
 let modelName_url = {
-    BLSModel : {objUrl:"model/白鹭山.obj",mtlUrl:"model/白鹭山.mtl"},
-    XBModel : {objUrl:"model/西边.obj",mtlUrl:"model/西边.mtl"},
-    ZZModel : {objUrl:"model/章庄.obj",mtlUrl:"model/章庄.mtl"},
+    BLSModel : {objUrl:"model/BLS.obj",mtlUrl:"model/BLS.mtl"},
+    XBModel : {objUrl:"model/XB.obj",mtlUrl:"model/XB.mtl"},
+    ZZModel : {objUrl:"model/ZZ.obj",mtlUrl:"model/ZZ.mtl"},
     YM1Model : {objUrl:"model/YM1.obj",mtlUrl:"model/YM1.mtl"},
     YM2Model : {objUrl:"model/YM2.obj",mtlUrl:"model/YM2.mtl"},
     YTModel : {objUrl:"model/YT.obj",mtlUrl:"model/YT.mtl"},
     XFDModel : {objUrl:"model/XFD.obj",mtlUrl:"model/XFD.mtl"},
+    MYS1Model : {objUrl:"model/111.obj",mtlUrl:"model/MYS1.mtl"},
+    MYS2Model : {objUrl:"model/MYS2.obj",mtlUrl:"model/MYS2.mtl"},
+    MYS3Model : {objUrl:"model/MYS3.obj",mtlUrl:"model/MYS3.mtl"},
 };
 
 

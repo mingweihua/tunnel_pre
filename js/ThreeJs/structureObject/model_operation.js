@@ -15,7 +15,7 @@ class Model_operation {
             group.currentModel = group[modelName];
             scene.add(group.currentModel);
         } else {
-            globalModel.load(modelName_url[modelName].objUrl,modelName_url[modelName].mtlUrl,modelName,10);
+            globalModel.load(modelName_url[modelName].objUrl,modelName_url[modelName].mtlUrl,modelName,1);
         }
     }
 
@@ -74,13 +74,13 @@ class Model_operation {
             if(intersects.length>0){
                 console.log(intersects);
 
-                /*var geometry = new THREE.SphereGeometry( 1, 50, 50 );
+                var geometry = new THREE.SphereGeometry( 1, 50, 50 );
                 var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
                 var sphere = new THREE.Mesh( geometry, material );
                 sphere.position.x = intersects[0].point.x;
                 sphere.position.y = intersects[0].point.y;
                 sphere.position.z = intersects[0].point.z;
-                scene.add( sphere );*/
+                scene.add( sphere );
 
 
                 //选择对应的mesh后，这里编写你需要实现的逻辑业务

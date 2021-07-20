@@ -51,7 +51,7 @@ function init() {
 
     //加载模型
     globalModel = new model('tunnel');
-    globalModel.load("model/白鹭山.obj","model/白鹭山.mtl","BLSModel",10);
+    globalModel.load("model/BLS.obj","model/BLS.mtl","BLSModel",1);
     //globalModel.load("model/618_all.obj");
     console.log(globalModel);
 

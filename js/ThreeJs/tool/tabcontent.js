@@ -25,5 +25,14 @@ $("#tabcontent1 a").click(function(){
         case "先锋顶隧道":
             Model_operation.changeModel(globalModel.three3dObject,"XFDModel");
             break;
+        case "明月山1号隧道":
+            Model_operation.changeModel(globalModel.three3dObject,"MYS1Model");
+            break;
+        case "明月山2号隧道":
+            Model_operation.changeModel(globalModel.three3dObject,"MYS2Model");
+            break;
+        case "明月山3号隧道":
+            Model_operation.changeModel(globalModel.three3dObject,"MYS3Model");
+            break;
     }
 })
