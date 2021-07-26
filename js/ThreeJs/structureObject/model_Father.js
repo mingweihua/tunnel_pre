@@ -14,6 +14,9 @@ class model_Father {
             YM1Model : undefined,
             YM2Model : undefined,
             YTModel : undefined,
+            MYS1Model : undefined,
+            MYS2Model : undefined,
+            MYS3Model : undefined,
             //---以下模型为拼音开头---
             totalModel : undefined,
             cloudModel : undefined,

@@ -16,7 +16,7 @@ let modelName_url = {
     YM2Model : {objUrl:"model/YM2.obj",mtlUrl:"model/YM2.mtl"},
     YTModel : {objUrl:"model/YT.obj",mtlUrl:"model/YT.mtl"},
     XFDModel : {objUrl:"model/XFD.obj",mtlUrl:"model/XFD.mtl"},
-    MYS1Model : {objUrl:"model/111.obj",mtlUrl:"model/MYS1.mtl"},
+    MYS1Model : {objUrl:"model/MYS1.obj",mtlUrl:"model/MYS1.mtl"},
     MYS2Model : {objUrl:"model/MYS2.obj",mtlUrl:"model/MYS2.mtl"},
     MYS3Model : {objUrl:"model/MYS3.obj",mtlUrl:"model/MYS3.mtl"},
 };
