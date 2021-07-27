@@ -19,6 +19,7 @@ let modelName_url = {
     MYS1Model : {objUrl:"model/MYS1.obj",mtlUrl:"model/MYS1.mtl"},
     MYS2Model : {objUrl:"model/MYS2.obj",mtlUrl:"model/MYS2.mtl"},
     MYS3Model : {objUrl:"model/MYS3.obj",mtlUrl:"model/MYS3.mtl"},
+    AllModel : {objUrl:"model/all.obj",mtlUrl:"model/all.mtl"},
 };
 
 

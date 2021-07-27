@@ -7,7 +7,16 @@ class CloudPicture {
         }
     }
 
-    static  getAllData(group){
+    static getCloudModel(object,modelName){
+        scene.remove(object.three3dObject.currentModel);
+        if(object.three3dObject.cloud[modelName] != undefined){
+            scene.remove(object.three3dObject.cloud[modelName]);
+        } else {
+            this.getAllData(object.three3dObject.currentModel,modelName)
+        }
+    }
+
+    static  getAllData(group,modelName){
         let modelSpaceData = [];
         for (let i = 0; i < group.children.length; i++) {
             let positionArr = {
@@ -32,17 +41,20 @@ class CloudPicture {
             }
             modelSpaceData.push(positionArr);
         }
-        console.log(modelSpaceData);
+        //console.log(modelSpaceData);
+
+        globalModel.three3dObject.cloud[modelName] = new THREE.Group();
+
         $.ajax({
             type: "post",
-            url: "http://localhost:8080/getAllData",
+            url: "http://localhost:8080/getAllData?modelName=" + modelName,
             contentType : "application/json;charset=utf-8",//关键是要加上这行
             traditional : true,//这使json格式的字符不会被转码
             data : JSON.stringify(modelSpaceData),
             dataType: "json",
             success: function(data){
                 console.log(data);
-                currentModel.three3dObject.cloudModel = new THREE.Group();
+
 
                 for (let i = 0; i < group.children.length; i++) {
 
@@ -67,11 +79,11 @@ class CloudPicture {
                     }
 
                     mesh.geometry.setAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
-                    currentModel.three3dObject.cloudModel.add(mesh);
+                    globalModel.three3dObject.cloud[modelName].add(mesh);
 
                     updateColors();
 
-                    scene.add(currentModel.three3dObject.cloudModel);
+                    scene.add( globalModel.three3dObject.cloud[modelName]);
                     render();
 
 

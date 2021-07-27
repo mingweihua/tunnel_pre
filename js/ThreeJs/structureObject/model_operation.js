@@ -9,11 +9,12 @@ var geoSeparation_h;
 
 class Model_operation {
 
-    static changeModel(group,modelName) {
-        scene.remove(group.currentModel);
-        if(group[modelName] != undefined){
-            group.currentModel = group[modelName];
-            scene.add(group.currentModel);
+    static changeModel(object,modelName) {
+        scene.remove(object.three3dObject.currentModel);
+        if(object.three3dObject[modelName] != undefined){
+            object.three3dObject.currentModel = object.three3dObject[modelName];
+            object.currentName = modelName;
+            scene.add(object.three3dObject.currentModel);
         } else {
             globalModel.load(modelName_url[modelName].objUrl,modelName_url[modelName].mtlUrl,modelName,1);
         }

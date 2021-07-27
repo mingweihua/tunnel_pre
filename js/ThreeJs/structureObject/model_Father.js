@@ -3,6 +3,8 @@ class model_Father {
     constructor(name) {
         //this代表的是实例对象
         this.name = name;
+        //this代表的是实例对象
+        this.currentName = "";
         // 存放整个模型；
         this.three3dObject = {
             currentModel : undefined,
@@ -17,9 +19,23 @@ class model_Father {
             MYS1Model : undefined,
             MYS2Model : undefined,
             MYS3Model : undefined,
+            AllModel : undefined,
             //---以下模型为拼音开头---
             totalModel : undefined,
-            cloudModel : undefined,
+
+            cloud : {
+                BLSModel : undefined,
+                XBModel : undefined,
+                ZZModel : undefined,
+                XFDModel : undefined,
+                YM1Model : undefined,
+                YM2Model : undefined,
+                YTModel : undefined,
+                MYS1Model : undefined,
+                MYS2Model : undefined,
+                MYS3Model : undefined,
+            },
+
         };
     }
 
@@ -61,6 +77,7 @@ class model_Father {
                         thisObject.three3dObject[keyName] = object;
                         thisObject.three3dObject.currentModel = object;
                         Model_operation.setScale(object,scale);
+                        thisObject.currentName = keyName;
                         scene.add(thisObject.three3dObject.currentModel);
                     }, onProgress, onError);
 
