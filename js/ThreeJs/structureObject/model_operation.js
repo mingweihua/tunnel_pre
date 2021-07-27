@@ -5,7 +5,7 @@
     Model里面的模型命名是不一样的
 
  */
-
+var geoSeparation_h;
 
 class Model_operation {
 

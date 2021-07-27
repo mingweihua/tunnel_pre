@@ -1,5 +1,5 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# 创建的文件:20.07.2021 17:01:47
+# 创建的文件:26.07.2021 20:12:26
 
 mtllib MYS1.mtl
 
@@ -992,7 +992,7 @@ f -2//-25 -22//-25 -21//-25
 # 0 polygons - 544 triangles
 
 #
-# object 04
+# object 2
 #
 
 v  36.84 49.64 -2003.92
@@ -1463,8 +1463,8 @@ vn -0.99 0.14 -0.00
 vn -0.99 0.16 -0.00
 # 168 vertex normals
 
-o 04
-g 04
+o 2
+g 2
 usemtl 01___Default
 s off
 f -296//-168 -295//-168 -294//-168 
@@ -2066,7 +2066,7 @@ f -279//-5 -16//-1 -4//-4
 # 0 polygons - 596 triangles
 
 #
-# object 03
+# object 3
 #
 
 v  25.39 9.03 -22.18
@@ -3301,8 +3301,8 @@ vn 0.00 -0.94 0.33
 vn 0.00 -0.98 -0.17
 # 345 vertex normals
 
-o 03
-g 03
+o 3
+g 3
 usemtl 03___Default
 s off
 f -883//-345 -882//-345 -881//-344 
@@ -5078,7 +5078,7 @@ f -261//-63 -225//-38 -226//-10
 # 0 polygons - 1770 triangles
 
 #
-# object 01
+# object 5
 #
 
 v  -94.00 15.56 0.00
@@ -5811,8 +5811,8 @@ vn 0.00 -0.74 0.67
 vn 0.00 -0.69 0.73
 # 202 vertex normals
 
-o 01
-g 01
+o 5
+g 5
 usemtl 01___Default
 s off
 f -524//-202 -523//-202 -522//-202 
@@ -6862,7 +6862,7 @@ f -51//-79 -450//-78 -507//-80
 # 0 polygons - 1044 triangles
 
 #
-# object 02
+# object 4
 #
 
 v  -94.00 197.42 -2120.98
@@ -7713,8 +7713,8 @@ vn 0.47 -0.88 -0.01
 vn 0.50 -0.87 -0.01
 # 259 vertex normals
 
-o 02
-g 02
+o 4
+g 4
 usemtl 02___Default
 s off
 f -585//-259 -584//-258 -583//-257 
@@ -8886,7 +8886,7 @@ f -10//-16 -500//-1 -498//-14
 # 0 polygons - 1166 triangles
 
 #
-# object 06
+# object 0
 #
 
 v  -94.00 -1.46 0.00
@@ -9177,8 +9177,8 @@ vn 0.00 -1.00 -0.00
 vn 0.00 1.00 -0.07
 # 121 vertex normals
 
-o 06
-g 06
+o 0
+g 0
 usemtl 07___Default
 s off
 f -163//-121 -162//-121 -161//-121 
@@ -9514,7 +9514,7 @@ f -53//-1 -8//-1 -4//-1
 # 0 polygons - 330 triangles
 
 #
-# object 05
+# object 1
 #
 
 v  104.78 -30.00 -2587.81
@@ -9728,8 +9728,8 @@ vn 0.00 1.00 -0.07
 vn 0.00 -1.00 0.07
 # 89 vertex normals
 
-o 05
-g 05
+o 1
+g 1
 usemtl 03___Default
 s off
 f -118//-89 -117//-89 -116//-89 

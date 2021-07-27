@@ -1,10 +1,10 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# 创建的文件:20.07.2021 16:30:03
+# 创建的文件:26.07.2021 20:32:42
 
 mtllib XB.mtl
 
 #
-# object 02
+# object 3
 #
 
 v  100.00 79.21 -93.87
@@ -398,8 +398,8 @@ vn 0.21 0.98 -0.00
 vn -0.21 0.98 -0.00
 # 153 vertex normals
 
-o 02
-g 02
+o 3
+g 3
 usemtl 强风化千枚岩
 s off
 f -234//-153 -233//-152 -232//-151 
@@ -877,7 +877,7 @@ f -105//-33 -66//-32 -67//-33
 # 0 polygons - 472 triangles
 
 #
-# object 05
+# object 1
 #
 
 v  -1.05 -1.06 -359.81
@@ -1449,8 +1449,8 @@ vn 0.98 -0.20 -0.01
 vn 0.83 -0.56 -0.00
 # 168 vertex normals
 
-o 05
-g 05
+o 1
+g 1
 usemtl Material__28
 s off
 f -397//-168 -396//-168 -395//-168 
@@ -2262,7 +2262,7 @@ f -105//-70 -63//-70 -65//-70
 # 0 polygons - 806 triangles
 
 #
-# object fracture
+# object fractures
 #
 
 v  -7.77 5.07 -356.90
@@ -2787,8 +2787,8 @@ vn -0.83 -0.56 0.01
 vn -0.98 -0.20 0.01
 # 109 vertex normals
 
-o fracture
-g fracture
+o fractures
+g fractures
 usemtl Material__27
 s off
 f -409//-109 -408//-109 -407//-109 
@@ -3648,7 +3648,7 @@ f -69//-53 -37//-53 -17//-53
 # 0 polygons - 854 triangles
 
 #
-# object 03
+# object 0
 #
 
 v  -1.91 8.33 -251.54
@@ -3843,8 +3843,8 @@ vn -0.93 -0.37 0.01
 vn -0.21 -0.98 0.00
 # 76 vertex normals
 
-o 03
-g 03
+o 0
+g 0
 usemtl Material__31
 s off
 f -112//-76 -111//-76 -110//-76 
@@ -4078,7 +4078,7 @@ f -112//-18 -34//-11 -7//-12
 # 0 polygons - 228 triangles
 
 #
-# object 04
+# object 4
 #
 
 v  100.00 36.24 -735.17
@@ -4374,8 +4374,8 @@ vn 0.00 0.50 -0.87
 vn 1.00 0.00 -0.00
 # 130 vertex normals
 
-o 04
-g 04
+o 4
+g 4
 usemtl 强风化板岩夹千枚岩
 s off
 f -159//-130 -158//-129 -157//-128 
@@ -4691,7 +4691,7 @@ f -30//-1 -53//-1 -51//-1
 # 0 polygons - 310 triangles
 
 #
-# object 01
+# object 6
 #
 
 v  100.00 6.65 -1321.19
@@ -4937,8 +4937,8 @@ vn -0.26 -0.97 0.01
 vn -0.42 -0.91 0.01
 # 101 vertex normals
 
-o 01
-g 01
+o 6
+g 6
 usemtl 粉质粘土夹碎石
 s off
 f -138//-101 -137//-101 -136//-101 
@@ -5216,7 +5216,7 @@ f -115//-11 -113//-9 -114//-11
 # 0 polygons - 272 triangles
 
 #
-# object 06
+# object 5
 #
 
 v  100.00 24.24 -1157.57
@@ -5468,8 +5468,8 @@ vn -0.02 1.00 -0.00
 vn -0.85 0.52 0.01
 # 95 vertex normals
 
-o 06
-g 06
+o 5
+g 5
 usemtl 强风化页岩
 s off
 f -150//-95 -149//-94 -148//-95 
@@ -5779,7 +5779,7 @@ f -87//-52 -37//-46 -38//-52
 # 0 polygons - 304 triangles
 
 #
-# object 07
+# object 2
 #
 
 v  32.75 -0.73 -1244.39
@@ -5957,8 +5957,8 @@ vn -0.31 0.95 0.00
 vn -0.75 0.67 0.01
 # 61 vertex normals
 
-o 07
-g 07
+o 2
+g 2
 usemtl 中风化页岩
 s off
 f -110//-61 -109//-60 -108//-59 

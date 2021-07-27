@@ -1,5 +1,5 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# 创建的文件:20.07.2021 16:28:54
+# 创建的文件:26.07.2021 20:21:39
 
 mtllib BLS.mtl
 
@@ -4178,7 +4178,7 @@ f -30//-2 -28//-2 -29//-2
 # 0 polygons - 1318 triangles
 
 #
-# object fracture
+# object fractures
 #
 
 v  39.45 -27.11 -1935.54
@@ -4893,8 +4893,8 @@ vn 0.00 -0.93 -0.36
 vn 0.00 -0.93 -0.37
 # 209 vertex normals
 
-o fracture
-g fracture
+o fractures
+g fractures
 usemtl Material__28
 s off
 f -499//-209 -498//-208 -497//-207 
@@ -5942,7 +5942,7 @@ f -321//-176 -4//-176 -2//-176
 # 0 polygons - 1042 triangles
 
 #
-# object 03
+# object 0
 #
 
 v  -1.38 -16.11 -1163.48
@@ -7003,8 +7003,8 @@ vn -0.34 -0.94 0.01
 vn 0.12 -0.99 0.02
 # 346 vertex normals
 
-o 03
-g 03
+o 0
+g 0
 usemtl Material__27
 s off
 f -708//-346 -707//-346 -706//-345 
@@ -8450,7 +8450,7 @@ f -16//-190 -66//-190 -18//-190
 # 0 polygons - 1440 triangles
 
 #
-# object 02
+# object 1
 #
 
 v  -4.81 0.22 -38.70
@@ -9715,8 +9715,8 @@ vn 0.12 -0.99 0.01
 vn -0.98 -0.18 -0.00
 # 527 vertex normals
 
-o 02
-g 02
+o 1
+g 1
 usemtl Material__26
 s off
 f -731//-527 -730//-526 -729//-525 
@@ -11184,7 +11184,7 @@ f -78//-50 -353//-50 -355//-50
 # 0 polygons - 1462 triangles
 
 #
-# object 01
+# object 2
 #
 
 v  120.00 7.45 -2.17
@@ -12633,8 +12633,8 @@ vn 0.78 0.63 -0.00
 vn -0.78 0.62 0.02
 # 575 vertex normals
 
-o 01
-g 01
+o 2
+g 2
 usemtl Material__25
 s off
 f -867//-575 -866//-574 -865//-574 
