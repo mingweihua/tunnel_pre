@@ -35,7 +35,7 @@ $("#tabcontent1 a").click(function(){
             Model_operation.changeModel(globalModel,"MYS3Model");
             break;
         case "完整隧道群":
-            Model_operation.changeModel(globalModel.three3dObject,"AllModel");
+            Model_operation.changeModel(globalModel,"AllModel");
             break;
     }
 })
