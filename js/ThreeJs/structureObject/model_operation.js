@@ -11,6 +11,7 @@ class Model_operation {
 
     static changeModel(object,modelName) {
         scene.remove(object.three3dObject.currentModel);
+        scene.remove(object.three3dObject.cloud.currentModel);
         if(object.three3dObject[modelName] != undefined){
             object.three3dObject.currentModel = object.three3dObject[modelName];
             object.currentName = modelName;

@@ -24,6 +24,7 @@ class model_Father {
             totalModel : undefined,
 
             cloud : {
+                currentModel : undefined,
                 BLSModel : undefined,
                 XBModel : undefined,
                 ZZModel : undefined,

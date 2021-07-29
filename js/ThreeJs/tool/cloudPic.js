@@ -7,10 +7,19 @@ class CloudPicture {
         }
     }
 
+
+    static removeCloudModel(object){
+        scene.remove(object.three3dObject.cloud.currentModel);
+        scene.add(object.three3dObject.currentModel);
+    }
+
+
     static getCloudModel(object,modelName){
         scene.remove(object.three3dObject.currentModel);
+        scene.remove(object.three3dObject.cloud.currentModel);
         if(object.three3dObject.cloud[modelName] != undefined){
-            scene.remove(object.three3dObject.cloud[modelName]);
+            object.three3dObject.cloud.currentModel = object.three3dObject.cloud[modelName];
+            scene.add(object.three3dObject.cloud.currentModel);
         } else {
             this.getAllData(object.three3dObject.currentModel,modelName)
         }
@@ -83,9 +92,9 @@ class CloudPicture {
 
                     updateColors();
 
-                    scene.add( globalModel.three3dObject.cloud[modelName]);
-                    render();
+                    //scene.add( globalModel.three3dObject.cloud[modelName]);
 
+                    render();
 
                     function updateColors() {
 
@@ -119,6 +128,10 @@ class CloudPicture {
 
                     }
                 }
+
+                globalModel.three3dObject.cloud.currentModel = globalModel.three3dObject.cloud[modelName];
+                scene.add(globalModel.three3dObject.cloud.currentModel);
+
             }
         });
     }

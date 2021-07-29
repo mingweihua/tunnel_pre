@@ -32,7 +32,7 @@ $("#tabcontent1 a").click(function(){
             Model_operation.changeModel(globalModel,"MYS2Model");
             break;
         case "明月山3号隧道":
-            Model_operation.changeModel(globalModel.three3dObject,"MYS3Model");
+            Model_operation.changeModel(globalModel,"MYS3Model");
             break;
         case "完整隧道群":
             Model_operation.changeModel(globalModel.three3dObject,"AllModel");
@@ -40,11 +40,14 @@ $("#tabcontent1 a").click(function(){
     }
 })
 
-$("#tabcontent3 a").click(function(){
+$("#tabcontent2 a").click(function(){
     //console.log($(this).html());
     switch($(this).html()){
         case "数值模拟云图":
             CloudPicture.getCloudModel(globalModel,globalModel.currentName);
+            break;
+        case "模型重置":
+            CloudPicture.removeCloudModel(globalModel);
             break;
     }
 })
