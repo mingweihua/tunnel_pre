@@ -49,6 +49,13 @@ $("#tabcontent2 a").click(function(){
         case "模型重置":
             CloudPicture.removeCloudModel(globalModel);
             break;
+        case "模型分离":
+            geoSeparation_h += 10;
+            Model_operation.separation(globalModel.three3dObject.currentModel);
+            break;
+        case "模型合并":
+            Model_operation.separation_reset(globalModel.three3dObject.currentModel);
+            break;
     }
 })
 

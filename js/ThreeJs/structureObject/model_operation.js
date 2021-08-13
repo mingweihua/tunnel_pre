@@ -5,7 +5,7 @@
     Model里面的模型命名是不一样的
 
  */
-var geoSeparation_h;
+let geoSeparation_h = 0;
 
 class Model_operation {
 
@@ -22,40 +22,26 @@ class Model_operation {
     }
 
 
-    static separation(group, h) {
-        //controls.maxPolarAngle = Math.PI;
-        for (var i = 1; i <= 9; i++) {
-            if (group.getObjectByName(i) != undefined) {
-                tween = new TWEEN.Tween(group.getObjectByName(i).position)
-                    .to({y: (9-i) * h}, 100)
+    static separation(group) {
+        for (let i = 1; i <= 9; i++) {
+            var mesh;
+            if ((mesh= group.getObjectByName("" + i)) != undefined) {
+                tween = new TWEEN.Tween(mesh.position)
+                    .to({y: i * geoSeparation_h}, 100)
                     .onUpdate(function () {
                         //console.log(this.y);
                     });
+                tween.start();
             }
-            tween.start();
-        }
 
-        if (group.getObjectByName('line1') != undefined) {
-            tween = new TWEEN.Tween(group.getObjectByName('line1').position)
-                .to({y: (9-5) * h}, 100)
-                .onUpdate(function () {
-                    //console.log(this.y);
-                });
         }
-        tween.start();
-        if (group.getObjectByName('line2') != undefined) {
-            tween = new TWEEN.Tween(group.getObjectByName('line2').position)
-                .to({y: (9-5) * h}, 100)
-                .onUpdate(function () {
-                    //console.log(this.y);
-                });
-        }
-        tween.start();
+        //控制分离速度
+        geoSeparation_h += 10;
     }
 
     static separation_reset(group){
         geoSeparation_h = 0;
-        this.separation(group,0);
+        this.separation(group);
     }
 
     static showSingleGeo(group,name,isShow){
