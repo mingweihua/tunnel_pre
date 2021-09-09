@@ -60,5 +60,9 @@ $("#tabcontent2 a").click(function(){
 })
 
 $("#tabcontent3 a").click(function(){
-
+    switch($(this).html()){
+        case "6":
+            //getPFCData();
+            break;
+    }
 })
