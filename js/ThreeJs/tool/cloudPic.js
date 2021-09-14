@@ -61,9 +61,11 @@ class CloudPicture {
             traditional : true,//这使json格式的字符不会被转码
             data : JSON.stringify(modelSpaceData),
             dataType: "json",
-            success: function(data){
-                console.log(data);
+            success: function(cloudPicData){
 
+                let data = cloudPicData.meshDatas;
+                console.log(data);
+                
 
                 for (let i = 0; i < group.children.length; i++) {
 
@@ -75,8 +77,8 @@ class CloudPicture {
 
                     mesh.geometry = group.children[i].geometry;
                     let values = data[i].numericalDatas;
-                    lut.setMax( 325);
-                    lut.setMin( 0);
+                    lut.setMax( cloudPicData.max);
+                    lut.setMin( cloudPicData.min);
 
                     // default color attribute
                     const colors = [];
