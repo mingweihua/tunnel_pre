@@ -4,11 +4,9 @@ let controls,raycaster,mouseVector;
 let three_helper;
 let tween;
 let dracoLoader;
-var planeObjects = [];
-var clock = new THREE.Clock();
 
 //全局Model变量
-let globalModel,currentName;
+let globalModel;
 
 let modelName_url = {
     BLSModel : {objUrl:"model/BLS.obj",mtlUrl:"model/BLS.mtl"},
@@ -67,21 +65,13 @@ var params = {
 
 //剖切材质参数
 var geoImformation = {
-	"tunnel_right": {
-		color: 0xC8D0D1,
-		name: "花岗岩微风化带",
-	},
-	"tunnel_left": {
-		color: 0xC8D0D1,
-		name: "花岗岩微风化带",
-	},
-	"fractures": {
+	"line1": {
 		color: 0x696969,
-		name: "花岗岩微风化带",
+		name: "隧道（左线）",
 	},
-	0: {
-		color: 0x878067,
-		name: "花岗岩全风化带",
+	"line2": {
+		color: 0x696969,
+		name: "隧道（右线）",
 	},
 	1: {
 		color: 0x7AE89A,
@@ -90,14 +80,6 @@ var geoImformation = {
 	2: {
 		color: 0xD6EFC8,
 		name: "河湖相沉积土层",
-	},
-	"line1": {
-		color: 0x696969,
-		name: "隧道（左线）",
-	},
-	"line2": {
-		color: 0x696969,
-		name: "隧道（右线）",
 	},
 	3: {
 		color: 0x927CCF,
@@ -127,5 +109,4 @@ var geoImformation = {
 		color: 0xC8D0D1,
 		name: "花岗岩微风化带",
 	},
-	
 }

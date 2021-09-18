@@ -97,7 +97,6 @@ class model_Father {
 
                         Model_operation.setScale(object, scale);
                         thisObject.currentName = keyName;
-                        currentName = thisObject.currentName;
                         scene.add(thisObject.three3dObject.currentModel);
                     }, onProgress, onError);
 

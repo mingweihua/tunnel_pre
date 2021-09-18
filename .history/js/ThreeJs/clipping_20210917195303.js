@@ -59,13 +59,12 @@ function controlGUI(value){
         console.log(material);
         $("#gui").show();
         $("#pouqieMB").html("隐藏剖切面板");
-        Model_operation.sectionModel(globalModel,currentName);
-        console.log(globalModel.three3dObject.group_pouqie.currentModel);
+        Model_operation.sectionModel(globalModel,globalModel.currentName)
         
     } else {
         $("#gui").hide();
         $("#pouqieMB").html("显示剖切面板");
-        Model_operation.changeModel(globalModel,currentName);
+        Model_operation.changeModel(globalModel,globalModel.currentName);
         
     }
 }

@@ -12,7 +12,6 @@ class Model_operation {
     static changeModel(object,modelName) {
         scene.remove(object.three3dObject.currentModel);
         scene.remove(object.three3dObject.cloud.currentModel);
-        scene.remove(object.three3dObject.group_pouqie.currentModel);
         if(object.three3dObject[modelName] != undefined){
             object.three3dObject.currentModel = object.three3dObject[modelName];
             object.currentName = modelName;
@@ -26,12 +25,12 @@ class Model_operation {
     static sectionModel(object,modelName){
         scene.remove(object.three3dObject.currentModel);
         scene.remove(object.three3dObject.cloud.currentModel);
-        // scene.remove(object.three3dObject.group_pouqie.currentModel);
+        scene.remove(object.three3dObject.group_pouqie.currentModel);
         if(object.three3dObject.group_pouqie[modelName] != undefined){
             object.three3dObject.group_pouqie.currentModel = object.three3dObject.group_pouqie[modelName];
             scene.add(object.three3dObject.group_pouqie.currentModel);
         } else {
-            globalModel.load(modelName_url[modelName].objUrl,undefined,modelName,1,1);
+            globalModel.load(modelName_url[modelName].objUrl,mtl_url,modelName,1,1);
         }
     }
 

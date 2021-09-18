@@ -18,18 +18,12 @@ class model extends model_Father {
 					var newObject_pouqie = thisObject.createMaterial_pouqie(result);
 					thisObject.three3dObject.group_pouqie[keyName] = newObject_pouqie;
 					thisObject.three3dObject.group_pouqie.currentModel = newObject_pouqie;
-
-					thisObject.currentName = keyName;
-					currentName = thisObject.currentName;
-
-
-					if (loadPouqie != undefined) {
-						scene.add(thisObject.three3dObject.group_pouqie.currentModel);
-						
-					} else {
+					if(loadPouqie!= undefined){
 						scene.add(thisObject.three3dObject.totalModel);
+					}else{
+						scene.add(thisObject.three3dObject.group_pouqie.currentModel);
 					}
-
+					
 				});
 		}
 	}
@@ -96,7 +90,7 @@ class model extends model_Father {
 				planeMatGroup[i] =
 					new THREE.MeshStandardMaterial({
 
-						color: geoImformation[group.children[i].name].color,
+						color: geoImformation[thisObject.meshName(group.children[i].name)].color,
 						metalness: 0.1,
 						roughness: 0.75,
 						// transparent:true,

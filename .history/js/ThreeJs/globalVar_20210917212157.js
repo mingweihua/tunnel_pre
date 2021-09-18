@@ -8,7 +8,7 @@ var planeObjects = [];
 var clock = new THREE.Clock();
 
 //全局Model变量
-let globalModel,currentName;
+let globalModel;
 
 let modelName_url = {
     BLSModel : {objUrl:"model/BLS.obj",mtlUrl:"model/BLS.mtl"},
