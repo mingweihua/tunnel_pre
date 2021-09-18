@@ -37,28 +37,3 @@ var numberOfColors;
 colorMap = 'rainbow';
 numberOfColors = 512;
 legendLayout = 'vertical';
-
-
-//剖切用
-
-//剖切面板初始参数
-var params = {
-	旋转: false,
-	clippingplane: {
-
-		X辅助剖面: false,
-		X剖切控制: 0, 
-		Y辅助剖面: false,
-		Y剖切控制: 0,
-		Z辅助剖面: false,
-		Z剖切控制: 0,
-
-	},
-	rotation: {
-
-		绕X旋转: 0,
-		绕Y旋转: 0,
-		绕Z旋转: 0
-
-	}
-};
