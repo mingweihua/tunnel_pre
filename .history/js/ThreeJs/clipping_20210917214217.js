@@ -55,17 +55,18 @@ function createPlaneStencilGroup(geometry, plane, renderOrder) {
 }
 
 function controlGUI(value){
+    modelName = globalModel.currentName;
     if(value=="显示剖切面板"){
         console.log(material);
         $("#gui").show();
         $("#pouqieMB").html("隐藏剖切面板");
-        Model_operation.sectionModel(globalModel,currentName);
+        Model_operation.sectionModel(globalModel,modelName);
         console.log(globalModel.three3dObject.group_pouqie.currentModel);
         
     } else {
         $("#gui").hide();
         $("#pouqieMB").html("显示剖切面板");
-        Model_operation.changeModel(globalModel,currentName);
+        Model_operation.changeModel(globalModel,modelName);
         
     }
 }

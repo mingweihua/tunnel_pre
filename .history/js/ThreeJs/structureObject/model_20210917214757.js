@@ -24,10 +24,9 @@ class model extends model_Father {
 
 
 					if (loadPouqie != undefined) {
-						scene.add(thisObject.three3dObject.group_pouqie.currentModel);
-						
-					} else {
 						scene.add(thisObject.three3dObject.totalModel);
+					} else {
+						scene.add(thisObject.three3dObject.group_pouqie.currentModel);
 					}
 
 				});

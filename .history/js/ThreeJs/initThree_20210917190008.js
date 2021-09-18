@@ -89,7 +89,6 @@ function init() {
 
     control2.open();
 
-    $('#gui').hide();
 
 
 }
@@ -101,29 +100,6 @@ function onWindowResize() {
 }
 
 function animate() {
-
-    var delta = clock.getDelta();
-    if (params["旋转"]) {
-        globalModel.three3dObject.group_pouqie.currentModel.rotation.y += delta * 0.2;
-
-    }
-
-    if (planeObjects != undefined) {
-        for (let i = 0; i < planeObjects.length; i++) {
-            for (let j = 0; j < planeObjects[i].length; j++) {
-
-                var plane = planes[j];
-                var po = planeObjects[i][j];
-                plane.coplanarPoint(po.position);
-                po.lookAt(
-                    po.position.x - plane.normal.x,
-                    po.position.y - plane.normal.y,
-                    po.position.z - plane.normal.z,
-                ); //解决剖面位置为负时不显示的问题
-            }
-        }
-    }
-
     controls.update();
     requestAnimationFrame(animate);
     if (tween != undefined) {

@@ -3,7 +3,7 @@ class model extends model_Father {
 		super(name, scale, position);
 	}
 
-	load(obj_url, mtl_url, keyName, scale, loadPouqie) {
+	load(obj_url, mtl_url, keyName, scale) {
 		if (mtl_url != undefined) {
 			super.load(obj_url, mtl_url, keyName, scale);
 		} else {
@@ -16,20 +16,9 @@ class model extends model_Father {
 					//CloudPicture.getAllData(thisObject.three3dObject.totalModel);
 
 					var newObject_pouqie = thisObject.createMaterial_pouqie(result);
-					thisObject.three3dObject.group_pouqie[keyName] = newObject_pouqie;
-					thisObject.three3dObject.group_pouqie.currentModel = newObject_pouqie;
+					thisObject.three3dObject.group_pouqie = newObject_pouqie;
 
-					thisObject.currentName = keyName;
-					currentName = thisObject.currentName;
-
-
-					if (loadPouqie != undefined) {
-						scene.add(thisObject.three3dObject.group_pouqie.currentModel);
-						
-					} else {
-						scene.add(thisObject.three3dObject.totalModel);
-					}
-
+					scene.add(thisObject.three3dObject.totalModel);
 				});
 		}
 	}
@@ -71,7 +60,7 @@ class model extends model_Father {
 			//模型外表面材质
 			materialGroup[i] = new THREE.MeshStandardMaterial({
 
-				color: geoImformation[group.children[i].name].color,
+				color: geoImformation[thisObject.meshName(group.children[i].name)].color,
 				metalness: 0.1,
 				roughness: 0.75,
 				clippingPlanes: planes,
@@ -96,7 +85,7 @@ class model extends model_Father {
 				planeMatGroup[i] =
 					new THREE.MeshStandardMaterial({
 
-						color: geoImformation[group.children[i].name].color,
+						color: geoImformation[thisObject.meshName(group.children[i].name)].color,
 						metalness: 0.1,
 						roughness: 0.75,
 						// transparent:true,

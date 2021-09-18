@@ -59,13 +59,14 @@ function controlGUI(value){
         console.log(material);
         $("#gui").show();
         $("#pouqieMB").html("隐藏剖切面板");
-        Model_operation.sectionModel(globalModel,currentName);
-        console.log(globalModel.three3dObject.group_pouqie.currentModel);
-        
+        currentModel.showSingelGroup(currentModel.three3dObject.group_pouqie);
+        $('#select-stratum').prop('disabled', true);
+        $('#select-stratum').selectpicker('refresh');
     } else {
         $("#gui").hide();
         $("#pouqieMB").html("显示剖切面板");
-        Model_operation.changeModel(globalModel,currentName);
-        
+        currentModel.showSingelGroup(currentModel.three3dObject.group_fenli);
+        $('#select-stratum').prop('disabled', false);
+        $('#select-stratum').selectpicker('refresh');
     }
 }
