@@ -56,6 +56,9 @@ $("#tabcontent2 a").click(function(){
         case "地层合并":
             Model_operation.separation_reset(globalModel.three3dObject.currentModel);
             break;
+        case "离散元分析":
+            $('#PFCModal').modal('show')
+            break;
     }
 })
 
