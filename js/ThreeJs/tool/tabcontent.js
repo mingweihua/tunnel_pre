@@ -64,8 +64,15 @@ $("#tabcontent2 a").click(function(){
 
 $("#tabcontent3 a").click(function(){
     switch($(this).html()){
-        case "6":
-            //getPFCData();
+        case "显示剖切面板":
+            console.log(material);
+            $("#gui").show();
+            Model_operation.sectionModel(globalModel,currentName);
+            console.log(globalModel.three3dObject.group_pouqie.currentModel);
+            break;
+        case "隐藏剖切面板":
+            $("#gui").hide();
+            Model_operation.changeModel(globalModel,currentName);
             break;
     }
 })

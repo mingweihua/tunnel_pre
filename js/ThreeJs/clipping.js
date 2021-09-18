@@ -54,7 +54,7 @@ function createPlaneStencilGroup(geometry, plane, renderOrder) {
 
 }
 
-function controlGUI(value){
+/*function controlGUI(value){
     if(value=="显示剖切面板"){
         console.log(material);
         $("#gui").show();
@@ -68,4 +68,4 @@ function controlGUI(value){
         Model_operation.changeModel(globalModel,currentName);
         
     }
-}
+}*/
