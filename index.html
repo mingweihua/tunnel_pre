@@ -169,9 +169,9 @@
                     <h4 class="modal-title">离散元分析</h4>
                 </div>
                 <div class="modal-body">
-                    <button type="button" class="btn btn-default" onclick="">隧道入口分析</button>
-                    <button type="button" class="btn btn-default" onclick="">隧道出口分析</button>
-                    <div id="chart" style="width: 550px;height: 350px;"></div>
+                    <button type="button" class="btn btn-default" onclick="PFC_function.showPFC(globalModel,'in')">隧道入口分析</button>
+                    <button type="button" class="btn btn-default" onclick="PFC_function.showPFC(globalModel,'out')">隧道出口分析</button>
+                    <div id="pfcChart" style="width: 800px;height: 500px;"></div>
                 </div>
                 <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -212,8 +212,7 @@
 
 
     <script src="js/ThreeJs/tool/tabcontent.js"></script>
-
-    <script src="js/PFC/loadData.js"></script>
+    <script src="js/ThreeJs/tool/PFC_function.js"></script>
 
 </body>
 
