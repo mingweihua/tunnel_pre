@@ -26,8 +26,12 @@ class PFC_function {
                 });
                 // console.log(Array1);
                 var Array2=[];
+                let min = 0;
+                let max = 0;
                 for (var i=0;i<Array1.length;i++){
                     Array2.push(Array1[i][2])
+                    min = Math.min(min,Array1[i][2]);
+                    max = Math.max(max,Array1[i][2]);
                 }
 
                 var chartDom = document.getElementById('pfcChart');
@@ -109,8 +113,8 @@ class PFC_function {
 
 
                 function getFromPalette2(value) {
-                    lut.setMax( 0.0188358);
-                    lut.setMin( 3.23003E-05);
+                    lut.setMax( max/2);
+                    lut.setMin( min);
                     const color = lut.getColor( value );
                     var a="rgb(" + color.r*255 + "," + color.g*255 + "," + color.b*255  + ")";
                     //console.log(a);
