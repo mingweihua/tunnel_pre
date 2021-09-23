@@ -79,7 +79,7 @@ function init() {
     control1.add(params.clippingplane, 'Y辅助剖面').onChange(v => planeHelpers[1].visible = v);
     control1.add(params.clippingplane, 'Y剖切控制').min(-1000).max(1000).onChange(d => planes[1].constant = d);
     control1.add(params.clippingplane, 'Z辅助剖面').onChange(v => planeHelpers[2].visible = v);
-    control1.add(params.clippingplane, 'Z剖切控制').min(-3000).max(3000).onChange(d => planes[2].constant = d);
+    control1.add(params.clippingplane, 'Z剖切控制').min(-3000).max(0).onChange(d => planes[2].constant = d);
     control1.open();
 
     var control2 = gui.addFolder('模型旋转');
