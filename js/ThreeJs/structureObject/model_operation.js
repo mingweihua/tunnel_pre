@@ -62,8 +62,7 @@ class Model_operation {
         group.getObjectByName(name).visible = isShow;
     }
 
-
-    static chooseElement(group) {
+    static chooseElement(group,modelName) {
         raycaster = new THREE.Raycaster();
         mouseVector = new THREE.Vector3();
 
@@ -75,22 +74,61 @@ class Model_operation {
             var intersects = Model_operation.getIntersects(event.offsetX, event.offsetY, group);
             if(intersects.length>0){
                 console.log(intersects);
-
-                var geometry = new THREE.SphereGeometry( 1, 50, 50 );
-                var material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
-                var sphere = new THREE.Mesh( geometry, material );
+                let sphere;
+                if(scene.getObjectByName("cloudPoint") != undefined){
+                    sphere = scene.getObjectByName("cloudPoint");
+                } else {
+                    let geometry = new THREE.SphereGeometry( 5, 50, 50 );
+                    let material = new THREE.MeshBasicMaterial( {color: 0xffff00} );
+                    sphere = new THREE.Mesh( geometry, material );
+                    sphere.name = "cloudPoint";
+                }
                 sphere.position.x = intersects[0].point.x;
                 sphere.position.y = intersects[0].point.y;
                 sphere.position.z = intersects[0].point.z;
                 scene.add( sphere );
 
-
                 //选择对应的mesh后，这里编写你需要实现的逻辑业务
 
 
-
+                let location_json = {};
+                //obj中属性坐标
+                /*
+                 注意！！！
+                 注意！！！
+                 Three.js中y坐标是高度，但是在数值模拟分析中高度是z坐标
+                 因此这边直接在前端处理。
+                 */
+                location_json.x = intersects[0].point.x;
+                //Three.js坐标中的y是高度，因此传数据时定义为z
+                location_json.z = intersects[0].point.y;
+                //Three.js坐标中的z，在3dmax中是y，并且应该乘以-1
+                location_json.y = intersects[0].point.z*-1;
+                $.ajax({
+                    type: "post",
+                    url: "http://localhost:8080/getOneData?modelName=" + modelName,
+                    contentType : "application/json;charset=utf-8",//关键是要加上这行
+                    traditional : true,//这使json格式的字符不会被转码
+                    data : JSON.stringify(location_json),
+                    dataType: "json",
+                    success: function(data){
+                        console.log(data);
+                        $("#numericalModal .x").html(location_json.x);
+                        $("#numericalModal .y").html(location_json.y);
+                        $("#numericalModal .z").html(location_json.z);
+                        $("#numericalModal .data").html(data);
+                        $('#numericalModal').modal('show');
+                        window.removeEventListener( 'click', onPointerMove,false );
+                    }
+                });
             }
+        }
+    }
 
+    static deleteChooseElement() {
+        if(scene.getObjectByName("cloudPoint") != undefined){
+            let mesh = scene.getObjectByName("cloudPoint");
+            scene.remove(mesh);
         }
     }
 

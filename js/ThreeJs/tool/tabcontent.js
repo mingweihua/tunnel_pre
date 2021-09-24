@@ -43,12 +43,6 @@ $("#tabcontent1 a").click(function(){
 $("#tabcontent2 a").click(function(){
     //console.log($(this).html());
     switch($(this).html()){
-        case "数值模拟云图":
-            CloudPicture.getCloudModel(globalModel,globalModel.currentName);
-            break;
-        case "模型重置":
-            CloudPicture.removeCloudModel(globalModel);
-            break;
         case "地层分离":
             geoSeparation_h += 10;
             Model_operation.separation(globalModel.three3dObject.currentModel);
@@ -56,14 +50,6 @@ $("#tabcontent2 a").click(function(){
         case "地层合并":
             Model_operation.separation_reset(globalModel.three3dObject.currentModel);
             break;
-        case "离散元分析":
-            PFC_function.showPFC(globalModel,"in");
-            break;
-    }
-})
-
-$("#tabcontent3 a").click(function(){
-    switch($(this).html()){
         case "显示剖切面板":
             console.log(material);
             $("#gui").show();
@@ -73,6 +59,26 @@ $("#tabcontent3 a").click(function(){
         case "隐藏剖切面板":
             $("#gui").hide();
             Model_operation.changeModel(globalModel,currentName);
+            break;
+    }
+})
+
+$("#tabcontent3 a").click(function(){
+    switch($(this).html()){
+        case "数值模拟云图":
+            CloudPicture.getCloudModel(globalModel,globalModel.currentName);
+            break;
+        case "模型重置":
+            CloudPicture.removeCloudModel(globalModel);
+            break;
+        case "离散元分析":
+            PFC_function.showPFC(globalModel,"in");
+            break;
+        case "选点分析":
+            Model_operation.chooseElement(globalModel.three3dObject.currentModel,globalModel.currentName);
+            break;
+        case "选点取消":
+            Model_operation.deleteChooseElement();
             break;
     }
 })

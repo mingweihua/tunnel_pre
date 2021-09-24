@@ -94,8 +94,8 @@
                     <div id="tabs" class="tabs-container">
                         <div class="tabs" style="user-select: none;">
                             <a id="tab1" data-tab="1" class="tab">三维模型</a>
-                            <a id="tab2" data-tab="2" class="tab">数值分析</a>
-                            <a id="tab3" data-tab="3" class="tab">功能区三</a>
+                            <a id="tab2" data-tab="2" class="tab">模型功能</a>
+                            <a id="tab3" data-tab="3" class="tab">数值分析</a>
                             <a id="tab4" data-tab="4" class="tab">功能区四</a>
                             
                         </div>
@@ -117,17 +117,18 @@
                             <div id="tabcontent2" data-tab="2" class="tabcontent tabs">
                                 <a class="tab_func">地层分离</a>
                                 <a class="tab_func">地层合并</a>
-                                <a class="tab_func">数值模拟云图</a>
-                                <a class="tab_func">模型重置</a>
-                                <a class="tab_func">选点分析</a>
-                                <a class="tab_func">选点重置</a>
-                                <a class="tab_func">离散元分析</a>
-                            </div>
-                            <div id="tabcontent3" data-tab="3" class="tabcontent tabs">
                                 <a class="tab_func">显示剖切面板</a>
                                 <a class="tab_func">隐藏剖切面板</a>
                                 <a class="tab_func">7</a>
                                 <a class="tab_func">8</a>
+                            </div>
+                            <div id="tabcontent3" data-tab="3" class="tabcontent tabs">
+                                <a class="tab_func">数值模拟云图</a>
+                                <a class="tab_func">模型重置</a>
+                                <a class="tab_func">选点分析</a>
+                                <a class="tab_func">选点取消</a>
+                                <a class="tab_func">离散元分析</a>
+
                             </div>
                             <div id="tabcontent4" data-tab="4" class="tabcontent tabs">
                                 <a class="tab_func">9</a>
@@ -161,6 +162,25 @@
 
     </div>
 
+    <div id="numericalModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">节点位移分析结果</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-hover">
+                        <tr><td>坐标x</td><td class="x"></td></tr>
+                        <tr><td>坐标y</td><td class="y"></td></tr>
+                        <tr><td>坐标z</td><td class="z"></td></tr>
+                        <tr><td>节点位移</td><td class="data"></td></tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="PFCModal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -186,6 +206,10 @@
             backdrop: 'static',
         });
         $('#PFCModal').modal('hide');
+        $('#numericalModal').modal({
+            backdrop: 'static',
+        });
+        $('#numericalModal').modal('hide');
     </script>
 
     <script src="plugins/build/three.min.js"></script>

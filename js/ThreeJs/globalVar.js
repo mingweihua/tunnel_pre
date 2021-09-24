@@ -29,7 +29,6 @@ let modelName_url = {
 
 var pointer;
 
-
 //云图
 var lut, legendLayout;
 var mesh, material;
@@ -39,6 +38,9 @@ var numberOfColors;
 colorMap = 'rainbow';
 numberOfColors = 512;
 legendLayout = 'vertical';
+
+
+
 
 
 //剖切用
