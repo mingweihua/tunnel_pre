@@ -72,7 +72,7 @@ $("#tabcontent3 a").click(function(){
             CloudPicture.removeCloudModel(globalModel);
             break;
         case "离散元分析":
-            PFC_function.showPFC(globalModel,"in");
+            PFC_function.showPFC(globalModel,"in",'pfcChart','PFCModal');
             break;
         case "选点分析":
             Model_operation.chooseElement(globalModel.three3dObject.currentModel,globalModel.currentName);

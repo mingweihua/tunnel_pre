@@ -42,7 +42,7 @@
 .tabs a {
     cursor: pointer;
     padding: 12px 2px;
-    width: 120px;
+    width: 150px;
     text-align: center;
     font-weight: bold;
     border-radius: 2px;
@@ -169,7 +169,7 @@
 } */
 
 /* .dark-mode-switch .switch {
-    /*     margin-left: 4px; */
+     margin-left: 4px;
 } */
 
 .switch-label {

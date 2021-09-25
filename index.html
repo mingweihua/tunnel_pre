@@ -96,7 +96,7 @@
                             <a id="tab1" data-tab="1" class="tab">三维模型</a>
                             <a id="tab2" data-tab="2" class="tab">模型功能</a>
                             <a id="tab3" data-tab="3" class="tab">数值分析</a>
-                            <a id="tab4" data-tab="4" class="tab">功能区四</a>
+                            <a id="tab4" data-tab="4" class="tab">神经网络分析</a>
                             
                         </div>
                         <div class="content" style="user-select: none;">
@@ -117,6 +117,7 @@
                             <div id="tabcontent2" data-tab="2" class="tabcontent tabs">
                                 <a class="tab_func">地层分离</a>
                                 <a class="tab_func">地层合并</a>
+                                <a class="tab_func">地层识别</a>
                                 <a class="tab_func">显示剖切面板</a>
                                 <a class="tab_func">隐藏剖切面板</a>
                                 <a class="tab_func">7</a>
@@ -131,8 +132,8 @@
 
                             </div>
                             <div id="tabcontent4" data-tab="4" class="tabcontent tabs">
-                                <a class="tab_func">9</a>
-                                <a class="tab_func">10</a>
+                                <a class="tab_func">隧道入口平面分析</a>
+                                <a class="tab_func">隧道入出口平面分析</a>
                                 <a class="tab_func">11</a>
                                 <a class="tab_func">12</a>
                             </div>
@@ -181,6 +182,40 @@
         </div>
     </div>
 
+    <div id="nn_in_Modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">隧道入口平面分析</h4>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-default" onclick="">离散元分析结果</button>
+                    <button type="button" class="btn btn-default" onclick="">神经网络分析结果</button>
+                    <button type="button" class="btn btn-default" onclick="">神经网络误差分析</button>
+                    <div id="nn_in_Chart" style="width: 800px;height: 500px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="nn_out_Modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">隧道出口平面分析</h4>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-default" onclick="">离散元分析结果</button>
+                    <button type="button" class="btn btn-default" onclick="">神经网络分析结果</button>
+                    <button type="button" class="btn btn-default" onclick="">神经网络误差分析</button>
+                    <div id="nn_out_Chart" style="width: 800px;height: 500px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="PFCModal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -189,8 +224,8 @@
                     <h4 class="modal-title">离散元分析</h4>
                 </div>
                 <div class="modal-body">
-                    <button type="button" class="btn btn-default" onclick="PFC_function.showPFC(globalModel,'in')">隧道入口分析</button>
-                    <button type="button" class="btn btn-default" onclick="PFC_function.showPFC(globalModel,'out')">隧道出口分析</button>
+                    <button type="button" class="btn btn-default" onclick="PFC_function.showPFC(globalModel,'in','pfcChart','PFCModal')">隧道入口分析</button>
+                    <button type="button" class="btn btn-default" onclick="PFC_function.showPFC(globalModel,'out','pfcChart','PFCModal')">隧道出口分析</button>
                     <div id="pfcChart" style="width: 800px;height: 500px;"></div>
                 </div>
                 <!-- <div class="modal-footer">

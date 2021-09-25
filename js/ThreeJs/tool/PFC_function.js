@@ -7,121 +7,169 @@
  */
 class PFC_function {
 
-    static showPFC(object,position) {
+    static data = {
+        BLS : {
+            in : undefined,
+            out : undefined
+        },
+        MYS1 : {
+            in : undefined,
+            out : undefined
+        },
+        MYS2 : {
+            in : undefined,
+            out : undefined
+        },
+        MYS3 : {
+            in : undefined,
+            out : undefined
+        },
+        XB : {
+            in : undefined,
+            out : undefined
+        },
+        XFD : {
+            in : undefined,
+            out : undefined
+        },
+        YM1 : {
+            in : undefined,
+            out : undefined
+        },
+        YM2 : {
+            in : undefined,
+            out : undefined
+        },
+        YT : {
+            in : undefined,
+            out : undefined
+        },
+        ZZ : {
+            in : undefined,
+            out : undefined
+        }
+    }
+
+    static showPFC(object,position,chartName,modalName) {
         let name = object.currentName.split("Model")[0];
-        var url = "json/" + name + "_" + position + "_pfc.json";
-        $.ajax({
-            //请求方式为get
-            async: true,
-            type: "GET",
-            url: url,
-            success: function (data) {
-                console.log(data);
-                var Array1= data.map(function (item) {
-                    return [
-                        item.x,
-                        item.y,
-                        Math.sqrt(item.disp_x*item.disp_x+item.disp_y*item.disp_y),
-                    ];
-                });
-                // console.log(Array1);
-                var Array2=[];
-                let min = 0;
-                let max = 0;
-                for (var i=0;i<Array1.length;i++){
-                    Array2.push(Array1[i][2])
-                    min = Math.min(min,Array1[i][2]);
-                    max = Math.max(max,Array1[i][2]);
+        if(PFC_function.data[name][position] == undefined){
+            var url = "json/" + name + "_" + position + "_pfc.json";
+            $.ajax({
+                //请求方式为get
+                async: true,
+                type: "GET",
+                url: url,
+                success: function (data) {
+                    //console.log(data);
+                    var Array1= data.map(function (item) {
+                        return [
+                            item.x,
+                            item.y,
+                            Math.sqrt(item.disp_x*item.disp_x+item.disp_y*item.disp_y),
+                        ];
+                    });
+                    // console.log(Array1);
+
+                    //保存，后续免得第二次加载，同时用于神经网络中
+                    PFC_function.data[name][position] = Array1;
+                    PFC_function.drawChart(PFC_function.data[name][position],chartName,modalName);
                 }
+            })
+        } else {
+            console.log("PFC数据已加载");
+            PFC_function.drawChart(PFC_function.data[name][position],chartName,modalName);
+        }
+    }
 
-                var chartDom = document.getElementById('pfcChart');
-                var myChart = echarts.init(chartDom);
-                var option = {
-                    tooltip: {
-                        trigger: 'item',
-                        axisPointer: {
-                            type: 'cross',
-                            crossStyle: {
-                                color: '#999'
-                            }
-                        },
-                        /*
-                                            formatter: '总应力（pa）: ({c})',//方法一：用字符串模板
-                        */
-                        //方法二：回调函数自己定义悬浮板内容
-                        formatter:function (params) { //在此处直接用 formatter 属性
-                            /* console.log('打印params');
-                             console.log(params)  ;// 打印数据集（我自己的理解是鼠标点中地方的数据集，打印出来看看包括了什么，以便下一步操作）*/
-                            var showdata = params;
-                            /*console.log('打印showdata.data');//需要用到showdata.data，打印出来看看这是什么
-                            console.log(showdata.data)  ;// 打印数据*/
-                            // 根据自己的需求返回数据
-                            return `<div>总应力（pa）:${showdata.data[2]}</div>`
-                        }
+    static drawChart(Array1,chartName,modalName){
+        var Array2=[];
+        let min = 0;
+        let max = 0;
+        for (var i=0;i<Array1.length;i++){
+            Array2.push(Array1[i][2])
+            min = Math.min(min,Array1[i][2]);
+            max = Math.max(max,Array1[i][2]);
+        }
 
-                    },
-                    grid: {
-                        containLabel: true
-                    },
-                    xAxis: {
-                        name: 'X'
-                    },
-                    yAxis: {
-                        name: 'Y'
-                    },
-                    series: {
-                        type: 'custom',
-                        coordinateSystem: 'cartesian2d',
-                        data: data.map(function (item) {
-                            return [
-                                item.x,
-                                item.y,
-                                Math.sqrt(item.disp_x*item.disp_x+item.disp_y*item.disp_y),
-                            ];
-                        }),
-                        renderItem: function (params, api) {
-                            var pos = api.coord([
-                                api.value('x'),
-                                api.value('y')
-                            ]);
-                            /* console.log('打印x啦');
-                             console.log(api.value('x'));
-                             console.log('打印y啦');
-                             console.log(api.value('y'));*/
-                            var color = getFromPalette2(
-                                Array2.shift()
-                            );
-                            return {
-                                type: 'circle',
-                                morph: true,
-                                shape: {
-                                    cx: pos[0],
-                                    cy: pos[1],
-                                    r: 4.5
-                                },
-
-                                style: {
-                                    fill: color
-                                },
-                                transition: ['shape', 'style']
-                            };
-                        }
+        var chartDom = document.getElementById(chartName);
+        var myChart = echarts.init(chartDom);
+        var option = {
+            tooltip: {
+                trigger: 'item',
+                axisPointer: {
+                    type: 'cross',
+                    crossStyle: {
+                        color: '#999'
                     }
-                };
-                option && myChart.setOption(option);
-                $('#PFCModal').modal('show');
-
-
-                function getFromPalette2(value) {
-                    lut.setMax( max/2);
-                    lut.setMin( min);
-                    const color = lut.getColor( value );
-                    var a="rgb(" + color.r*255 + "," + color.g*255 + "," + color.b*255  + ")";
-                    //console.log(a);
-                    return a;
+                },
+                /*
+                                    formatter: '总应力（pa）: ({c})',//方法一：用字符串模板
+                */
+                //方法二：回调函数自己定义悬浮板内容
+                formatter:function (params) { //在此处直接用 formatter 属性
+                    /* console.log('打印params');
+                     console.log(params)  ;// 打印数据集（我自己的理解是鼠标点中地方的数据集，打印出来看看包括了什么，以便下一步操作）*/
+                    var showdata = params;
+                    /*console.log('打印showdata.data');//需要用到showdata.data，打印出来看看这是什么
+                    console.log(showdata.data)  ;// 打印数据*/
+                    // 根据自己的需求返回数据
+                    return `<div>总应力（pa）:${showdata.data[2]}</div>`
                 }
 
+            },
+            grid: {
+                containLabel: true
+            },
+            xAxis: {
+                name: 'X'
+            },
+            yAxis: {
+                name: 'Y'
+            },
+            series: {
+                type: 'custom',
+                coordinateSystem: 'cartesian2d',
+                data: Array1,
+                renderItem: function (params, api) {
+                    var pos = api.coord([
+                        api.value('x'),
+                        api.value('y')
+                    ]);
+                    /* console.log('打印x啦');
+                     console.log(api.value('x'));
+                     console.log('打印y啦');
+                     console.log(api.value('y'));*/
+                    var color = getFromPalette2(
+                        Array2.shift()
+                    );
+                    return {
+                        type: 'circle',
+                        morph: true,
+                        shape: {
+                            cx: pos[0],
+                            cy: pos[1],
+                            r: 4.5
+                        },
+
+                        style: {
+                            fill: color
+                        },
+                        transition: ['shape', 'style']
+                    };
+                }
             }
-        })
+        };
+        option && myChart.setOption(option);
+        $(('#'+modalName)).modal('show');
+
+
+        function getFromPalette2(value) {
+            lut.setMax( max);
+            lut.setMin( min);
+            const color = lut.getColor( value );
+            var a="rgb(" + color.r*255 + "," + color.g*255 + "," + color.b*255  + ")";
+            //console.log(a);
+            return a;
+        }
     }
 }
