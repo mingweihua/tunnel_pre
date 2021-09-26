@@ -113,7 +113,7 @@ class PFC_function {
                     /*console.log('打印showdata.data');//需要用到showdata.data，打印出来看看这是什么
                     console.log(showdata.data)  ;// 打印数据*/
                     // 根据自己的需求返回数据
-                    return `<div>总应力（pa）:${showdata.data[2]}</div>`
+                    return `<div>总位移(m):${showdata.data[2]}</div>`
                 }
 
             },

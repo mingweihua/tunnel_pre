@@ -82,3 +82,14 @@ $("#tabcontent3 a").click(function(){
             break;
     }
 })
+
+$("#tabcontent4 a").click(function(){
+    switch($(this).html()){
+        case "隧道入口平面分析":
+            PFC_function.showPFC(globalModel,'in','nn_in_Chart','nn_in_Modal');
+            break;
+        case "隧道出口平面分析":
+            PFC_function.showPFC(globalModel,'out','nn_out_Chart','nn_out_Modal');
+            break;
+    }
+})

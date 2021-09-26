@@ -133,7 +133,7 @@
                             </div>
                             <div id="tabcontent4" data-tab="4" class="tabcontent tabs">
                                 <a class="tab_func">隧道入口平面分析</a>
-                                <a class="tab_func">隧道入出口平面分析</a>
+                                <a class="tab_func">隧道出口平面分析</a>
                                 <a class="tab_func">11</a>
                                 <a class="tab_func">12</a>
                             </div>
@@ -190,9 +190,9 @@
                     <h4 class="modal-title">隧道入口平面分析</h4>
                 </div>
                 <div class="modal-body">
-                    <button type="button" class="btn btn-default" onclick="">离散元分析结果</button>
-                    <button type="button" class="btn btn-default" onclick="">神经网络分析结果</button>
-                    <button type="button" class="btn btn-default" onclick="">神经网络误差分析</button>
+                    <button type="button" class="btn btn-default" onclick="PFC_function.showPFC(globalModel,'in','nn_in_Chart','nn_in_Modal')">离散元分析结果</button>
+                    <button type="button" class="btn btn-default" onclick="NN_function.showNN(globalModel,'in','nn_in_Chart','nn_in_Modal')">神经网络分析结果</button>
+                    <button type="button" class="btn btn-default" onclick="NN_function.showNNError(globalModel,'in','nn_in_Chart','nn_in_Modal')">神经网络误差分析</button>
                     <div id="nn_in_Chart" style="width: 800px;height: 500px;"></div>
                 </div>
             </div>
@@ -245,6 +245,14 @@
             backdrop: 'static',
         });
         $('#numericalModal').modal('hide');
+        $('#nn_in_Modal').modal({
+            backdrop: 'static',
+        });
+        $('#nn_in_Modal').modal('hide');
+        $('#nn_out_Modal').modal({
+            backdrop: 'static',
+        });
+        $('#nn_out_Modal').modal('hide');
     </script>
 
     <script src="plugins/build/three.min.js"></script>
@@ -272,7 +280,7 @@
 
     <script src="js/ThreeJs/tool/tabcontent.js"></script>
     <script src="js/ThreeJs/tool/PFC_function.js"></script>
-
+    <script src="js/ThreeJs/tool/NN_function.js"></script>
 </body>
 
 </html>
