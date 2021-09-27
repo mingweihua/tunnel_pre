@@ -151,4 +151,29 @@ class Model_operation {
         group.position.y = y;
         group.position.z = z;
     }
+
+    static identifyLayer(group,modelName){
+        let name = modelName.split("Model")[0];
+        raycaster = new THREE.Raycaster();
+        mouseVector = new THREE.Vector3();
+        pointer = new THREE.Vector2();
+        window.addEventListener( 'click', onPointerClick,false );
+
+        function onPointerClick( event ) {
+            event.preventDefault();
+            let intersects = Model_operation.getIntersects(event.offsetX, event.offsetY, group);
+            if(intersects.length>0){
+                let layerName = intersects[0].object.name;
+                console.log(layerName);
+
+                let lithology = geoData[name][layerName].lithology;
+                let pic = geoData[name][layerName].pic;
+                $('#STRATUME').html(lithology);
+                $('#legend').attr("src","images/textures/" + pic);
+                $('#legendModal').modal('show');
+                window.removeEventListener( 'click', onPointerClick,false );
+            }
+        }
+    }
+
 }

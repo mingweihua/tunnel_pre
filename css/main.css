@@ -21,4 +21,11 @@
     right: 0px;
     top: 0px;
     color: aliceblue;
-  }
+}
+
+/*
+    更改bootstrap.css中的模态框的位置
+ */
+.modal-dialog {
+    margin: 10% auto;
+}

@@ -51,7 +51,7 @@ function init() {
 
     //加载模型
     globalModel = new model('tunnel');
-    globalModel.load("model/BLS.obj","model/BLS.mtl","BLSModel",1);
+    globalModel.load("model/MYS1.obj","model/MYS1.mtl","MYS1Model",1);
     //globalModel.load("model/618_all.obj");
     console.log(globalModel.three3dObject.group_pouqie.currentModel);
 

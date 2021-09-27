@@ -50,6 +50,9 @@ $("#tabcontent2 a").click(function(){
         case "地层合并":
             Model_operation.separation_reset(globalModel.three3dObject.currentModel);
             break;
+        case "地层识别":
+            Model_operation.identifyLayer(globalModel.three3dObject.currentModel,globalModel.currentName);
+            break;
         case "显示剖切面板":
             console.log(material);
             $("#gui").show();
