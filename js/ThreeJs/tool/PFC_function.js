@@ -82,11 +82,9 @@ class PFC_function {
     }
 
     static drawChart(Array1,chartName,modalName){
-        var Array2=[];
         let min = 0;
         let max = 0;
         for (var i=0;i<Array1.length;i++){
-            Array2.push(Array1[i][2])
             min = Math.min(min,Array1[i][2]);
             max = Math.max(max,Array1[i][2]);
         }
@@ -102,18 +100,10 @@ class PFC_function {
                         color: '#999'
                     }
                 },
-                /*
-                                    formatter: '总应力（pa）: ({c})',//方法一：用字符串模板
-                */
                 //方法二：回调函数自己定义悬浮板内容
-                formatter:function (params) { //在此处直接用 formatter 属性
-                    /* console.log('打印params');
-                     console.log(params)  ;// 打印数据集（我自己的理解是鼠标点中地方的数据集，打印出来看看包括了什么，以便下一步操作）*/
-                    var showdata = params;
-                    /*console.log('打印showdata.data');//需要用到showdata.data，打印出来看看这是什么
-                    console.log(showdata.data)  ;// 打印数据*/
+                formatter:function (params) {
                     // 根据自己的需求返回数据
-                    return `<div>总位移(m):${showdata.data[2]}</div>`
+                    return `<div>总位移(m):${params.data[2]}</div>`
                 }
 
             },
@@ -132,16 +122,9 @@ class PFC_function {
                 data: Array1,
                 renderItem: function (params, api) {
                     var pos = api.coord([
-                        api.value('x'),
-                        api.value('y')
+                        api.value(0),
+                        api.value(1)
                     ]);
-                    /* console.log('打印x啦');
-                     console.log(api.value('x'));
-                     console.log('打印y啦');
-                     console.log(api.value('y'));*/
-                    var color = getFromPalette2(
-                        Array2.shift()
-                    );
                     return {
                         type: 'circle',
                         morph: true,
@@ -152,7 +135,7 @@ class PFC_function {
                         },
 
                         style: {
-                            fill: color
+                            fill: getFromPalette2(api.value(2))
                         },
                         transition: ['shape', 'style']
                     };
@@ -168,7 +151,6 @@ class PFC_function {
             lut.setMin( min);
             const color = lut.getColor( value );
             var a="rgb(" + color.r*255 + "," + color.g*255 + "," + color.b*255  + ")";
-            //console.log(a);
             return a;
         }
     }

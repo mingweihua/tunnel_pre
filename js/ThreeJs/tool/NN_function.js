@@ -65,8 +65,7 @@ class NN_function {
                         return [
                             item.x,
                             item.y,
-                            item.dis,
-                            //Math.sqrt(item.disp_x*item.disp_x+item.disp_y*item.disp_y),
+                            Math.sqrt(item.disp_x*item.disp_x+item.disp_y*item.disp_y),
                         ];
                     });
                     // console.log(Array1);
@@ -97,8 +96,7 @@ class NN_function {
                         return [
                             item.x,
                             item.y,
-                            item.dis,
-                            //Math.sqrt(item.disp_x*item.disp_x+item.disp_y*item.disp_y),
+                            Math.sqrt(item.disp_x*item.disp_x+item.disp_y*item.disp_y),
                         ];
                     });
                     // console.log(Array1);
@@ -166,16 +164,9 @@ class NN_function {
                 data: Array1,
                 renderItem: function (params, api) {
                     var pos = api.coord([
-                        api.value('x'),
-                        api.value('y')
+                        api.value(0),
+                        api.value(1)
                     ]);
-                    /* console.log('打印x啦');
-                     console.log(api.value('x'));
-                     console.log('打印y啦');
-                     console.log(api.value('y'));*/
-                    var color = getFromPalette2(
-                        Array2.shift()
-                    );
                     return {
                         type: 'circle',
                         morph: true,
@@ -186,7 +177,7 @@ class NN_function {
                         },
 
                         style: {
-                            fill: color
+                            fill: getFromPalette2(api.value(2))
                         },
                         transition: ['shape', 'style']
                     };
@@ -271,16 +262,9 @@ class NN_function {
                 data: data,
                 renderItem: function (params, api) {
                     var pos = api.coord([
-                        api.value('x'),
-                        api.value('y')
+                        api.value(0),
+                        api.value(1)
                     ]);
-                    /* console.log('打印x啦');
-                     console.log(api.value('x'));
-                     console.log('打印y啦');
-                     console.log(api.value('y'));*/
-                    var color = getFromPalette2(
-                        Array2.shift()
-                    );
                     return {
                         type: 'circle',
                         morph: true,
@@ -291,7 +275,7 @@ class NN_function {
                         },
 
                         style: {
-                            fill: color
+                            fill: getFromPalette2(api.value(2))
                         },
                         transition: ['shape', 'style']
                     };
