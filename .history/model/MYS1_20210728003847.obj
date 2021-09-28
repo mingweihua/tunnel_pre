@@ -1,5 +1,5 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# О©╫О©╫О©╫О©╫О©╫О©╫О©╫д╪О©╫:26.07.2021 20:12:26
+# ╢╢╫╗╣днд╪Ч:26.07.2021 20:12:26
 
 mtllib MYS1.mtl
 
@@ -9975,7 +9975,7 @@ f -1//-1 -69//-1 -66//-1
 # 0 polygons - 240 triangles
 
 #
-# object tunnel_right
+# object tunnnel_right
 #
 
 v  29.03 36.40 -1639.64
@@ -10407,8 +10407,8 @@ vn -0.00 -0.97 -0.24
 vn 0.00 -0.97 -0.24
 # 264 vertex normals
 
-o tunnel_right
-g tunnel_right
+o tunnnel_right
+g tunnnel_right
 usemtl 03___Default
 s off
 f -161//-264 -160//-264 -159//-263 

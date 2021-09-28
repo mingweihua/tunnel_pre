@@ -67,23 +67,12 @@ class model extends model_Father {
 		var clippedColorFront = [];
 
 		let modelName = thisObject.currentName.split("Model")[0];
-		for (let i = 0; i < group.children.length; i++) {
-			let layerName = group.children[i].name;
-			if(geoData[modelName][layerName] != undefined){
-				console.log(geoData[modelName][layerName]);
-			} else {
-
-				console.log("出问题了");
-				console.log(modelName);
-				console.log(layerName);
-			}
-		}
 
 		for (var i = 0; i < group.children.length; i++) {
 			geometryGroup[i] = group.children[i].geometry;
 			//console.log(thisObject.meshName(group.children[i].name));
 			//模型外表面材质
-
+			
 			materialGroup[i] = new THREE.MeshStandardMaterial({
 				
 				// color: geoImformation[group.children[i].name].color,
@@ -112,7 +101,7 @@ class model extends model_Father {
 				planeMatGroup[i] =
 					new THREE.MeshStandardMaterial({
 
-						color: geoData[modelName][group.children[i].name].color,
+						color: geoImformation[group.children[i].name].color,
 						metalness: 0.1,
 						roughness: 0.75,
 						// transparent:true,

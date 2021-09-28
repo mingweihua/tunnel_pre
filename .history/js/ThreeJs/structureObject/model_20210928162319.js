@@ -71,11 +71,6 @@ class model extends model_Father {
 			let layerName = group.children[i].name;
 			if(geoData[modelName][layerName] != undefined){
 				console.log(geoData[modelName][layerName]);
-			} else {
-
-				console.log("出问题了");
-				console.log(modelName);
-				console.log(layerName);
 			}
 		}
 
@@ -112,7 +107,7 @@ class model extends model_Father {
 				planeMatGroup[i] =
 					new THREE.MeshStandardMaterial({
 
-						color: geoData[modelName][group.children[i].name].color,
+						color: geoImformation[group.children[i].name].color,
 						metalness: 0.1,
 						roughness: 0.75,
 						// transparent:true,

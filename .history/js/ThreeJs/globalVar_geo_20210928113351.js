@@ -15,22 +15,10 @@ var geoData = {
 			color: "#F6ABAF",
 			pic: "3.png"
 		},
-		fractures: {
+		"fractures": {
 			lithology: "构造破碎带",
 			color: "#F884E1",
 			pic: "4.png"
-		},
-		tunnel_right: {
-			lithology: "隧道右线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
-		},
-		tunnel_left: {
-			lithology: "隧道左线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
 		},
 	},
 	MYS1: {
@@ -64,18 +52,6 @@ var geoData = {
 			color: "#F6EA62",
 			pic: "10.png"
 		},
-		tunnel_right: {
-			lithology: "隧道右线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
-		},
-		tunnel_left: {
-			lithology: "隧道左线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
-		},
 	},
 	MYS2: {
 		0: {
@@ -108,18 +84,6 @@ var geoData = {
 			color: "#6BEE5A",
 			pic: "12.png"
 		},
-		tunnel_right: {
-			lithology: "隧道右线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
-		},
-		tunnel_left: {
-			lithology: "隧道左线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
-		},
 	},
 	MYS3: {
 		0: {
@@ -146,18 +110,6 @@ var geoData = {
 			lithology: "断层破碎带",
 			color: "#CFCA44",
 			pic: "14.png"
-		},
-		tunnel_right: {
-			lithology: "隧道右线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
-		},
-		tunnel_left: {
-			lithology: "隧道左线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
 		},
 	},
 	XB: {
@@ -201,18 +153,6 @@ var geoData = {
 			color: "#DFF8B3",
 			pic: "20.png"
 		},
-		tunnel_right: {
-			lithology: "隧道右线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
-		},
-		tunnel_left: {
-			lithology: "隧道左线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
-		},
 	},
 	ZZ: {
 		0: {
@@ -239,18 +179,6 @@ var geoData = {
 			lithology: "破碎带或裂隙密集发育带",
 			color: "#B7CBE8",
 			pic: "25.png"
-		},
-		tunnel_right: {
-			lithology: "隧道右线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
-		},
-		tunnel_left: {
-			lithology: "隧道左线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
 		},
 	},
 	YM1: {
@@ -279,18 +207,6 @@ var geoData = {
 			color: "#F6EA62",
 			pic: "30.png"
 		},
-		tunnel_right: {
-			lithology: "隧道右线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
-		},
-		tunnel_left: {
-			lithology: "隧道左线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
-		},
 	},
 	YM2: {
 		0: {
@@ -317,18 +233,6 @@ var geoData = {
 			lithology: "岩溶发育区",
 			color: "#F6EA62",
 			pic: "32.png"
-		},
-		tunnel_right: {
-			lithology: "隧道右线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
-		},
-		tunnel_left: {
-			lithology: "隧道左线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
 		},
 	},
 	YT: {
@@ -361,18 +265,6 @@ var geoData = {
 			lithology: "破碎层",
 			color: "#F6EA62",
 			pic: "36.png"
-		},
-		tunnel_right: {
-			lithology: "隧道右线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
-		},
-		tunnel_left: {
-			lithology: "隧道左线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
 		},
 	},
 	XFD: {
@@ -410,18 +302,6 @@ var geoData = {
 			lithology: "残坡积土及全风化层",
 			color: "#F6EA62",
 			pic: "41.png"
-		},
-		tunnel_right: {
-			lithology: "隧道右线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
-		},
-		tunnel_left: {
-			lithology: "隧道左线",
-			color: 0xC8D0D1,
-			pic: "4.png"
-			
 		},
 	}
 }
