@@ -65,7 +65,8 @@ class NN_function {
                         return [
                             item.x,
                             item.y,
-                            Math.sqrt(item.disp_x*item.disp_x+item.disp_y*item.disp_y),
+                            item.disp,
+                            //Math.sqrt(item.disp_x*item.disp_x+item.disp_y*item.disp_y),
                         ];
                     });
                     // console.log(Array1);
@@ -96,7 +97,8 @@ class NN_function {
                         return [
                             item.x,
                             item.y,
-                            Math.sqrt(item.disp_x*item.disp_x+item.disp_y*item.disp_y),
+                            item.disp,
+                            //Math.sqrt(item.disp_x*item.disp_x+item.disp_y*item.disp_y),
                         ];
                     });
                     // console.log(Array1);

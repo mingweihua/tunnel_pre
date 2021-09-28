@@ -67,43 +67,6 @@ var params = {
 	}
 };
 
-
-
-var geoData = {
-	MYS1: {
-		0 : {
-			lithology : "中风化板岩夹千枚岩",
-			color : "#0BF131",
-			pic : "1.png"
-		},
-		1 : {
-			lithology : "强风化板岩夹千枚岩",
-			color : "#0BC8F1",
-			pic : "2.png"
-		},
-		2 : {
-			lithology : "碎石土",
-			color : "#F6ABAF",
-			pic : "3.png"
-		},
-		3 : {
-			lithology : "构造破碎带",
-			color : "#F884E1",
-			pic : "4.png"
-		},
-		4 : {
-			lithology : "构造破碎带",
-			color : "#F884E1",
-			pic : "5.png"
-		},
-		5 : {
-			lithology : "构造破碎带",
-			color : "#F884E1",
-			pic : "6.png"
-		}
-	},
-};
-
 //剖切材质参数
 var geoImformation = {
 	"tunnel_right": {
