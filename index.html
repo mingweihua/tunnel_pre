@@ -207,9 +207,9 @@
                     <h4 class="modal-title">隧道出口平面分析</h4>
                 </div>
                 <div class="modal-body">
-                    <button type="button" class="btn btn-default" onclick="">离散元分析结果</button>
-                    <button type="button" class="btn btn-default" onclick="">神经网络分析结果</button>
-                    <button type="button" class="btn btn-default" onclick="">神经网络误差分析</button>
+                    <button type="button" class="btn btn-default" onclick="PFC_function.showPFC(globalModel,'out','nn_out_Chart','nn_out_Modal')">离散元分析结果</button>
+                    <button type="button" class="btn btn-default" onclick="NN_function.showNN(globalModel,'out','nn_out_Chart','nn_out_Modal')">神经网络分析结果</button>
+                    <button type="button" class="btn btn-default" onclick="NN_function.showNNError(globalModel,'out','nn_out_Chart','nn_out_Modal')">神经网络误差分析</button>
                     <div id="nn_out_Chart" style="width: 800px;height: 500px;"></div>
                 </div>
             </div>
