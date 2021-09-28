@@ -15,12 +15,12 @@ class model extends model_Father {
 					thisObject.three3dObject.totalModel = result;
 					//CloudPicture.getAllData(thisObject.three3dObject.totalModel);
 
+					thisObject.currentName = keyName;
+					currentName = thisObject.currentName;
+
 					var newObject_pouqie = thisObject.createMaterial_pouqie(result);
 					thisObject.three3dObject.group_pouqie[keyName] = newObject_pouqie;
 					thisObject.three3dObject.group_pouqie.currentModel = newObject_pouqie;
-
-					thisObject.currentName = keyName;
-					currentName = thisObject.currentName;
 
 
 					if (loadPouqie != undefined) {
@@ -63,6 +63,17 @@ class model extends model_Father {
 		var planeMatGroup = [];
 		var po = [];
 		var clippedColorFront = [];
+
+		/*
+			明伟华
+		 */
+		let modelName = thisObject.currentName.split("Model")[0];
+		for (let i = 0; i < group.children.length; i++) {
+			let layerName = group.children[i].name;
+			if(geoData[modelName][layerName] != undefined){
+				console.log(geoData[modelName][layerName]);
+			}
+		}
 
 
 		for (var i = 0; i < group.children.length; i++) {
