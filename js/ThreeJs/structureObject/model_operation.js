@@ -9,6 +9,8 @@ let geoSeparation_h = 0;
 
 class Model_operation {
 
+    static stratificationInformation = [];
+
     static changeModel(object,modelName) {
         scene.remove(object.three3dObject.currentModel);
         scene.remove(object.three3dObject.cloud.currentModel);
@@ -35,6 +37,41 @@ class Model_operation {
         }
     }
 
+    //------------------二维剖切和二维柱状图用到的选点功能----------------------
+    static addPointForCutting(event) {
+        Model_operation.doAddPointForCutting(globalModel.three3dObject.currentModel,event);
+    }
+
+    static doAddPointForCutting(object,event) {
+        event.preventDefault();
+        raycaster = new THREE.Raycaster();
+        mouseVector = new THREE.Vector3();
+        pointer = new THREE.Vector2();
+        let intersects =  Model_operation.getIntersects(event.offsetX, event.offsetY, object);
+
+        if ( intersects.length > 0 ) {
+            //剖切点
+            let geometry = new THREE.SphereBufferGeometry(5, 50, 50);
+            let material = new THREE.MeshLambertMaterial({ color: 0xff0000 });
+            let sphere = new THREE.Mesh(geometry, material);
+            sphere.name = "Cutting_Point_" + Model_operation.stratificationInformation.length;
+            scene.add(sphere);
+            sphere.position.set(intersects[0].point.x, intersects[0].point.y, intersects[0].point.z);
+
+            //往下创建射线
+            let raycaster_vertical = new THREE.Raycaster();
+            let origin = new THREE.Vector3(intersects[0].point.x, 1000, intersects[0].point.z);
+            let direction = new THREE.Vector3(0,-1,0);
+            raycaster_vertical.set(origin, direction);
+            //console.log(geoObject);
+            let intersects_vertical = raycaster_vertical.intersectObjects(object.children, true);
+            if (intersects_vertical.length > 0) {
+                Model_operation.stratificationInformation.push(intersects_vertical);
+            }
+            console.log(Model_operation.stratificationInformation);
+        }
+    }
+    //------------------二维剖切和二维柱状图用到的选点功能----------------------
 
     static separation(group) {
         for (let i = 1; i <= 9; i++) {
@@ -65,7 +102,6 @@ class Model_operation {
     static chooseElement(group,modelName) {
         raycaster = new THREE.Raycaster();
         mouseVector = new THREE.Vector3();
-
         pointer = new THREE.Vector2();
         window.addEventListener( 'click', onPointerMove,false );
 

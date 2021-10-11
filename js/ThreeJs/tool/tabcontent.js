@@ -63,6 +63,9 @@ $("#tabcontent2 a").click(function(){
             $("#gui").hide();
             Model_operation.changeModel(globalModel,currentName);
             break;
+        case "二维地质剖切图":
+            window.addEventListener("click", Model_operation.addPointForCutting, false);
+            break;
     }
 })
 

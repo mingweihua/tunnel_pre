@@ -6,6 +6,12 @@ let tween;
 let dracoLoader;
 var planeObjects = [];
 var clock = new THREE.Clock();
+let pointer;
+
+raycaster = new THREE.Raycaster();
+mouseVector = new THREE.Vector3();
+pointer = new THREE.Vector2();
+
 
 //全局Model变量
 let globalModel,currentName;
@@ -25,9 +31,6 @@ let modelName_url = {
 };
 
 
-
-
-var pointer;
 
 //云图
 var lut, legendLayout;
