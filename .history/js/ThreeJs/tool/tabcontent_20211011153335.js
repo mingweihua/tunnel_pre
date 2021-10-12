@@ -56,12 +56,12 @@ $("#tabcontent2 a").click(function(){
         case "显示剖切面板":
             console.log(material);
             $("#gui").show();
-            Model_operation.sectionModel(globalModel,globalModel.currentName);
+            Model_operation.sectionModel(globalModel,currentName);
             console.log(globalModel.three3dObject.group_pouqie.currentModel);
             break;
         case "隐藏剖切面板":
             $("#gui").hide();
-            Model_operation.changeModel(globalModel,globalModel.currentName);
+            Model_operation.changeModel(globalModel,currentName);
             break;
         case "二维地质剖切图":
             window.addEventListener("click", Model_operation.addPointForCutting, false);
