@@ -3,6 +3,7 @@
 
 $("#tabcontent1 a").click(function(){
     //console.log($(this).html());
+    $("#subwayName").html($(this).html());
     switch($(this).html()){
         case "白鹭山隧道":
             Model_operation.changeModel(globalModel,"BLSModel");
@@ -63,8 +64,11 @@ $("#tabcontent2 a").click(function(){
             $("#gui").hide();
             Model_operation.changeModel(globalModel,globalModel.currentName);
             break;
-        case "二维地质剖切图":
+        case "地质剖切图":
             window.addEventListener("click", Model_operation.addPointForCutting, false);
+            break;
+        case "钻孔柱状图":
+            zuankongMessage(globalModel.currentName);
             break;
     }
 })

@@ -1,0 +1,824 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<!-- <script type="text/javascript" src="http://html2canvas.hertzen.com/build/html2canvas.js"></script> -->
+<!-- <script type="text/javascript" src="http://www.boolaw.com/tpl/default/js/jquery-1.8.3.min.js"></script> -->
+
+<!-- <script src="http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js"></script> -->
+
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="plugins/jquery-easyui-1.3.3/themes/metro/easyui.css">
+<link rel="stylesheet" type="text/css" href="plugins/jquery-easyui-1.3.3/themes/icon.css">
+<link rel="stylesheet" type="text/css" href="plugins/jquery-easyui-1.3.3/style/main.css">
+<link rel="stylesheet"  href="plugins/jquery-easyui-1.3.3/uploadify/uploadify.css">
+
+
+ <!--JAVASCRIPT -->
+<script type="text/javascript" src="plugins/jquery-easyui-1.3.3/jquery.min.js"></script>
+<script type="text/javascript" src="plugins/jquery-easyui-1.3.3/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="plugins/jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="js/draw/zuank/js/zuankJS.js"></script>
+<script type="text/javascript" src="js/draw/zuank/js/html2canvas.js"></script>
+<title>钻孔柱状图</title>
+</head>
+<body>
+<div id="TLdialog" title="图例" class="easyui-window" modal="false" closed="true" maximizable='false' minimizable="false" style="width:606px;height:550px;text-align:center;padding:5px;">
+	<div id="dg" style="width:576px;height:495px" >
+	</div>
+</div>  
+<div id="maxDiv" style="width:1240px;height:auto;margin:0 auto;display:none">
+      <div id="anniu1" style="display:none;">
+      <shiro:hasPermission name="assistantDraw:manage:zuankongModify">
+      	<a href="#" onmouseover="this.style.cursor='hand'" onclick="openSEL()" style="font-size:20px">修改图件</a>
+      	<a href="#" onmouseover="this.style.cursor='hand'" onclick="lockSEL()" style="font-size:20px">结束修改</a>
+      </shiro:hasPermission>         
+          <a href="#" onmouseover="this.style.cursor='hand'" id="print_screen" style="font-size:20px">下载页面1</a>
+          <p>比例尺   1 :<input id="BLfengmu" type="number" value="200" style="width: 60px;"/>&nbsp; <button onclick="adjustBLfengmu()">确定</button></p>
+      </div>
+      <div id="divA1" style="width:1240px;height:1754px;margin-top:10px;background:white; display:none;">
+          <table id="tbTA1" border="0" style="width:100%; height:79px; background:white" cellspacing="0" cellpadding="0">
+              <tr>
+                  <td align="center" style="font-size:48px;font-weight:bold">
+                  钻&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;孔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;柱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图
+                  </td>
+              </tr>     
+          </table>	
+          <table id="tbA1" style="width:100%;background:white; border-collapse:collapse;font-size:20px;" border="1px" bordercolor="#000000" cellspacing="0" cellpadding="0">
+              <tr style="height:43px" align="center">
+                  <td style="width:135px;">工程名称</td>
+                  <td style="width:680px" colspan="5"  id="GCMCA1" align="left"></td>
+                  <td style="width:135px">工程编号</td>
+                  <td style="width:140px"  id="GCBHA1"></td>	
+              </tr>
+              <tr style="height:43px" align="center">
+                  <td>孔&nbsp;&nbsp;号</td>
+                  <td style="width:150px" id="ZKBHA1"></td>
+                  <td style="width:80px" rowspan="2">坐标</td>			
+                  <td style="width:180px" id="XZBA1"></td>
+                  <td style="width:135px">钻孔直径</td>
+                  <td style="width:135px" id="ZKZJA1"></td>
+                  <td style="width:135px">稳点水位深度</td>
+                  <td style="width:140px" id="JZSWA1"></td>			
+              </tr>
+              <tr style="height:43px" align="center">
+                  <td>孔口标高</td>
+                  <td id="ZKBGA1"></td>			
+                  <td id="YZBA1"></td>
+                  <td>初见水位深度</td>
+                  <td id="CJJWSDA1"></td>
+                  <td>测量日期</td>
+                  <td id="RiQiA1"></td>
+                          
+              </tr>
+          </table>
+      <div id="divA11" style="width:41%; height:1478px;margin-top:0px; background:white; float:left;"> 
+          <table id="tbA11" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%; height:115px; border-top:0px solid black">
+      
+                    <td style="width:15.6%; text-align:center; border-top:0px solid black" >地<br />质<br />时<br />代</td>
+                    <td style="width:14.4%; text-align:center; border-top:0px solid black" >层<br /><br /><br />号</td>
+                    <td style="width:17.1%; text-align:center; border-top:0px solid black" >层&nbsp;底<br />标&nbsp;高<br /><br />(m)</td>
+                    <td style="width:17.1%; text-align:center; border-top:0px solid black" >层&nbsp;底<br />深&nbsp;度<br /><br />(m)</td>
+                    <td style="width:14.4%; text-align:center; border-top:0px solid black" >分&nbsp;层<br />厚&nbsp;度<br /><br />(m)</td>
+                    <td style="width:21.4%; text-align:center; border-top:0px solid black" id="TLA1X"><br />柱&nbsp;状&nbsp;图<br /><br />1:200</td>
+      
+                </tr>
+      
+          </table>
+      </div>
+      
+      <div style="width:0.5%; height:1478px;margin-top:0px; background:white; float:left;">
+          <canvas id="mycanvas1" width="61.9px" height="14780px" style="width:6.19px; height:1478px; float:left;"></canvas> 
+      </div>
+      
+      <div id="divA12" style="width:38%; height:1478px;margin-top:0px; background:white; float:left;">
+        <table id="tbA12" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black;border-left:0px solid black;" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%; height:115px; border-top:0px solid black"> 
+                    <td style="width:70px; text-align:center; border-top:0px solid black;border-left:0px solid black;" >地&nbsp;&nbsp;&nbsp;&nbsp;层&nbsp;&nbsp;&nbsp;&nbsp;描&nbsp;&nbsp;&nbsp;&nbsp;述<br /></td>                
+                </tr>      
+        </table>
+      </div>
+      
+      <div id="divA13" style="width:20.5%; height:1478px;margin-top:0px; background:white; float:left;">
+        <table id="tbA13" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black; border-left:0px solid black;" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%; height:115px; border-top:0px solid black; ">
+                    <td style="width:29.4%; text-align:center; border-top:0px solid black;border-left:0px solid black;font-size:20px;" >标贯<br />中点<br />深度<br />(m)</td>
+                    <td style="width:35.3%; text-align:center; border-top:0px solid black" >标&nbsp;贯<br />实&nbsp;例<br />击&nbsp;数</td>
+                    <td style="width:auto; text-align:center; border-top:0px solid black" >附<br /><br />注</td>                 
+                </tr>    
+        </table>
+      </div>    
+      <div id="divA14" style="clear:both; width:100%; height:68px;margin-top:0px; background:white;">
+       <table id="tbA14" border="0" style="width:100%; height:100%;font-size:20px; float:none; background:white; border-collapse:collapse; border-left:1px solid black;border-right:1px solid black; border-bottom:1px solid black" 
+                   bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%;height:50%;">
+                    <td style="width:40.5%; text-align:left; border-top:1px solid black;" id="DuiWuA1" ></td>
+                    <td style="width:29.7%; text-align:left; border-top:1px solid black;" id="ZHITUA1">制图：</td>
+                    <td style="width:29.8%; text-align:left; border-top:1px solid black;" id="TUHAOA1">图号：</td>
+                </tr>
+                <tr id="tr122" style="width:100%;height:50%;">
+                    <td style="width:40.5%; text-align:left;" id="RIQIA1">外业日期：</td>
+                    <td style="width:29.7%; text-align:left;" id="JIAOHEA1">校核：</td>
+                    <td style="width:29.8%; text-align:left;" ></td>
+                   </tr>     
+        </table>
+      </div>
+      </div>
+	<div id="anniu2" style="display:none;">
+          <a href="#" onmouseover="this.style.cursor='hand'" id="print_screen2" style="font-size:20px">下载页面2</a>	
+     </div>
+      <div id="divA2" style="width:1240px;height:1754px;margin-top:10px;background:white; display:none;">
+          <table id="tbTA2" border="0" style="width:100%; height:79px; background:white" cellspacing="0" cellpadding="0">
+              <tr>
+                  <td align="center" style="font-size:48px;font-weight:bold">
+                  钻&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;孔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;柱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图
+                  </td>
+              </tr>            
+          </table>	
+          <table id="tbA2" style="width:100%;background:white; border-collapse:collapse;font-size:20px;" border="1px" bordercolor="#000000" cellspacing="0" cellpadding="0">
+              <tr style="height:43px" align="center">
+                  <td style="width:135px">工程名称</td>
+                  <td style="width:680px" colspan="5" id="GCMCA2" align="left"></td>
+                  <td style="width:135px">工程编号</td>
+                  <td style="width:140px"  id="GCBHA2"></td>	
+              </tr>
+              <tr style="height:43px" align="center">
+                  <td>孔&nbsp;&nbsp;号</td>
+                  <td style="width:150px" id="ZKBHA2"></td>
+                  <td style="width:80px" rowspan="2">坐标</td>			
+                  <td style="width:180px" id="XZBA2"></td>
+                  <td style="width:135px">钻孔直径</td>
+                  <td style="width:135px" id="ZKZJA2"></td>
+                  <td style="width:135px">稳点水位深度</td>
+                  <td style="width:140px" id="JZSWA2"></td>			
+              </tr>
+              <tr style="height:43px" align="center">
+                  <td>孔口标高</td>
+                  <td id="ZKBGA2"></td>			
+                  <td id="YZBA2"></td>
+                  <td>初见水位深度</td>
+                  <td id="CJJWSDA2"></td>
+                  <td>测量日期</td>
+                  <td id="RiQiA2"></td>                    
+              </tr>
+          </table>
+      <div id="divA21" style="width:41%; height:1478px;margin-top:0px; background:white; float:left;"> 
+          <table id="tbA21" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr221" style="width:100%; height:115px; border-top:0px solid black">
+      
+                    <td style="width:15.6%; text-align:center; border-top:0px solid black" >地<br />质<br />时<br />代</td>
+                    <td style="width:14.4%; text-align:center; border-top:0px solid black" >层<br /><br /><br />号</td>
+                    <td style="width:17.1%; text-align:center; border-top:0px solid black" >层&nbsp;底<br />标&nbsp;高<br /><br />(m)</td>
+                    <td style="width:17.1%; text-align:center; border-top:0px solid black" >层&nbsp;底<br />深&nbsp;度<br /><br />(m)</td>
+                    <td style="width:14.4%; text-align:center; border-top:0px solid black" >分&nbsp;层<br />厚&nbsp;度<br /><br />(m)</td>
+                    <td style="width:21.4%; text-align:center; border-top:0px solid black" id="TLA2X"><br />柱&nbsp;状&nbsp;图<br /><br />1:200</td>    
+                </tr>
+          </table>
+      </div>  
+      <div style="width:0.5%; height:1478px;margin-top:0px; background:white; float:left;">
+          <canvas id="mycanvas2" width="61.9px" height="14780px" style="width:6.19px; height:1478px; float:left;"></canvas> 
+      </div> 
+      <div id="divA22" style="width:38%; height:1478px;margin-top:0px; background:white; float:left;">
+        <table id="tbA22" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black;border-left:0px solid black;" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr221" style="width:100%; height:115px; border-top:0px solid black">   
+                    <td style="width:70px; text-align:center; border-top:0px solid black;border-left:0px solid black;" >地&nbsp;&nbsp;&nbsp;&nbsp;层&nbsp;&nbsp;&nbsp;&nbsp;描&nbsp;&nbsp;&nbsp;&nbsp;述<br /></td>             
+                </tr>   
+        </table>
+      </div> 
+      <div id="divA23" style="width:20.5%; height:1478px;margin-top:0px; background:white; float:left;">
+        <table id="tbA23" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black; border-left:0px solid black;" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr221" style="width:100%; height:115px; border-top:0px solid black; ">
+                  <td style="width:29.4%; text-align:center; border-top:0px solid black;border-left:0px solid black;font-size:20px;" >标贯<br />中点<br />深度<br />(m)</td>
+                    <td style="width:35.3%; text-align:center; border-top:0px solid black" >标&nbsp;贯<br />实&nbsp;例<br />击&nbsp;数</td>
+                    <td style="width:35.3%; text-align:center; border-top:0px solid black" >附<br /><br />注</td> 
+                </tr>      
+        </table>
+      </div>      
+      <div id="divA24" style="clear:both; width:100%; height:68px;margin-top:0px; background:white;">
+       <table id="tbA24" border="0" style="width:100%; height:100%;font-size:20px; float:none; background:white; border-collapse:collapse; border-left:1px solid black;border-right:1px solid black; border-bottom:1px solid black" 
+                   bordercolor="#000000" cellspacing="0px">
+                <tr id="tr221" style="width:100%;height:50%;">
+                    <td style="width:40.5%; text-align:left; border-top:1px solid black;" id="DuiWuA2"></td>
+                    <td style="width:29.7%; text-align:left; border-top:1px solid black;" id="ZHITUA2">制图：</td>
+                    <td style="width:29.8%; text-align:left; border-top:1px solid black;" id="TUHAOA2">图号：</td>
+                </tr>
+                <tr id="tr222" style="width:100%;height:50%;">
+                    <td style="width:40.5%; text-align:left;" id="RIQIA2">外业日期：</td>
+                    <td style="width:29.7%; text-align:left;" id="JIAOHEA2">校核：</td>
+                    <td style="width:29.8%; text-align:left;" ></td>
+                   </tr>     
+        </table>
+      </div>
+      </div>
+	  <div id="anniu3" style="display:none;">
+          <a href="#" onmouseover="this.style.cursor='hand'" id="print_screen3" style="font-size:20px">下载页面3</a>	
+     </div>
+      <div id="divA3" style="width:1240px;height:1754px;margin-top:10px;background:white;display:none;">
+          <table id="tbTA3" border="0" style="width:100%; height:79px; background:white" cellspacing="0" cellpadding="0">
+              <tr>
+                  <td align="center" style="font-size:48px;font-weight:bold">
+                  钻&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;孔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;柱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图
+                  </td>
+              </tr>     
+          </table>	
+          <table id="tbA3" style="width:100%;background:white; border-collapse:collapse;font-size:20px;" border="1px" bordercolor="#000000" cellspacing="0" cellpadding="0">
+              <tr style="height:43px" align="center">
+                  <td style="width:135px">工程名称</td>
+                  <td style="width:680px" colspan="5"  id="GCMCA3" align="left"></td>
+                  <td style="width:135px">工程编号</td>
+                  <td style="width:140px"  id="GCBHA3"></td>	
+              </tr>
+              <tr style="height:43px" align="center">
+                  <td>孔&nbsp;&nbsp;号</td>
+                  <td style="width:150px" id="ZKBHA3"></td>
+                  <td style="width:80px" rowspan="2">坐标</td>			
+                  <td style="width:180px" id="XZBA3"></td>
+                  <td style="width:135px">钻孔直径</td>
+                  <td style="width:135px" id="ZKZJA3"></td>
+                  <td style="width:135px">稳点水位深度</td>
+                  <td style="width:140px" id="JZSWA3"></td>			
+              </tr>
+              <tr style="height:43px" align="center">
+                  <td>孔口标高</td>
+                  <td id="ZKBGA3"></td>			
+                  <td id="YZBA3"></td>
+                  <td>初见水位深度</td>
+                  <td id="CJJWSDA3"></td>
+                  <td>测量日期</td>
+                  <td id="RiQiA3"></td>
+                          
+              </tr>
+          </table>
+      <div id="divA31" style="width:41%; height:1478px;margin-top:0px; background:white; float:left;"> 
+          <table id="tbA31" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%; height:115px; border-top:0px solid black">
+      
+                    <td style="width:15.6%; text-align:center; border-top:0px solid black" >地<br />质<br />时<br />代</td>
+                    <td style="width:14.4%; text-align:center; border-top:0px solid black" >层<br /><br /><br />号</td>
+                    <td style="width:17.1%; text-align:center; border-top:0px solid black" >层&nbsp;底<br />标&nbsp;高<br /><br />(m)</td>
+                    <td style="width:17.1%; text-align:center; border-top:0px solid black" >层&nbsp;底<br />深&nbsp;度<br /><br />(m)</td>
+                    <td style="width:14.4%; text-align:center; border-top:0px solid black" >分&nbsp;层<br />厚&nbsp;度<br /><br />(m)</td>
+                    <td style="width:21.4%; text-align:center; border-top:0px solid black" id="TLA3X"><br />柱&nbsp;状&nbsp;图<br /><br />1:200</td>
+      
+                </tr>
+      
+          </table>
+      </div>
+      
+      <div style="width:0.5%; height:1478px;margin-top:0px; background:white; float:left;">
+          <canvas id="mycanvas3" width="61.9px" height="14780px" style="width:6.19px; height:1478px; float:left;"></canvas> 
+      </div>
+      
+      <div id="divA32" style="width:38%; height:1478px;margin-top:0px; background:white; float:left;">
+        <table id="tbA32" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black;border-left:0px solid black;" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%; height:115px; border-top:0px solid black"> 
+                    <td style="width:70px; text-align:center; border-top:0px solid black;border-left:0px solid black;" >地&nbsp;&nbsp;&nbsp;&nbsp;层&nbsp;&nbsp;&nbsp;&nbsp;描&nbsp;&nbsp;&nbsp;&nbsp;述<br /></td>                
+                </tr>      
+        </table>
+      </div>
+      
+      <div id="divA33" style="width:20.5%; height:1478px;margin-top:0px; background:white; float:left;">
+        <table id="tbA33" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black; border-left:0px solid black;" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%; height:115px; border-top:0px solid black; ">
+                    <td style="width:29.4%; text-align:center; border-top:0px solid black;border-left:0px solid black;font-size:20px;" >标贯<br />中点<br />深度<br />(m)</td>
+                    <td style="width:35.3%; text-align:center; border-top:0px solid black" >标&nbsp;贯<br />实&nbsp;例<br />击&nbsp;数</td>
+                    <td style="width:35.3%; text-align:center; border-top:0px solid black" >附<br /><br />注</td>                 
+                </tr>    
+        </table>
+      </div>    
+      <div id="divA34" style="clear:both; width:100%; height:68px;margin-top:0px; background:white;">
+       <table id="tbA34" border="0" style="width:100%; height:100%;font-size:20px; float:none; background:white; border-collapse:collapse; border-left:1px solid black;border-right:1px solid black; border-bottom:1px solid black" 
+                   bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%;height:50%;">
+                    <td style="width:40.5%; text-align:left; border-top:1px solid black;" id="DuiWuA3"></td>
+                    <td style="width:29.7%; text-align:left; border-top:1px solid black;" id="ZHITUA3">制图：</td>
+                    <td style="width:29.8%; text-align:left; border-top:1px solid black;" id="TUHAOA3">图号：</td>
+                </tr>
+                <tr id="tr122" style="width:100%;height:50%;">
+                    <td style="width:40.5%; text-align:left;" id="RIQIA3">外业日期：</td>
+                    <td style="width:29.7%; text-align:left;" id="JIAOHEA3">校核：</td>
+                    <td style="width:29.8%; text-align:left;" ></td>
+                   </tr>     
+        </table>
+      </div>
+      </div>
+    <div id="anniu4" style="display:none;">
+          <a href="#" onmouseover="this.style.cursor='hand'" id="print_screen4" style="font-size:20px">下载页面4</a>	
+     </div>
+      <div id="divA4" style="width:1240px;height:1754px;margin-top:10px;background:white;display:none;">
+          <table id="tbTA4" border="0" style="width:100%; height:79px; background:white" cellspacing="0" cellpadding="0">
+              <tr>
+                  <td align="center" style="font-size:48px;font-weight:bold">
+                  钻&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;孔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;柱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图
+                  </td>
+              </tr>     
+          </table>	
+          <table id="tbA4" style="width:100%;background:white; border-collapse:collapse;font-size:20px;" border="1px" bordercolor="#000000" cellspacing="0" cellpadding="0">
+              <tr style="height:43px" align="center">
+                  <td style="width:135px">工程名称</td>
+                  <td style="width:680px" colspan="5"  id="GCMCA4" align="left"></td>
+                  <td style="width:135px">工程编号</td>
+                  <td style="width:140px"  id="GCBHA4"></td>	
+              </tr>
+              <tr style="height:43px" align="center">
+                  <td>孔&nbsp;&nbsp;号</td>
+                  <td style="width:150px" id="ZKBHA4"></td>
+                  <td style="width:80px" rowspan="2">坐标</td>			
+                  <td style="width:180px" id="XZBA4"></td>
+                  <td style="width:135px">钻孔直径</td>
+                  <td style="width:135px" id="ZKZJA4"></td>
+                  <td style="width:135px">稳点水位深度</td>
+                  <td style="width:140px" id="JZSWA4"></td>			
+              </tr>
+              <tr style="height:43px" align="center">
+                  <td>孔口标高</td>
+                  <td id="ZKBGA4"></td>			
+                  <td id="YZBA4"></td>
+                  <td>初见水位深度</td>
+                  <td id="CJJWSDA4"></td>
+                  <td>测量日期</td>
+                  <td id="RiQiA4"></td>
+                          
+              </tr>
+          </table>
+      <div id="divA41" style="width:41%; height:1478px;margin-top:0px; background:white; float:left;"> 
+          <table id="tbA41" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%; height:115px; border-top:0px solid black">
+      
+                    <td style="width:15.6%; text-align:center; border-top:0px solid black" >地<br />质<br />时<br />代</td>
+                    <td style="width:14.4%; text-align:center; border-top:0px solid black" >层<br /><br /><br />号</td>
+                    <td style="width:17.1%; text-align:center; border-top:0px solid black" >层&nbsp;底<br />标&nbsp;高<br /><br />(m)</td>
+                    <td style="width:17.1%; text-align:center; border-top:0px solid black" >层&nbsp;底<br />深&nbsp;度<br /><br />(m)</td>
+                    <td style="width:14.4%; text-align:center; border-top:0px solid black" >分&nbsp;层<br />厚&nbsp;度<br /><br />(m)</td>
+                    <td style="width:21.4%; text-align:center; border-top:0px solid black" id="TLA4X"><br />柱&nbsp;状&nbsp;图<br /><br />1:200</td>
+      
+                </tr>
+      
+          </table>
+      </div>
+      
+      <div style="width:0.5%; height:1478px;margin-top:0px; background:white; float:left;">
+          <canvas id="mycanvas4" width="61.9px" height="14780px" style="width:6.19px; height:1478px; float:left;"></canvas> 
+      </div>
+      
+      <div id="divA42" style="width:38%; height:1478px;margin-top:0px; background:white; float:left;">
+        <table id="tbA42" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black;border-left:0px solid black;" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%; height:115px; border-top:0px solid black"> 
+                    <td style="width:70px; text-align:center; border-top:0px solid black;border-left:0px solid black;" >地&nbsp;&nbsp;&nbsp;&nbsp;层&nbsp;&nbsp;&nbsp;&nbsp;描&nbsp;&nbsp;&nbsp;&nbsp;述<br /></td>                
+                </tr>      
+        </table>
+      </div>
+      
+      <div id="divA43" style="width:20.5%; height:1478px;margin-top:0px; background:white; float:left;">
+        <table id="tbA43" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black; border-left:0px solid black;" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%; height:115px; border-top:0px solid black; ">
+                    <td style="width:29.4%; text-align:center; border-top:0px solid black;border-left:0px solid black;font-size:20px;" >标贯<br />中点<br />深度<br />(m)</td>
+                    <td style="width:35.3%; text-align:center; border-top:0px solid black" >标&nbsp;贯<br />实&nbsp;例<br />击&nbsp;数</td>
+                    <td style="width:35.3%; text-align:center; border-top:0px solid black" >附<br /><br />注</td>                 
+                </tr>    
+        </table>
+      </div>    
+      <div id="divA44" style="clear:both; width:100%; height:68px;margin-top:0px; background:white;">
+       <table id="tbA44" border="0" style="width:100%; height:100%;font-size:20px; float:none; background:white; border-collapse:collapse; border-left:1px solid black;border-right:1px solid black; border-bottom:1px solid black" 
+                   bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%;height:50%;">
+                    <td style="width:40.5%; text-align:left; border-top:1px solid black;" id="DuiWuA4" ></td>
+                    <td style="width:29.7%; text-align:left; border-top:1px solid black;" id="ZHITUA4">制图：</td>
+                    <td style="width:29.8%; text-align:left; border-top:1px solid black;" id="TUHAOA4">图号：</td>
+                </tr>
+                <tr id="tr122" style="width:100%;height:50%;">
+                    <td style="width:40.5%; text-align:left;" id="RIQIA4">外业日期：</td>
+                    <td style="width:29.7%; text-align:left;" id="JIAOHEA4">校核：</td>
+                    <td style="width:29.8%; text-align:left;" ></td>
+                   </tr>     
+        </table>
+      </div>
+      </div>
+	 <div id="anniu5" style="display:none;">
+          <a href="#" onmouseover="this.style.cursor='hand'" id="print_screen5" style="font-size:20px">下载页面5</a>	
+     </div>
+      <div id="divA5" style="width:1240px;height:1754px;margin-top:10px;background:white;display:none;">
+          <table id="tbTA5" border="0" style="width:100%; height:79px; background:white" cellspacing="0" cellpadding="0">
+              <tr>
+                  <td align="center" style="font-size:48px;font-weight:bold">
+                  钻&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;孔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;柱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图
+                  </td>
+              </tr>     
+          </table>	
+          <table id="tbA5" style="width:100%;background:white; border-collapse:collapse;font-size:20px;" border="1px" bordercolor="#000000" cellspacing="0" cellpadding="0">
+              <tr style="height:43px" align="center">
+                  <td style="width:135px">工程名称</td>
+                  <td style="width:680px" colspan="5"  id="GCMCA5" align="left"></td>
+                  <td style="width:135px">工程编号</td>
+                  <td style="width:140px"  id="GCBHA5"></td>	
+              </tr>
+              <tr style="height:43px" align="center">
+                  <td>孔&nbsp;&nbsp;号</td>
+                  <td style="width:150px" id="ZKBHA5"></td>
+                  <td style="width:80px" rowspan="2">坐标</td>			
+                  <td style="width:180px" id="XZBA5"></td>
+                  <td style="width:135px">钻孔直径</td>
+                  <td style="width:135px" id="ZKZJA5"></td>
+                  <td style="width:135px">稳点水位深度</td>
+                  <td style="width:140px" id="JZSWA5"></td>			
+              </tr>
+              <tr style="height:43px" align="center">
+                  <td>孔口标高</td>
+                  <td id="ZKBGA5"></td>			
+                  <td id="YZBA5"></td>
+                  <td>初见水位深度</td>
+                  <td id="CJJWSDA5"></td>
+                  <td>测量日期</td>
+                  <td  id="RiQiA5"></td>
+                          
+              </tr>
+          </table>
+      <div id="divA51" style="width:41%; height:1478px;margin-top:0px; background:white; float:left;"> 
+          <table id="tbA51" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%; height:115px; border-top:0px solid black">
+      
+                    <td style="width:15.6%; text-align:center; border-top:0px solid black" >地<br />质<br />时<br />代</td>
+                    <td style="width:14.4%; text-align:center; border-top:0px solid black" >层<br /><br /><br />号</td>
+                    <td style="width:17.1%; text-align:center; border-top:0px solid black" >层&nbsp;底<br />标&nbsp;高<br /><br />(m)</td>
+                    <td style="width:17.1%; text-align:center; border-top:0px solid black" >层&nbsp;底<br />深&nbsp;度<br /><br />(m)</td>
+                    <td style="width:14.4%; text-align:center; border-top:0px solid black" >分&nbsp;层<br />厚&nbsp;度<br /><br />(m)</td>
+                    <td style="width:21.4%; text-align:center; border-top:0px solid black" id="TLA5X"><br />柱&nbsp;状&nbsp;图<br /><br />1:200</td>
+      
+                </tr>
+      
+          </table>
+      </div>
+      
+      <div style="width:0.5%; height:1478px;margin-top:0px; background:white; float:left;">
+          <canvas id="mycanvas5" width="61.9px" height="14780px" style="width:6.19px; height:1478px; float:left;"></canvas> 
+      </div>
+      
+      <div id="divA52" style="width:38%; height:1478px;margin-top:0px; background:white; float:left;">
+        <table id="tbA52" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black;border-left:0px solid black;" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%; height:115px; border-top:0px solid black"> 
+                    <td style="width:70px; text-align:center; border-top:0px solid black;border-left:0px solid black;" >地&nbsp;&nbsp;&nbsp;&nbsp;层&nbsp;&nbsp;&nbsp;&nbsp;描&nbsp;&nbsp;&nbsp;&nbsp;述<br /></td>                
+                </tr>      
+        </table>
+      </div>
+      
+      <div id="divA53" style="width:20.5%; height:1478px;margin-top:0px; background:white; float:left;">
+        <table id="tbA53" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black; border-left:0px solid black;" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%; height:115px; border-top:0px solid black; ">
+                    <td style="width:29.4%; text-align:center; border-top:0px solid black;border-left:0px solid black;font-size:20px;" >标贯<br />中点<br />深度<br />(m)</td>
+                    <td style="width:35.3%; text-align:center; border-top:0px solid black" >标&nbsp;贯<br />实&nbsp;例<br />击&nbsp;数</td>
+                    <td style="width:35.3%; text-align:center; border-top:0px solid black" >附<br /><br />注</td>                 
+                </tr>    
+        </table>
+      </div>    
+      <div id="divA54" style="clear:both; width:100%; height:68px;margin-top:0px; background:white;">
+       <table id="tbA54" border="0" style="width:100%; height:100%;font-size:20px; float:none; background:white; border-collapse:collapse; border-left:1px solid black;border-right:1px solid black; border-bottom:1px solid black" 
+                   bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%;height:50%;">
+                    <td style="width:40.5%; text-align:left; border-top:1px solid black;" id="DuiWuA5"></td>
+                    <td style="width:29.7%; text-align:left; border-top:1px solid black;" id="ZHITUA5">制图：</td>
+                    <td style="width:29.8%; text-align:left; border-top:1px solid black;" id="TUHAOA5">图号：</td>
+                </tr>
+                <tr id="tr122" style="width:100%;height:50%;">
+                    <td style="width:40.5%; text-align:left;" id="RIQIA5">外业日期：</td>
+                    <td style="width:29.7%; text-align:left;"  id="JIAOHEA5">校核：</td>
+                    <td style="width:29.8%; text-align:left;" ></td>
+                   </tr>     
+        </table>
+      </div>
+      </div>
+      <div id="anniu6" style="display:none;">
+          <a href="#" onmouseover="this.style.cursor='hand'" id="print_screen6" style="font-size:20px">下载页面6</a>	
+     </div>
+      <div id="divA6" style="width:1240px;height:1754px;margin-top:10px;background:white; display:none;">
+          <table id="tbTA6" border="0" style="width:100%; height:79px; background:white" cellspacing="0" cellpadding="0">
+              <tr>
+                  <td align="center" style="font-size:48px;font-weight:bold">
+                  钻&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;孔&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;柱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;图
+                  </td>
+              </tr>     
+          </table>	
+          <table id="tbA6" style="width:100%;background:white; border-collapse:collapse;font-size:20px;" border="1px" bordercolor="#000000" cellspacing="0" cellpadding="0">
+              <tr style="height:43px" align="center">
+                  <td style="width:135px">工程名称</td>
+                  <td style="width:680px" colspan="5"  id="GCMCA6" align="left"></td>
+                  <td style="width:135px">工程编号</td>
+                  <td style="width:140px"  id="GCBHA6"></td>	
+              </tr>
+              <tr style="height:43px" align="center">
+                  <td>孔&nbsp;&nbsp;号</td>
+                  <td style="width:150px" id="ZKBHA6"></td>
+                  <td style="width:80px" rowspan="2">坐标</td>			
+                  <td style="width:180px" id="XZBA6"></td>
+                  <td style="width:135px">钻孔直径</td>
+                  <td style="width:135px" id="ZKZJA6"></td>
+                  <td style="width:135px">稳点水位深度</td>
+                  <td style="width:140px" id="JZSWA6"></td>			
+              </tr>
+              <tr style="height:43px" align="center">
+                  <td>孔口标高</td>
+                  <td id="ZKBGA6"></td>			
+                  <td id="YZBA6"></td>
+                  <td>初见水位深度</td>
+                  <td  id="CJJWSDA6"></td>
+                  <td>测量日期</td>
+                  <td  id="RiQiA6"></td>
+                          
+              </tr>
+          </table>
+      <div id="divA61" style="width:41%; height:1478px;margin-top:0px; background:white; float:left;"> 
+          <table id="tbA61" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%; height:115px; border-top:0px solid black">
+      
+                    <td style="width:15.6%; text-align:center; border-top:0px solid black" >地<br />质<br />时<br />代</td>
+                    <td style="width:14.4%; text-align:center; border-top:0px solid black" >层<br /><br /><br />号</td>
+                    <td style="width:17.1%; text-align:center; border-top:0px solid black" >层&nbsp;底<br />标&nbsp;高<br /><br />(m)</td>
+                    <td style="width:17.1%; text-align:center; border-top:0px solid black" >层&nbsp;底<br />深&nbsp;度<br /><br />(m)</td>
+                    <td style="width:14.4%; text-align:center; border-top:0px solid black" >分&nbsp;层<br />厚&nbsp;度<br /><br />(m)</td>
+                    <td style="width:21.4%; text-align:center; border-top:0px solid black" id="TLA6X"><br />柱&nbsp;状&nbsp;图<br /><br />1:200</td>
+      
+                </tr>
+      
+          </table>
+      </div>
+      
+      <div style="width:0.5%; height:1478px;margin-top:0px; background:white; float:left;">
+          <canvas id="mycanvas6" width="61.9px" height="14780px" style="width:6.19px; height:1478px; float:left;"></canvas> 
+      </div>
+      
+      <div id="divA62" style="width:38%; height:1478px;margin-top:0px; background:white; float:left;">
+        <table id="tbA62" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black;border-left:0px solid black;" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%; height:115px; border-top:0px solid black"> 
+                    <td style="width:70px; text-align:center; border-top:0px solid black;border-left:0px solid black;" >地&nbsp;&nbsp;&nbsp;&nbsp;层&nbsp;&nbsp;&nbsp;&nbsp;描&nbsp;&nbsp;&nbsp;&nbsp;述<br /></td>                
+                </tr>      
+        </table>
+      </div>
+      
+      <div id="divA63" style="width:20.5%; height:1478px;margin-top:0px; background:white; float:left;">
+        <table id="tbA63" border="1" style="width:100%;font-size:20px; float:left; background:white; border-collapse:collapse; border-top:0px solid black; border-left:0px solid black;" bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%; height:115px; border-top:0px solid black; ">
+                    <td style="width:29.4%; text-align:center; border-top:0px solid black;border-left:0px solid black;font-size:20px;" >标贯<br />中点<br />深度<br />(m)</td>
+                    <td style="width:35.3%; text-align:center; border-top:0px solid black" >标&nbsp;贯<br />实&nbsp;例<br />击&nbsp;数</td>
+                    <td style="width:35.3%; text-align:center; border-top:0px solid black" >附<br /><br />注</td>                 
+                </tr>    
+        </table>
+      </div>    
+      <div id="divA64" style="clear:both; width:100%; height:68px;margin-top:0px; background:white;">
+       <table id="tbA64" border="0" style="width:100%; height:100%;font-size:20px; float:none; background:white; border-collapse:collapse; border-left:1px solid black;border-right:1px solid black; border-bottom:1px solid black" 
+                   bordercolor="#000000" cellspacing="0px">
+                <tr id="tr121" style="width:100%;height:50%;">
+                    <td style="width:40.5%; text-align:left; border-top:1px solid black;" id="DuiWuA6"></td>
+                    <td style="width:29.7%; text-align:left; border-top:1px solid black;" id="ZHITUA6">制图：</td>
+                    <td style="width:29.8%; text-align:left; border-top:1px solid black;" id="TUHAOA6">图号：</td>
+                </tr>
+                <tr id="tr122" style="width:100%;height:50%;">
+                    <td style="width:40.5%; text-align:left;" id="RIQIA6">外业日期：</td>
+                    <td style="width:29.7%; text-align:left;" id="JIAOHEA6">校核：</td>
+                    <td style="width:29.8%; text-align:left;" ></td>
+                   </tr>     
+        </table>
+      </div>
+      </div>
+ </div>
+ <script>
+var dataurl;
+	$('#print_screen').click(function(){
+	console.log(YS);
+	    
+			var canvas = document.createElement("canvas");
+          	var w=$('#divA1').width();
+          	var h=$('#divA1').height();
+	        canvas.width = w * 2;
+	        canvas.height = h * 2;
+	        console.log(canvas);
+	        console.log(canvas.style);
+	        canvas.style.width = w + "px";
+	        canvas.style.height = h + "px";
+	        var context = canvas.getContext("2d");
+	        context.scale(2,2);
+	        context.translate((document.defaultView.outerWidth-$('#divA1').width())*(-0.5),-$('#divA1')[0].offsetTop);//
+		
+		
+			html2canvas( document.getElementById("divA1") ,{
+				allowTaint: false,
+                taintTest: true,
+                canvas: canvas,			
+				onrendered: function(canvas){
+					
+					canvas.id = "Mycanvas";
+                    canvas.style.display = 'none';
+                    document.body.appendChild(canvas);
+					
+					var dataurl = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");	
+					saveFile(dataurl,"123.png")
+				},
+
+			});
+    
+	});		
+
+
+var dataurl2;
+	$('#print_screen2').click(function(){
+	console.log(YS);
+	    
+			var canvas = document.createElement("canvas");
+          	var w=$('#divA2').width();
+          	var h=$('#divA2').height();
+	        canvas.width = w * 2;
+	        canvas.height = h * 2;
+	        console.log(canvas);
+	        console.log(canvas.style);
+	        canvas.style.width = w + "px";
+	        canvas.style.height = h + "px";
+	        var context = canvas.getContext("2d");
+	        context.scale(2,2);
+	        context.translate((document.defaultView.outerWidth-$('#divA2').width())*(-0.5),-$('#divA2')[0].offsetTop);//
+		
+		
+			html2canvas( document.getElementById("divA2") ,{
+				allowTaint: false,
+                taintTest: true,
+                canvas: canvas,			
+				onrendered: function(canvas){
+					
+					canvas.id = "Mycanvas";
+                    canvas.style.display = 'none';
+                    document.body.appendChild(canvas);
+					
+					var dataurl2 = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");	
+					saveFile(dataurl2,"123.png")
+				},
+
+			});
+    
+	});	
+	
+	var dataurl3;
+	$('#print_screen3').click(function(){
+	console.log(YS);
+	    
+			var canvas = document.createElement("canvas");
+          	var w=$('#divA3').width();
+          	var h=$('#divA3').height();
+	        canvas.width = w * 2;
+	        canvas.height = h * 2;
+	        console.log(canvas);
+	        console.log(canvas.style);
+	        canvas.style.width = w + "px";
+	        canvas.style.height = h + "px";
+	        var context = canvas.getContext("2d");
+	        context.scale(2,2);
+	        context.translate((document.defaultView.outerWidth-$('#divA3').width())*(-0.5),-$('#divA3')[0].offsetTop);//
+		
+		
+			html2canvas( document.getElementById("divA3") ,{
+				allowTaint: false,
+                taintTest: true,
+                canvas: canvas,			
+				onrendered: function(canvas){
+					
+					canvas.id = "Mycanvas";
+                    canvas.style.display = 'none';
+                    document.body.appendChild(canvas);
+					
+					var dataurl3 = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");	
+					saveFile(dataurl3,"123.png")
+				},
+
+			});
+    
+	});	
+	
+	
+	var dataurl4;
+	$('#print_screen4').click(function(){
+	console.log(YS);
+	    
+			var canvas = document.createElement("canvas");
+          	var w=$('#divA4').width();
+          	var h=$('#divA4').height();
+	        canvas.width = w * 2;
+	        canvas.height = h * 2;
+	        console.log(canvas);
+	        console.log(canvas.style);
+	        canvas.style.width = w + "px";
+	        canvas.style.height = h + "px";
+	        var context = canvas.getContext("2d");
+	        context.scale(2,2);
+	        context.translate((document.defaultView.outerWidth-$('#divA4').width())*(-0.5),-$('#divA4')[0].offsetTop);//
+		
+		
+			html2canvas( document.getElementById("divA4") ,{
+				allowTaint: false,
+                taintTest: true,
+                canvas: canvas,			
+				onrendered: function(canvas){
+					
+					canvas.id = "Mycanvas";
+                    canvas.style.display = 'none';
+                    document.body.appendChild(canvas);
+					
+					var dataurl4 = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");	
+					saveFile(dataurl4,"123.png")
+				},
+
+			});
+    
+	});	
+	
+	
+	var dataurl5;
+	$('#print_screen5').click(function(){
+	console.log(YS);
+	    
+			var canvas = document.createElement("canvas");
+          	var w=$('#divA5').width();
+          	var h=$('#divA5').height();
+	        canvas.width = w * 2;
+	        canvas.height = h * 2;
+	        console.log(canvas);
+	        console.log(canvas.style);
+	        canvas.style.width = w + "px";
+	        canvas.style.height = h + "px";
+	        var context = canvas.getContext("2d");
+	        context.scale(2,2);
+	        context.translate((document.defaultView.outerWidth-$('#divA5').width())*(-0.5),-$('#divA5')[0].offsetTop);//
+		
+		
+			html2canvas( document.getElementById("divA5") ,{
+				allowTaint: false,
+                taintTest: true,
+                canvas: canvas,			
+				onrendered: function(canvas){
+					
+					canvas.id = "Mycanvas";
+                    canvas.style.display = 'none';
+                    document.body.appendChild(canvas);
+					
+					var dataurl5 = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");		
+					saveFile(dataurl5,"123.png")
+				},
+
+			});
+    
+	});	
+	
+	
+	var dataurl6;
+	$('#print_screen6').click(function(){
+	console.log(YS);
+	    
+			var canvas = document.createElement("canvas");
+          	var w=$('#divA6').width();
+          	var h=$('#divA6').height();
+	        canvas.width = w * 2;
+	        canvas.height = h * 2;
+	        console.log(canvas);
+	        console.log(canvas.style);
+	        canvas.style.width = w + "px";
+	        canvas.style.height = h + "px";
+	        var context = canvas.getContext("2d");
+	        context.scale(2,2);
+	        context.translate((document.defaultView.outerWidth-$('#divA6').width())*(-0.5),-$('#divA6')[0].offsetTop);//
+		
+		
+			html2canvas( document.getElementById("divA6") ,{
+				allowTaint: false,
+                taintTest: true,
+                canvas: canvas,			
+				onrendered: function(canvas){
+					
+					canvas.id = "Mycanvas";
+                    canvas.style.display = 'none';
+                    document.body.appendChild(canvas);
+					
+					var dataurl6 = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");	
+					saveFile(dataurl6,"123.png")
+				},
+
+			});
+    
+	});	
+	function getImg(){
+		
+	}
+function saveFile(data, filename){
+    var save_link = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
+    var s=$("#ZKBHA1").html();
+    if(window.location.search.indexOf("virtual=true")<0){
+    	filename=s+"."+filename.split(".")[1];
+    }else{
+    	filename="虚拟钻孔"+"."+filename.split(".")[1];
+    }
+    save_link.href = data;
+    save_link.download = filename;
+   
+    var event = document.createEvent('MouseEvents');
+    event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+    save_link.dispatchEvent(event);
+};
+</script>
+ </body>
+ </html>
