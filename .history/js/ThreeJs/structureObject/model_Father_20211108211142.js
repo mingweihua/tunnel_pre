@@ -62,7 +62,7 @@ class model_Father {
     }
 
 
-    load(obj_url, mtl_url, keyName, scale) {
+    load(obj_url, mtl_url, keyName, scale,loadPouqie) {
         var thisObject = this;
         const onProgress = function (xhr) {
 
@@ -84,6 +84,7 @@ class model_Father {
             .load(mtl_url, function (materials) {
 
                 materials.preload();
+                materials.side = THREE.DoubleSide;
 
                 new THREE.OBJLoader(manager)
                     .setMaterials(materials)
@@ -91,13 +92,13 @@ class model_Father {
                         thisObject.three3dObject[keyName] = object;
                         thisObject.three3dObject.currentModel = object;
 
-                        var newObject_pouqie = thisObject.createMaterial_pouqie(result);
-                        thisObject.three3dObject.group_pouqie[keyName] = newObject_pouqie;
-                        thisObject.three3dObject.group_pouqie.currentModel = newObject_pouqie;
-
+                        // var newObject_pouqie = thisObject.createMaterial_pouqie(result);
+                        // thisObject.three3dObject.group_pouqie[keyName] = newObject_pouqie;
+                        // thisObject.three3dObject.group_pouqie.currentModel = newObject_pouqie;
 
                         Model_operation.setScale(object, scale);
                         thisObject.currentName = keyName;
+                        currentName = thisObject.currentName;
                         scene.add(thisObject.three3dObject.currentModel);
                     }, onProgress, onError);
 
