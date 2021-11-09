@@ -131,7 +131,7 @@ class Model_operation {
             let y = Model_operation.stratificationInformation[i][0].point.y;
             let z = Model_operation.stratificationInformation[i][0].point.z;
 
-            let a = y - modelName_url[globalModel.currentName].modelBottom;
+            let a = y - modelName_url[object.currentName].modelBottom;
             holes[i].push("251200622", "Z20", x, z, y, a);
 
             //配置hole_mtx_1 是总的矩阵信息数组，是三维数组最外围是钻孔数量，内部包含2个数组（钻孔层信息数组和钻孔深度信息数组）
@@ -142,7 +142,7 @@ class Model_operation {
             for (let j = 0; j < Model_operation.stratificationInformation[i].length; j++) {
                 let c = Model_operation.stratificationInformation[i][j].object.name.valueOf();
                 let d = y - Model_operation.stratificationInformation[i][j].point.y;
-                hole_mtx_first[i].push(Number(geoData[globalModel.currentName][c].tuli)); //将地层信息转化为统一数字序列
+                hole_mtx_first[i].push(NUmber(geoData[object.currentName][c].tuli)); //将地层信息转化为统一数字序列
                 hole_mtx_last[i].push(d); //将地层信息转化为统一数字序列
 
             }

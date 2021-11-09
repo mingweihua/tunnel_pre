@@ -142,7 +142,7 @@ class Model_operation {
             for (let j = 0; j < Model_operation.stratificationInformation[i].length; j++) {
                 let c = Model_operation.stratificationInformation[i][j].object.name.valueOf();
                 let d = y - Model_operation.stratificationInformation[i][j].point.y;
-                hole_mtx_first[i].push(Number(geoData[globalModel.currentName][c].tuli)); //将地层信息转化为统一数字序列
+                hole_mtx_first[i].push(NUmber(geoData[object.currentName][c].tuli)); //将地层信息转化为统一数字序列
                 hole_mtx_last[i].push(d); //将地层信息转化为统一数字序列
 
             }

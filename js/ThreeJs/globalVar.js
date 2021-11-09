@@ -17,18 +17,20 @@ pointer = new THREE.Vector2();
 let globalModel,currentName;
 
 let modelName_url = {
-    BLSModel : {objUrl:"model/BLS.obj",mtlUrl:"model/BLS.mtl"},
-    XBModel : {objUrl:"model/XB.obj",mtlUrl:"model/XB.mtl"},
-    ZZModel : {objUrl:"model/ZZ.obj",mtlUrl:"model/ZZ.mtl"},
-    YM1Model : {objUrl:"model/YM1.obj",mtlUrl:"model/YM1.mtl"},
-    YM2Model : {objUrl:"model/YM2.obj",mtlUrl:"model/YM2.mtl"},
-    YTModel : {objUrl:"model/YT.obj",mtlUrl:"model/YT.mtl"},
-    XFDModel : {objUrl:"model/XFD.obj",mtlUrl:"model/XFD.mtl"},
-    MYS1Model : {objUrl:"model/MYS1.obj",mtlUrl:"model/MYS1.mtl"},
-    MYS2Model : {objUrl:"model/MYS2.obj",mtlUrl:"model/MYS2.mtl"},
-    MYS3Model : {objUrl:"model/MYS3.obj",mtlUrl:"model/MYS3.mtl"},
-    AllModel : {objUrl:"model/all.obj",mtlUrl:"model/all.mtl"},
+    BLSModel : {objUrl:"model/BLS.obj",mtlUrl:"model/BLS.mtl",modelBottom:-72},
+    XBModel : {objUrl:"model/XB.obj",mtlUrl:"model/XB.mtl",modelBottom:-50},
+    ZZModel : {objUrl:"model/ZZ.obj",mtlUrl:"model/ZZ.mtl",modelBottom:-45},
+    YM1Model : {objUrl:"model/YM1.obj",mtlUrl:"model/YM1.mtl",modelBottom:-45},
+    YM2Model : {objUrl:"model/YM2.obj",mtlUrl:"model/YM2.mtl",modelBottom:-46},
+    YTModel : {objUrl:"model/YT.obj",mtlUrl:"model/YT.mtl",modelBottom:-38},
+    XFDModel : {objUrl:"model/XFD.obj",mtlUrl:"model/XFD.mtl",modelBottom:-73},
+    MYS1Model : {objUrl:"model/MYS1.obj",mtlUrl:"model/MYS1.mtl",modelBottom:-30},
+    MYS2Model : {objUrl:"model/MYS2.obj",mtlUrl:"model/MYS2.mtl",modelBottom:-31},
+    MYS3Model : {objUrl:"model/MYS3.obj",mtlUrl:"model/MYS3.mtl",modelBottom:-60},
+    AllModel : {objUrl:"model/all.obj",mtlUrl:"model/all.mtl",modelBottom:-73},
 };
+
+//modelBottom为记录每个模型最底部高程
 
 
 
