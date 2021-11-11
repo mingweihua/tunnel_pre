@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="https://unpkg.com/canvg@3.0.4/lib/umd.js"></script>
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+
+
+<!-- 	
+
+-->
+
+
+
+
+</head>
+<style type="text/css">
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+table {
+  font-size: 1em;
+  border: 1px solid black;
+  width: 800px;
+  height: auto;
+  font-size: 13px;
+  
+  margin:1;
+  border-collapse:collapse;
+  border-spacing:1;
+
+
+}
+.ui-draggable, .ui-droppable {
+  background-position: top;
+}
+
+td{
+  text-align: center;
+  width: 200px; 
+  height: 30px;
+   border:1px  solid black;
+}
+
+input{
+  width: 200px;
+  height: 30px;
+  text-align: center;
+}
+
+input:hover{
+  background:yellow;
+}
+
+.ui-dialog-titlebar-close{
+	display:none;
+}
+</style>
+<body >
+	<!-- <input id="Slice" type="button" value="Slice" onclick="drawSvg(),svgtocanvas()">
+	<div id="btn">
+		<button id="save_as_svg" onclick="downloadsvg()" >下载svg</button>
+		<button id="edit" onclick="edit()" >修改</button>
+	</div> -->
+
+	<div id="adddialog">
+		
+	</div>
+
+	
+
+<div class="goodsvg" id="heresvg">
+<svg id ="mysvg" width=2400 height=1000 version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  xml:space="preserve">
+
+<text x="880" y="50" style="font-size:28px;"> 地  质  剖  面  图</text>
+
+<defs id="mydefs" >
+	<pattern id="pattern-image1" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(253,241,217)"></rect>
+			<line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_1" y2="8.93195" x2="15.18769" y1="17.93178" x1="7.43783" stroke="#000" fill="none"/>
+  			<line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="18.18177" x2="22.43755" y1="9.30694" x1="14.81269" stroke="#000" fill="none"/>
+  			<line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_4" y2="30.30654" x2="34.06232" y1="38.80638" x1="26.31247" stroke="#000" fill="none"/>
+  			<line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_6" y2="39.30637" x2="41.31219" y1="30.55653" x1="33.68733" stroke="#000" fill="none"/>
+		</g>
+	</pattern>
+	<pattern id="pattern-image2" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(255,240,209)"></rect>
+			<path id="svg_8" d="m6.68785,22.80668" opacity="0.5" fill-opacity="null" stroke-opacity="null" stroke-width="null" stroke="#000" fill="none"/>
+  			<path id="svg_9" d="m34.18732,31.55651" opacity="0.5" fill-opacity="null" stroke-opacity="null" stroke-width="null" stroke="#000" fill="none"/>
+  			<path stroke="#000" id="svg_13" d="m3.8129,14.18185c5.10197,-3.24994 8.21293,-6.87487 14.9326,-0.62499c6.71967,6.24988 12.94159,-2.37495 12.87889,-2.43207" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<path stroke="#000" id="svg_14" d="m18.68762,37.18141c5.10197,-3.24994 8.21293,-6.87487 14.9326,-0.62499c6.71967,6.24988 12.94159,-2.37495 12.8789,-2.43207" opacity="0" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<path stroke="#000" id="svg_15" d="m17.31264,36.93141c5.10197,-3.24994 8.21293,-6.87487 14.9326,-0.62499c6.71967,6.24988 12.94159,-2.37495 12.8789,-2.43207" fill-opacity="null" stroke-opacity="null" fill="none"/>
+		</g>
+	</pattern>
+	<pattern id="pattern-image3" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(255,240,209)"></rect>
+			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_20" y2="25" x2="50" y1="50" x1="25" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_25" y2="0.25047" x2="25" y1="25.25047" x1="0" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_26" y2="12.62524" x2="37.25024" y1="37.62524" x1="12.25024" fill-opacity="null" stroke-opacity="null" fill="none"/>
+		</g>
+	</pattern>
+	<pattern id="pattern-image4" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(254,238,179)"></rect>
+			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_27" y2="12.5" x2="51" y1="12.5" x1="0.06298" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_29" y2="37.5" x2="37.5" y1="37.5" x1="12.5" fill-opacity="null" stroke-opacity="null" fill="none"/>
+		</g>
+	</pattern>
+	<pattern id="pattern-image5" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(143,215,237)"></rect>
+			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_27" y2="12.5" x2="51" y1="12.5" x1="0.06298" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_29" y2="37.5" x2="16.6254" y1="37.5" x1="0" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_30" y2="37.5" x2="49.99976" y1="37.5" x1="33.37436" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_31" y2="37.5" x2="25.37523" y1="37.5" x1="24.12454" fill-opacity="null" stroke-opacity="null" fill="none"/>
+		</g>
+	</pattern>
+	<pattern id="pattern-image6" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(143,207,242)"></rect>
+			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_27" y2="12.5" x2="51" y1="12.5" x1="0.06298" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_29" y2="37.5" x2="16.6254" y1="37.5" x1="0" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_30" y2="37.5" x2="49.99976" y1="37.5" x1="33.37436" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_31" y2="37.5" x2="25.37523" y1="37.5" x1="24.12454" fill-opacity="null" stroke-opacity="null" fill="none"/>
+		</g>
+	</pattern>
+
+	<pattern id="pattern-image7" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(114,199,240)"></rect>
+			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_27" y2="12.5" x2="51" y1="12.5" x1="0.06298" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_29" y2="37.5" x2="16.6254" y1="37.5" x1="0" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_30" y2="37.5" x2="49.99976" y1="37.5" x1="33.37436" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_31" y2="37.5" x2="25.37523" y1="37.5" x1="24.12454" fill-opacity="null" stroke-opacity="null" fill="none"/>
+		</g>
+	</pattern>
+	<pattern id="pattern-image8" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(75,191,238)"></rect>
+			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_27" y2="12.5" x2="51" y1="12.5" x1="0.06298" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_29" y2="37.5" x2="16.6254" y1="37.5" x1="0" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_30" y2="37.5" x2="49.99976" y1="37.5" x1="33.37436" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_31" y2="37.5" x2="25.37523" y1="37.5" x1="24.12454" fill-opacity="null" stroke-opacity="null" fill="none"/>
+		</g>
+	</pattern>
+	<pattern id="pattern-image9" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(23,185,237)"></rect>
+			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_27" y2="12.5" x2="51" y1="12.5" x1="0.06298" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_29" y2="37.5" x2="16.6254" y1="37.5" x1="0" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_30" y2="37.5" x2="49.99976" y1="37.5" x1="33.37436" fill-opacity="null" stroke-opacity="null" fill="none"/>
+  			<line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_31" y2="37.5" x2="25.37523" y1="37.5" x1="24.12454" fill-opacity="null" stroke-opacity="null" fill="none"/>
+		</g>
+	</pattern>
+	<pattern id="pattern-image10" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(141,188,22)"></rect>
+			<circle cx="8" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="14" cy="8" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="35" cy="9" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="8" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="38" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="13" cy="42" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="43" cy="42" r="0.2" stroke="black" stroke-width="1" />
+			<text x="23" y="30" style="font-family:STFangSong;font-size:18px" >f</text>
+		</g>
+	</pattern>
+	<pattern id="pattern-image11" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(230,221,58)"></rect>
+			<path d="M 5 5 l 2 2"  stroke="black" stroke-width="1"> </path>
+			<path d="M 9 6 l 2 2"  stroke="black" stroke-width="1" ></path>
+			<path d="M 16 8 l 2 2" stroke="black" stroke-width="1" ></path>
+			<path d="M 43 9 l 2 2" stroke="black" stroke-width="1" ></path>
+			<path d="M 5 22 l 2 2" stroke="black" stroke-width="1" ></path>
+			<path d="M 5 44 l 2 2" stroke="black" stroke-width="1" ></path>
+			<path d="M 8 41 l 2 2" stroke="black" stroke-width="1" ></path>
+			<path d="M 40 41 l 2 2" stroke="black" stroke-width="1" ></path>
+			<path d="M 25 41 l 2 2" stroke="black" stroke-width="1" ></path>
+			<text x="20" y="35" style="font-family:STFangSong;font-size:26px" >X</text>
+		</g>
+	</pattern>
+	<pattern id="pattern-image12" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(244,237,94)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+		</g>
+	</pattern>
+		<pattern id="pattern-image13" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(244,237,94)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+		</g>
+	</pattern>
+	<pattern id="pattern-image14" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(244,237,94)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px" stroke-dasharray ="6"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px" stroke-dasharray ="6"></path>
+		</g>
+	</pattern>
+	<pattern id="pattern-image15" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+		<rect x="0" y="0" height="50" width="50" fill="rgb(252,198,202)"></rect>
+		<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+		<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+		<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+		</g>
+	</pattern>
+	<pattern id="pattern-image16" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(244,237,94)"></rect>
+			<circle cx="8" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="14" cy="8" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="35" cy="9" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="8" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="38" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="13" cy="42" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="43" cy="42" r="0.2" stroke="black" stroke-width="1" />
+			<text x="23" y="30" style="font-family:STFangSong;font-size:18px" >f</text>
+		</g>
+	</pattern>
+	<pattern id="pattern-image17" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(141,188,22)"></rect>
+			<circle cx="8" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="14" cy="8" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="35" cy="9" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="8" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="38" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="13" cy="42" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="43" cy="42" r="0.2" stroke="black" stroke-width="1" />
+			<text x="23" y="30" style="font-family:STFangSong;font-size:18px" >f</text>
+		</g>
+	</pattern>
+	<pattern id="pattern-image18" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(204,179,208)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+		</g>
+	</pattern>
+	<pattern id="pattern-image19" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(252,198,202)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px" stroke-dasharray ="6"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px" stroke-dasharray ="6"></path>
+		</g>
+	</pattern>
+	<pattern id="pattern-image20" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(244,237,94)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+		</g>
+	</pattern>
+	<pattern id="pattern-image21" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(141,188,22)"></rect>
+			<circle cx="8" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="14" cy="8" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="35" cy="9" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="8" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="38" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="13" cy="42" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="43" cy="42" r="0.2" stroke="black" stroke-width="1" />
+			<text x="23" y="30" style="font-family:STFangSong;font-size:18px" >f</text>
+		</g>
+	</pattern>
+	<pattern id="pattern-image22" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(223,100,109)"></rect>
+			<circle cx="8" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="14" cy="8" r="0.2" stroke="black" stroke-width="1" />
+			
+			<circle cx="8" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="38" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="8" cy="42" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="43" cy="42" r="0.2" stroke="black" stroke-width="1" />
+			<text x="20" y="35" style="font-family:STFangSong;font-size:26px">l</text>
+		</g>
+	</pattern>
+	<pattern id="pattern-image23" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(244,237,94)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+		</g>
+	</pattern>
+	<pattern id="pattern-image24" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(216,248,184)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+			<circle cx="18" cy="18" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="8" cy="8" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="8" cy="28" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="42" cy="20" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="20" cy="42" r="0.2" stroke="black" stroke-width="1" />
+			<circle cx="43" cy="42" r="0.2" stroke="black" stroke-width="1" />
+		</g>
+	</pattern>
+	<pattern id="pattern-image25" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(244,237,94)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+		</g>
+	</pattern>
+	<pattern id="pattern-image26" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			
+			<rect x="0" y="0" height="50" width="50" fill="rgb(141,188,22)"></rect>
+			<circle cx="8" cy="18" r="1" stroke="black" stroke-width="1" />
+			<circle cx="14" cy="8" r="1" stroke="black" stroke-width="1" />
+			<circle cx="35" cy="9" r="1" stroke="black" stroke-width="1" />
+			<circle cx="8" cy="18" r="1" stroke="black" stroke-width="1" />
+			<circle cx="38" cy="18" r="1" stroke="black" stroke-width="1" />
+			<circle cx="13" cy="42" r="1" stroke="black" stroke-width="1" />
+			<circle cx="43" cy="42" r="1" stroke="black" stroke-width="1" />
+			<text x="23" y="30" style="font-family:SimSun;font-size:20px" >f</text>
+		</g>
+	</pattern>
+	<pattern id="pattern-image27" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(244,237,94)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+		</g>
+	</pattern>
+	<pattern id="pattern-image28" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(141,188,22)"></rect>
+			<circle cx="8" cy="18" r="1" stroke="black" stroke-width="1" />
+			<circle cx="14" cy="8" r="1" stroke="black" stroke-width="1" />
+			<circle cx="35" cy="9" r="1" stroke="black" stroke-width="1" />
+			<circle cx="8" cy="18" r="1" stroke="black" stroke-width="1" />
+			<circle cx="38" cy="18" r="1" stroke="black" stroke-width="1" />
+			<circle cx="13" cy="42" r="1" stroke="black" stroke-width="1" />
+			<circle cx="43" cy="42" r="1" stroke="black" stroke-width="1" />
+			<text x="23" y="30" style="font-family:SimSun;font-size:20px" >f</text>
+		</g>
+	</pattern>
+	<pattern id="pattern-image29" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(244,237,94)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+		</g>
+	</pattern>
+	<pattern id="pattern-image30" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(244,237,94)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+		</g>
+	</pattern>
+	<pattern id="pattern-image31" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(141,188,22)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+		</g>
+	</pattern>
+	<pattern id="pattern-image32" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(244,237,94)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+		</g>
+	</pattern>
+	<pattern id="pattern-image33" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(204,179,208)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px" stroke-dasharray ="6"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px" stroke-dasharray ="6"></path>
+		</g>
+	</pattern>
+	<pattern id="pattern-image34" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(141,188,22)"></rect>
+			<circle cx="8" cy="18" r="1" stroke="black" stroke-width="1" />
+			<circle cx="14" cy="8" r="1" stroke="black" stroke-width="1" />
+			<circle cx="35" cy="9" r="1" stroke="black" stroke-width="1" />
+			<circle cx="8" cy="18" r="1" stroke="black" stroke-width="1" />
+			<circle cx="38" cy="18" r="1" stroke="black" stroke-width="1" />
+			<circle cx="13" cy="42" r="1" stroke="black" stroke-width="1" />
+			<circle cx="43" cy="42" r="1" stroke="black" stroke-width="1" />
+			<text x="23" y="30" style="font-family:SimSun;font-size:20px" >f</text>
+		</g>
+	</pattern>
+	<pattern id="pattern-image35" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(244,237,94)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+		</g>
+	</pattern>
+	<pattern id="pattern-image36" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(141,188,22)"></rect>
+			<circle cx="8" cy="18" r="1" stroke="black" stroke-width="1" />
+			<circle cx="14" cy="8" r="1" stroke="black" stroke-width="1" />
+			<circle cx="35" cy="9" r="1" stroke="black" stroke-width="1" />
+			<circle cx="8" cy="18" r="1" stroke="black" stroke-width="1" />
+			<circle cx="38" cy="18" r="1" stroke="black" stroke-width="1" />
+			<circle cx="13" cy="42" r="1" stroke="black" stroke-width="1" />
+			<circle cx="43" cy="42" r="1" stroke="black" stroke-width="1" />
+			<text x="23" y="30" style="font-family:SimSun;font-size:20px" >f</text>
+		</g>
+	</pattern>
+	<pattern id="pattern-image37" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(244,237,94)"></rect>
+			<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray ="8"></path>
+			<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+			<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+		</g>
+	</pattern>
+
+	<!-- <pattern id="pattern-imagegrey" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(211,211,211)"></rect>
+		</g>
+	</pattern> -->
+	
+
+</defs>
+<defs id="mydefs_1" ></defs>
+
+<g id="lines">//画出大矩形框
+	<rect x="100" y="100" width="1800" height="700" stroke="black" stroke-width="1" fill=none>
+</g>
+
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath1);" fill="url(#pattern-image1)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath2);" fill="url(#pattern-image2)" stroke="black" stroke-width="1"/>
+</g>
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath3);" fill="url(#pattern-image3)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath4);" fill="url(#pattern-image4)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath5);" fill="url(#pattern-image5)" stroke="black" stroke-width="1"/>
+</g>
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath6);" fill="url(#pattern-image6)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath7);" fill="url(#pattern-image7)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath8);" fill="url(#pattern-image8)" stroke="black" stroke-width="1"/>
+</g>
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath9);" fill="url(#pattern-image9)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath10);" fill="url(#pattern-image10)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath11);" fill="url(#pattern-image11)" stroke="black" stroke-width="1"/>
+</g>
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath12);" fill="url(#pattern-image12)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath13);" fill="url(#pattern-image13)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath14);" fill="url(#pattern-image14)" stroke="black" stroke-width="1"/>
+</g>
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath15);" fill="url(#pattern-image15)" stroke="black" stroke-width="1"/>
+</g>
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath16);" fill="url(#pattern-image16)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath17);" fill="url(#pattern-image17)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath18);" fill="url(#pattern-image18)" stroke="black" stroke-width="1"/>
+</g>
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath19);" fill="url(#pattern-image19)" stroke="black" stroke-width="1"/>
+</g>
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath20);" fill="url(#pattern-image20)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath21);" fill="url(#pattern-image21)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath22);" fill="url(#pattern-image22)" stroke="black" stroke-width="1"/>
+</g>
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath23);" fill="url(#pattern-image23)" stroke="black" stroke-width="1"/>
+</g>
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath24);" fill="url(#pattern-image24)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath25);" fill="url(#pattern-image25)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath26);" fill="url(#pattern-image26)" stroke="black" stroke-width="1"/>
+</g>
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath27);" fill="url(#pattern-image27)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath28);" fill="url(#pattern-image28)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath29);" fill="url(#pattern-image29)" stroke="black" stroke-width="1"/>
+</g>
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath30);" fill="url(#pattern-image30)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath31);" fill="url(#pattern-image31)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath32);" fill="url(#pattern-image32)" stroke="black" stroke-width="1"/>
+</g>
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath33);" fill="url(#pattern-image33)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath34);" fill="url(#pattern-image34)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath35);" fill="url(#pattern-image35)" stroke="black" stroke-width="1"/>
+</g>
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath36);" fill="url(#pattern-image36)" stroke="black" stroke-width="1"/>
+</g> 
+<g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath37);" fill="url(#pattern-image37)" stroke="black" stroke-width="1"/>
+</g> 
+<!-- <g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath_fill_grey);" fill="url(#pattern-imagegrey)" stroke="black" stroke-width="1"/>
+</g> --> 
+
+<g id="ruler">//画标尺和钻孔竖线
+
+
+//画下部标尺，保证标尺均匀分布，计算出
+ 
+ <path id="line1"   d="M 100 830 l 1800 0" stroke="black" stroke-width="5" stroke-dasharray ="180,180" />
+ <path id="line1_t" d="M 100 828 l 1800 0" stroke="black" stroke-width="1" />
+ <path id="line1_b" d="M 100 832 l 1800 0" stroke="black" stroke-width="1" />
+
+ 
+ //画左侧标尺
+ <path id="line2"   d="M 60 100 l 0 700" stroke="black" stroke-width="5" stroke-dasharray ="70,70" />
+ <path id="line2_t" d="M 58 100 l 0 700" stroke="black" stroke-width="1" />
+ <path id="line2_b" d="M 62 100 l 0 700" stroke="black" stroke-width="1" />
+ 
+
+</g>
+
+	
+<g id="ruler_1"></g>
+<g id="lines_1">
+</g>
+<g id= "tuli"> 
+</g>
+<g id="hole_lines">
+</g>
+<g id = "text">
+</g>
+
+</svg>
+
+
+
+
+</div>
+<!-- <canvas id="canvas" z-index="1000" width="1800" height="700"></canvas>
+<input type="hidden" id="data" name="data"> -->
+</body>
+
+<script src="svgCopy.js"></script>
+</html>
