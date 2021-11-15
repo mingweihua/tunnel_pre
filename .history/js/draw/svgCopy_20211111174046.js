@@ -1,4 +1,4 @@
-
+function drawSvg1() {
 	let hole_mtx_1 = window.opener.hole_mtx_1;
 	let delt_h = window.opener.delt_h;
 	let holes = window.opener.holes;
@@ -669,7 +669,7 @@ var layer_arr =mtx_dict["layer_arr"];
 draw(depth_mtx,length_add_array,holes,h_ratio);
 draw_nothing_and_tuli(depth_mtx,holes,length_add_array,layer_arr,h_ratio);
 
-//结束drawsvg
+}//结束drawsvg
 
 
 // window.onload = function(){

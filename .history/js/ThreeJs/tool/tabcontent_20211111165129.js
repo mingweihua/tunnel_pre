@@ -68,7 +68,7 @@ $("#tabcontent2 a").click(function () {
             
             Model_operation.drawSvg();
             window.open("../../../svg copy.html");
-            // drawSvg1();
+            drawSvg1();
             
             break;
         case "钻孔柱状图":

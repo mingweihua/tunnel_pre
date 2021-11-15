@@ -65,11 +65,9 @@ $("#tabcontent2 a").click(function () {
             window.addEventListener("click", Model_operation.addPointForCutting, false);
             break;
         case "二维剖切":
-            
-            Model_operation.drawSvg();
             window.open("../../../svg copy.html");
-            // drawSvg1();
-            
+             Model_operation.drawSvg();
+             drawSvg1();
             break;
         case "钻孔柱状图":
             zuankongMessage(globalModel.currentName);
