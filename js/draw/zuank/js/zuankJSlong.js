@@ -53,7 +53,8 @@ window.onload  =function(){
 			       
 				   for(var y=1;y<=YS;y++){
 				   //------表头--------	
-					document.getElementById("ZKBHA"+y).innerHTML="ZK"+o[0].holeid;
+					//document.getElementById("ZKBHA"+y).innerHTML="ZK"+o[0].holeid;
+					document.getElementById("ZKBHA"+y).innerHTML=o[0].holecode;
 					document.getElementById("XZBA"+y).innerHTML="x="+o[0].x+"m";				
 					document.getElementById("ZKBGA"+y).innerHTML=o[0].height+"m";
 					document.getElementById("YZBA"+y).innerHTML="y="+o[0].y+"m";
@@ -89,7 +90,8 @@ window.onload  =function(){
 					       
 						   for(var y=1;y<=YS;y++){
 						   //------表头--------	
-							document.getElementById("ZKBHA"+y).innerHTML="ZK"+o[0].holeid;
+							//document.getElementById("ZKBHA"+y).innerHTML="ZK"+o[0].holeid;
+							document.getElementById("ZKBHA"+y).innerHTML=o[0].holecode;
 							document.getElementById("XZBA"+y).innerHTML="x="+o[0].x+"m";				
 							document.getElementById("ZKBGA"+y).innerHTML=o[0].height+"m";
 							document.getElementById("YZBA"+y).innerHTML="y="+o[0].y+"m";
@@ -578,14 +580,16 @@ function huaTu(){
 							case "14-4": stratum_level = 37;break;
 							default:stratum_level = 37;break;
 						}*/
-						switch(o2[i].stratlevel)
-						{
-							case "1": stratum_level = 10;break;
-							case "5-2": stratum_level = 7;break;
-							case "5-3": stratum_level = 8;break;
-							default:stratum_level = 37;break;
+						switch(o2[i].stratlevel) {
+								case "1": stratum_level = 10;break;
+								case "5-2": stratum_level = 7;break;
+								case "5-3": stratum_level = 8;break;
+								default:stratum_level = 37;break;
 						}
-				        document.getElementById("TL"+y+i).style.backgroundImage="url(js/draw/zuank/jpg/"+stratum_level.toString()+".png)";
+
+						document.getElementById("TL"+y+i).style.backgroundImage="url(js/draw/zuank/jpg_new/"+o2[i].pic+".png)";
+				        //document.getElementById("TL"+y+i).style.backgroundImage="url(js/draw/zuank/jpg/"+stratum_level.toString()+".png)";
+
 						
 						var CDGC=o[0].height-o2[i].btmdepth;
 				        var CDGCT;
@@ -716,7 +720,7 @@ function huaTu(){
 						var inx='col_1'.split('_')[1];
 						if(value<38){
 							//return "<img class='imgDemo' style='height:auto' src='jpg/"+value+".jpg'/>";		
-							return "<div style='width:80px;height:80px;background-Image:url(js/draw/zuank/jpg/"+value+".png)' onMouseOut='this.style.height=\"80px\";this.style.width=\"80px\";this.style.border=\"0px\";' onMouseOver='this.style.width=\"70px\";this.style.height=\"70px\";this.style.border=\"2px red solid\";' onclick='changeImage(targetID,this.style.backgroundImage);'></div>";
+							return "<div style='width:80px;height:80px;background-Image:url(js/draw/zuank/jpg_new/"+value+".png)' onMouseOut='this.style.height=\"80px\";this.style.width=\"80px\";this.style.border=\"0px\";' onMouseOver='this.style.width=\"70px\";this.style.height=\"70px\";this.style.border=\"2px red solid\";' onclick='changeImage(targetID,this.style.backgroundImage);'></div>";
 						}
 					}
 				
