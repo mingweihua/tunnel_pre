@@ -272,7 +272,8 @@ class Model_operation {
     }
 
     static identifyLayer(group, modelName) {
-        let name = modelName.split("Model")[0];
+        let name = modelName;
+        //let name = modelName.split("Model")[0];
         raycaster = new THREE.Raycaster();
         mouseVector = new THREE.Vector3();
         pointer = new THREE.Vector2();
