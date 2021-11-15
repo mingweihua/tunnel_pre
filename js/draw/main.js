@@ -1,7 +1,8 @@
 function zuankongMessage(name){
-    console.log(name);
-    let url = "http://localhost:8080/getZuankongMessage?subwayid=MYS1";
-    $('#ZuanKongMessage').bootstrapTable({
+    //console.log(name);
+    let real_name = name.split("Model")[0];
+    let url = "http://localhost:8080/getZuankongMessage?subwayid=" + real_name;
+    let option = {
         url: url,
         idField: 'holeid',
         showRefresh: true,
@@ -39,6 +40,8 @@ function zuankongMessage(name){
             console.log(field);*/
             window.open("zuankonglong.html"+"?holeid="+row.holeid);
         }
-    });
+    };
+    $('#ZuanKongMessage').bootstrapTable("destroy");
+    $('#ZuanKongMessage').bootstrapTable(option);
     $('#ZuanKongModal').modal('show');
 }
