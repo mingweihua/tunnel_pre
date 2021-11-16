@@ -76,6 +76,13 @@ $("#tabcontent2 a").click(function () {
         case "钻孔柱状图":
             zuankongMessage(globalModel.currentName);
             break;
+        case "地层透明化":
+            Model_operation.geoTransparent(globalModel.three3dObject.currentModel);
+            break;
+        case "地层复原":
+            Model_operation.geoTransparentReset(globalModel.three3dObject.currentModel);
+            Model_operation.separation_reset(globalModel.three3dObject.currentModel);
+            break;
     }
 })
 

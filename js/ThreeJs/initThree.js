@@ -56,7 +56,7 @@ function init() {
     globalModel = new model('tunnel');
     globalModel.load("model/MYS1.obj","model/MYS1.mtl","MYS1Model",1);
     //globalModel.load("model/618_all.obj");
-    console.log(globalModel.three3dObject.group_pouqie.currentModel);
+    //console.log(globalModel.three3dObject.group_pouqie.currentModel);
 
 
     //设置云图需要的对象

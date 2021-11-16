@@ -301,4 +301,26 @@ class Model_operation {
         }
     }
 
+
+    static geoTransparent(currentModel) {
+        let length = currentModel.children.length;
+        for (let i = 0; i < length; i++) {
+            if(currentModel.children[i].name.indexOf("tunnel") == -1){
+                let material = currentModel.children[i].material;
+                material.transparent = true;
+                material.opacity = 0.5;
+            }
+        }
+    }
+
+    static geoTransparentReset(currentModel) {
+        let length = currentModel.children.length;
+        for (let i = 0; i < length; i++) {
+            if(currentModel.children[i].name.indexOf("tunnel") == -1){
+                let material = currentModel.children[i].material;
+                material.opacity = 1;
+                material.transparent = false;
+            }
+        }
+    }
 }
