@@ -40,6 +40,11 @@ class Model_operation {
         } else {
             globalModel.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
         }
+
+        $("#echart1").css({
+            "background" : "url(/images/textures/"+ modelName.split("Model")[0] +".png) center no-repeat",
+            "background-size" : "contain"
+        });
     }
 
     //换上剖切模型的方法
