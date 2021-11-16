@@ -10,11 +10,14 @@ function init() {
     renderer.localClippingEnabled = true;
     renderer.shadowMap.enabled = true;
     renderer.setPixelRatio(window.devicePixelRatio);
-    //renderer.setClearColor( 0xcccccc );
+    renderer.setClearColor( 'white' );
     scene = new THREE.Scene();
+    const texture = new THREE.TextureLoader().load( '/images/sky.jpg' );
+    scene.background = texture;
+
+
     camera = new THREE.PerspectiveCamera(45, $('#model_webgl').width() / $('#model_webgl').height(), 0.1, 100000000);
-    camera.position.set( 500, 800, 1300 );
-    camera.lookAt( 0, 0, 0 );
+    camera.position.set( 800, 500, 500 );
 
 
 
@@ -26,7 +29,7 @@ function init() {
     controls.minDistance = 1;
     controls.maxDistance = 5000;
     controls.maxPolarAngle = Math.PI / 2;
-    controls.target = new THREE.Vector3(0, 1, 1);
+    controls.target = new THREE.Vector3(0, 1, -500);
 
 
     scene.add( new THREE.AmbientLight( 0xffffff, 0.5 ) );
@@ -44,10 +47,10 @@ function init() {
     scene.add( dirLight );
 
     // add helper
-    three_helper = new THREE.GridHelper(4000, 60, 0xFF4444, 0x404040);
+    /*three_helper = new THREE.GridHelper(4000, 60, 0xFF4444, 0x404040);
     three_helper.name = 'three_helper';
     three_helper.scale.z = 1;
-    scene.add(three_helper);
+    scene.add(three_helper);*/
 
     //加载模型
     globalModel = new model('tunnel');

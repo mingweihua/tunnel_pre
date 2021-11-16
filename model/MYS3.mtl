@@ -1,38 +1,96 @@
-# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# 创建的文件:26.07.2021 20:09:24
+# 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
+# 创建的文件:15.11.2021 19:08:56
 
-newmtl 01___Default
-	Ns 10.00
-	Ni 1.50
-	d 1.00
-	Tr 0.00
-	Tf 1.00 1.00 1.00 
+newmtl 07___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
 	illum 2
-	Ka 0.59 0.59 0.00
-	Kd 0.59 0.59 0.00
-	Ks 0.00 0.00 0.00
-	Ke 0.00 0.00 0.00
-
-newmtl 02___Default
-	Ns 10.00
-	Ni 1.50
-	d 1.00
-	Tr 0.00
-	Tf 1.00 1.00 1.00 
-	illum 2
-	Ka 0.59 0.00 0.59
-	Kd 0.59 0.00 0.59
-	Ks 0.00 0.00 0.00
-	Ke 0.00 0.00 0.00
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka ..\images\textures\10.png
+	map_Kd ..\images\textures\10.png
 
 newmtl 03___Default
-	Ns 10.00
-	Ni 1.50
-	d 1.00
-	Tr 0.00
-	Tf 1.00 1.00 1.00 
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
 	illum 2
-	Ka 0.00 0.59 0.59
-	Kd 0.00 0.59 0.59
-	Ks 0.00 0.00 0.00
-	Ke 0.00 0.00 0.00
+	Ka 0.5900 0.5900 0.0000
+	Kd 0.5900 0.5900 0.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka ..\images\textures\8.png
+	map_Kd ..\images\textures\8.png
+
+newmtl 13___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5608 0.8745 0.3373
+	Kd 0.5608 0.8745 0.3373
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl 02___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5900 0.0000 0.5900
+	Kd 0.5900 0.0000 0.5900
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka ..\images\textures\7.png
+	map_Kd ..\images\textures\7.png
+
+newmtl 01___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.5900 0.5900
+	Kd 0.0000 0.5900 0.5900
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka ..\images\textures\13.png
+	map_Kd ..\images\textures\13.png
+
+newmtl 08___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka ..\images\textures\14.png
+	map_Kd ..\images\textures\14.png
+
+newmtl 09___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5216 0.0235 0.0235
+	Kd 0.5216 0.0235 0.0235
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
