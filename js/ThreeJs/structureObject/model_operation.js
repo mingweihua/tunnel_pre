@@ -308,7 +308,7 @@ class Model_operation {
             if(currentModel.children[i].name.indexOf("tunnel") == -1){
                 let material = currentModel.children[i].material;
                 material.transparent = true;
-                material.opacity = 0.5;
+                material.opacity = 0.4;
             }
         }
     }
