@@ -85,7 +85,7 @@ $("#tabcontent2 a").click(function () {
             break;
         case "隧道漫游":
             $(this).html("暂停漫游");
-            GeoRoam.start(globalModel.currentName);
+            GeoRoam.start(globalModel);
             break;
         case "暂停漫游":
             $(this).html("继续漫游");
@@ -97,7 +97,7 @@ $("#tabcontent2 a").click(function () {
             break;
         case "漫游重置":;
             $("#roam").html("隧道漫游");
-            GeoRoam.reset();
+            GeoRoam.reset(globalModel);
             break;
     }
 })

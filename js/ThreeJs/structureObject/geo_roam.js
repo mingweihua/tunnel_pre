@@ -9,7 +9,14 @@
 
 class GeoRoam {
 
-    static start(modelName) {
+    static start(globalModel) {
+        let modelName = globalModel.currentName;
+        let length = globalModel.three3dObject.currentModel.children.length;
+        for (let i = 0; i < length; i++) {
+            if( globalModel.three3dObject.currentModel.children[i].name.indexOf("tunnel") != -1){
+                globalModel.three3dObject.currentModel.children[i].visible = false;
+            }
+        }
         controls.dispose();
         console.log(modelName);
         camera.position.set(roamData[modelName].start.x,
@@ -34,8 +41,14 @@ class GeoRoam {
         tween.start();
     }
 
-    static reset() {
+    static reset(globalModel) {
         this.stop();
+        let length = globalModel.three3dObject.currentModel.children.length;
+        for (let i = 0; i < length; i++) {
+            if( globalModel.three3dObject.currentModel.children[i].name.indexOf("tunnel") != -1){
+                globalModel.three3dObject.currentModel.children[i].visible = true;
+            }
+        }
         camera.position.set( 800, 500, 500 );
         controls = new THREE.MapControls(camera, renderer.domElement);
         controls.enableDamping = true; // an animation loop is required when either damping or auto-rotation are enabled
