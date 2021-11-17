@@ -34,8 +34,8 @@ function init() {
 
     scene.add( new THREE.AmbientLight( 0xffffff, 0.5 ) );
 
-    let dirLight = new THREE.DirectionalLight( 0xffffff, 0.7 );
-    dirLight.position.set( 5, 10, 7.5 );
+    let dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
+    dirLight.position.set( 50, 100, 75 );
     dirLight.castShadow = true;
     dirLight.shadow.camera.right = 2;
     dirLight.shadow.camera.left = - 2;
