@@ -83,6 +83,22 @@ $("#tabcontent2 a").click(function () {
             Model_operation.geoTransparentReset(globalModel.three3dObject.currentModel);
             Model_operation.separation_reset(globalModel.three3dObject.currentModel);
             break;
+        case "隧道漫游":
+            $(this).html("暂停漫游");
+            GeoRoam.start(globalModel);
+            break;
+        case "暂停漫游":
+            $(this).html("继续漫游");
+            GeoRoam.stop();
+            break;
+        case "继续漫游":
+            $(this).html("暂停漫游");
+            GeoRoam.continue();
+            break;
+        case "漫游重置":;
+            $("#roam").html("隧道漫游");
+            GeoRoam.reset(globalModel);
+            break;
     }
 })
 

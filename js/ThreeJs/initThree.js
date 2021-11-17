@@ -27,15 +27,15 @@ function init() {
     controls.dampingFactor = 0.25;
     controls.screenSpacePanning = false;
     controls.minDistance = 1;
-    controls.maxDistance = 5000;
-    controls.maxPolarAngle = Math.PI / 2;
+    controls.maxDistance = 500000;
+    controls.maxPolarAngle = Math.PI * 3 / 4;
     controls.target = new THREE.Vector3(0, 1, -500);
 
 
     scene.add( new THREE.AmbientLight( 0xffffff, 0.5 ) );
 
-    let dirLight = new THREE.DirectionalLight( 0xffffff, 0.7 );
-    dirLight.position.set( 5, 10, 7.5 );
+    let dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
+    dirLight.position.set( 50, 100, 75 );
     dirLight.castShadow = true;
     dirLight.shadow.camera.right = 2;
     dirLight.shadow.camera.left = - 2;
