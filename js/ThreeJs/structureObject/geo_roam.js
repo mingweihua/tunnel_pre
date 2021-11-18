@@ -26,7 +26,9 @@ class GeoRoam {
             roamData[modelName].end.y,
             roamData[modelName].end.z);
         tween = new TWEEN.Tween( camera.position);
-        tween.to(roamData[modelName].end,roamData[modelName].time);
+        tween.to(roamData[modelName].end,
+            roamData[modelName].time
+        );
         tween.onUpdate(function(){
             camera.lookAt(this.x,this.y,this.z);
         })
@@ -37,7 +39,16 @@ class GeoRoam {
         tween.stop();
     }
 
-    static continue() {
+    static continue(globalModel) {
+        let modelName = globalModel.currentName;
+        tween = new TWEEN.Tween( camera.position);
+        tween.to(roamData[modelName].end,
+            //这个时间设置根据前进的位移进行线性求解，免得后续暂停和启动漫游速度变慢
+            (roamData[modelName].time *(camera.position.z - roamData[modelName].end.z)/( roamData[modelName].start.z-roamData[modelName].end.z))
+        );
+        tween.onUpdate(function(){
+            camera.lookAt(this.x,this.y,this.z);
+        })
         tween.start();
     }
 

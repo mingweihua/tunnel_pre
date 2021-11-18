@@ -93,7 +93,7 @@ $("#tabcontent2 a").click(function () {
             break;
         case "继续漫游":
             $(this).html("暂停漫游");
-            GeoRoam.continue();
+            GeoRoam.continue(globalModel);
             break;
         case "漫游重置":;
             $("#roam").html("隧道漫游");
@@ -129,6 +129,11 @@ $("#tabcontent4 a").click(function () {
             break;
         case "隧道出口平面分析":
             PFC_function.showPFC(globalModel, 'out', 'nn_out_Chart', 'nn_out_Modal');
+            break;
+        case "风险分析":
+            /*window.open("/pdf/test.pdf");*/
+            window.open('/pdf/test.pdf', 'newwindow',
+                'height=500, width=800, top=200, left=300, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')
             break;
     }
 })
