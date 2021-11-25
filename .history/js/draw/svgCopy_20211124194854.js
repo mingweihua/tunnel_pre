@@ -459,47 +459,47 @@ function draw(depth_mtx,length_add_array,holes,h_ratio){//输入矩阵信息和x
 //填充物图例的文字说明
 var strN = new Array();
 strN[0] ="岩溶充填物";
-strN[1] ="中风化板岩夹千枚岩";
-strN[2] ="强风化板岩夹千枚岩";
-strN[3] ="碎石土";
-strN[4] ="构造破碎带";
-strN[5] ="混合花岗岩";
-strN[6] ="变质砂岩";
-strN[7] ="千枚状砂岩";
-strN[8] ="强风化层";
-strN[9] ="全风化层";
-strN[10]="粉质粘土";
-strN[11]="裂隙密集带";
-strN[12]="节理密集带";
-strN[13]="花岗片麻岩";
-strN[14]="断层破碎带";
-strN[15]="中风化千枚岩夹板岩";
-strN[16]="中风化页岩";
-strN[17]="强风化千枚岩";
-strN[18]="强风化页岩";
-strN[19]="粉质粘土夹碎石";
-strN[20]="构造破碎带";
-strN[21]="中风化板岩";
-strN[22]="强风化板岩夹千枚岩";
-strN[23]="碎石土";
-strN[24]="粉质粘土";
-strN[25]="破碎带或裂隙密集发育带";
-strN[26]="中风化灰岩夹页岩";
-strN[27]="强风化灰岩夹页岩";
-strN[28]="全风化页岩";
-strN[29]="粉质粘土夹碎石";
-strN[30]="溶蚀发育区";
-strN[31]="中风化灰岩";
-strN[32]="岩溶发育区";
-strN[33]="中风化砂岩夹页岩";
-strN[34]="中风化页岩夹砂岩";
-strN[35]="推测构造破碎带";
-strN[36]="破碎层";
-strN[37]="千枚状砂岩、变质砂岩夹千枚岩、炭质千枚岩";
-strN[38]="变质砂岩、板岩、局部含炭、石英岩、硅质岩，夹灰岩透镜体";
-strN[39]="强风化层";
-strN[40]="灰岩、炭质灰岩夹页岩";
-strN[41]="残坡积土及全风化层";
+strN[1] ="全新世 1 填土";
+strN[2] ="全新世 2-1 粉质粘土";
+strN[3] ="全新世 2-2 粉土";
+strN[4] ="全新世 2-3 粉砂（粉土）";
+strN[5] ="全新世 2-4 淤泥质粉质黏土";
+strN[6] ="全新世 2-5 粉砂";
+strN[7] ="全新世 2-6 粉砂";
+strN[8] ="全新世 2-6b 粉质粘土";
+strN[9] ="晚更新世 2-7 粉砂";
+strN[10]="晚更新世 3-1 粉砂（细砂）";
+strN[11]="晚更新世 3-2 细砂（中粗砂）";
+strN[12]="晚更新世 4-1 粉质粘土";
+strN[13]="晚更新世 4-2 粉质粘土";
+strN[14]="晚更新世 4-3 粉粘黏土夹粉土";
+strN[15]="晚更新世 5-1 粉土、粉砂";
+strN[16]="晚更新世 5-2 粉质粘土";
+strN[17]="晚更新世 5-3 粉砂";
+strN[18]="晚更新世 6 粘土、粉质粘土";
+strN[19]="晚更新世 7-1 粉土、粉砂";
+strN[20]="晚更新世 7-2 粉质粘土";
+strN[21]="中更新世 8-1 粉砂、细砂";
+strN[22]="中更新世 8-2 砾砂（砾石层）";
+strN[23]="中更新世 9-1 粉质粘土";
+strN[24]="中更新世 9-2 粉质黏土夹砂";
+strN[25]="中更新世 9-3 粉质粘土";
+strN[26]="中更新世 10 粉（细）砂";
+strN[27]="中更新世 11-1 粉质粘土";
+strN[28]="中更新世 11-2 粉（细）砂";
+strN[29]="中更新世 11-3 粉质粘土、粘土";
+strN[30]="中更新世 11-4 粉质粘土夹粉土";
+strN[31]="中更新世 12 粉（细、中）砂";
+strN[32]="中更新世 13-1 粉质粘土";
+strN[33]="中更新世 13-2 粘土、粉质粘土";
+strN[34]="早更新世 14-1 粉砂";
+strN[35]="早更新世 14-2 粉质粘土、粘土";
+strN[36]="早更新世 14-3 粉砂、细砂";
+strN[37]="早更新世 14-4 粉质粘土";
+strN[38]="早更新世 14-4 粉质粘土";
+strN[39]="早更新世 14-4 粉质粘土";
+strN[40]="早更新世 14-4 粉质粘土";
+strN[41]="早更新世 14-4 粉质粘土";
 
 function draw_nothing_and_tuli(depth_mtx,holes,length_add_array,layer_arr,h_ratio){//对于图中不会出现的图层
 	var w_ratio = width / length_add_array[length_add_array.length-1];
@@ -514,7 +514,7 @@ function draw_nothing_and_tuli(depth_mtx,holes,length_add_array,layer_arr,h_rati
 	for (var j=1;j<42;j++){
 		if (layer_arr.indexOf(j)==-1){
 			var clippath = document.createElementNS(quote,"clipPath");
-			clippath.setAttribute("id","clipPath"+ (j).toString());
+			clippath.setAttribute("id","clipPath"+ (42-j).toString());
 			var path =document.createElementNS(quote,"path");
 			path.setAttribute("d","M 1 1");
 			path.setAttribute("stroke","black");
@@ -531,7 +531,7 @@ function draw_nothing_and_tuli(depth_mtx,holes,length_add_array,layer_arr,h_rati
 			
 			rect.setAttribute("width","50");
 			rect.setAttribute("height","20");
-			rect.setAttribute("fill","url(#pattern-image"+(j).toString() + ")");
+			rect.setAttribute("fill","url(#pattern-image"+(42-j).toString() + ")");
 			g_tuli.appendChild(rect);
 			//添加图例文字说明
 			var g_text = document.getElementById("text");
