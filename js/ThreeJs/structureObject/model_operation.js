@@ -176,14 +176,13 @@ class Model_operation {
 
     //——————————————————三维任意两点剖切获取剖切面————————————————————————————————————
     static twoPointSection() {
-        let point1 = [];
-        let point2 = [];
-        let point3 = [];
+        let point1 = new THREE.Vector3();
+        let point2 = new THREE.Vector3();
+        let point3 = new THREE.Vector3();
 
         for (let i = 0; i < Model_operation.stratificationInformation.length; i++) {
             sectionPoint[i] = [];
             //
-            delt_h.push(Model_operation.stratificationInformation[i][0].point.y);
 
             //配置holes：钻孔信息:钻孔编号，编码，x,z,孔口高，总高度
             holes[i] = [];
