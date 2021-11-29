@@ -1,9 +1,12 @@
 
+//设置newPlane为任意选点组成的剖面
+var newPlane = new THREE.Plane();
 
 var planes = [
     new THREE.Plane(new THREE.Vector3(-1, 0, 0), 1000),
     new THREE.Plane(new THREE.Vector3(0, -1, 0), 1000),
-    new THREE.Plane(new THREE.Vector3(0, 0, -1), 1000)
+    new THREE.Plane(new THREE.Vector3(0, 0, -1), 1000),
+    // new THREE.Plane().setFromCoplanarPoints(new THREE.Vector3(2,3,4),new THREE.Vector3(2,4,4),new THREE.Vector3(2,3,6))
 ];
 var planeHelpers;
 
@@ -54,4 +57,18 @@ function createPlaneStencilGroup(geometry, plane, renderOrder) {
 
 }
 
-
+/*function controlGUI(value){
+    if(value=="显示剖切面板"){
+        console.log(material);
+        $("#gui").show();
+        $("#pouqieMB").html("隐藏剖切面板");
+        Model_operation.sectionModel(globalModel,currentName);
+        console.log(globalModel.three3dObject.group_pouqie.currentModel);
+        
+    } else {
+        $("#gui").hide();
+        $("#pouqieMB").html("显示剖切面板");
+        Model_operation.changeModel(globalModel,currentName);
+        
+    }
+}*/

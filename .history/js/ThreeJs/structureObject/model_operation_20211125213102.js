@@ -11,7 +11,6 @@ let geoSeparation_h = 0;
 var hole_mtx_1 = []; //是总的矩阵信息数组，是三维数组最外围是钻孔数量，内部包含2个数组（钻孔层信息数组和钻孔深度信息数组）
 var delt_h = []; //是最高点高度在数组里为0，然后减去对应其他钻孔孔口高度，得到正值
 var holes = []; //钻孔信息:钻孔编号，编码，x,y,空口高，总高度
-var sectionPoint = []; //存贮组成选点剖切的剖切面三个点
 
 //用例
 // hole_mtx_1 = [[[1, 2, 3, 4, 5, 6, 7],
@@ -146,17 +145,22 @@ class Model_operation {
             hole_mtx_last[i] = [];
 
             for (let j = 0; j < Model_operation.stratificationInformation[i].length; j++) {
-                if (isNaN(Model_operation.stratificationInformation[i][j].object.name.valueOf()) == false) { //排除holes和tunnels地层
+                if (isNaN(Model_operation.stratificationInformation[i][j].object.name.valueOf()) == false) {//排除holes和tunnels地层
 
                     let c = Model_operation.stratificationInformation[i][j].object.name.valueOf();
                     let d = y - Model_operation.stratificationInformation[i][j].point.y;
                     hole_mtx_first[i].push(42 - geoData[globalModel.currentName][c].tuli); //将地层信息转化为统一数字序列
                     hole_mtx_last[i].push(d); //将地层信息转化为统一数字序列
                 }
+
+
+
             }
             hole_mtx_last[i].push(a); //最后加一个最底层钻孔深度
 
             hole_mtx_1[i] = [hole_mtx_first[i], hole_mtx_last[i]];
+
+
         }
 
         //第二次循环用来配置delt_h
@@ -166,31 +170,12 @@ class Model_operation {
             delt_h.splice(i, 1, b);
         }
 
+
         //查看数组
         console.log(hole_mtx_1);
         console.log(delt_h);
         console.log(holes);
 
-    }
-
-
-    //——————————————————三维任意两点剖切获取剖切面————————————————————————————————————
-    static twoPointSection() {
-        let point1 = [];
-        let point2 = [];
-        let point3 = [];
-
-        for (let i = 0; i < Model_operation.stratificationInformation.length; i++) {
-            sectionPoint[i] = [];
-            //
-            delt_h.push(Model_operation.stratificationInformation[i][0].point.y);
-
-            //配置holes：钻孔信息:钻孔编号，编码，x,z,孔口高，总高度
-            holes[i] = [];
-            let x = Model_operation.stratificationInformation[i][0].point.x;
-            let y = Model_operation.stratificationInformation[i][0].point.y;
-            let z = Model_operation.stratificationInformation[i][0].point.z;
-        }
     }
 
 

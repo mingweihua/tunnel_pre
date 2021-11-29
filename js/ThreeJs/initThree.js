@@ -8,7 +8,7 @@ function init() {
     });
     renderer.setSize($('#model_webgl').width(), $('#model_webgl').height());
     renderer.localClippingEnabled = true;
-    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.enabled = false;
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setClearColor( 'white' );
     scene = new THREE.Scene();

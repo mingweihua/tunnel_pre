@@ -66,7 +66,7 @@ class model extends model_Father {
 		var po = [];
 		var clippedColorFront = [];
 
-		// let modelName = thisObject.currentName.split("Model")[0];
+		let modelName = thisObject.currentName.split("Model")[0];
 		for (let i = 0; i < group.children.length; i++) {
 			let layerName = group.children[i].name;
 			if(geoData[thisObject.currentName][layerName] != undefined){
@@ -101,11 +101,11 @@ class model extends model_Father {
 			stencilGroup[i] = [];
 
 			var planeGeom = new THREE.PlaneBufferGeometry(10000, 10000);
-			for (let j = 0; j < planes.length; j++) {
+			for (let j = 0; j < 3; j++) {
 
 				var plane = planes[j];
 
-				stencilGroup[i][j] = createPlaneStencilGroup(geometryGroup[i], plane, j + planes.length * i + 1);
+				stencilGroup[i][j] = createPlaneStencilGroup(geometryGroup[i], plane, j + 3 * i + 1);
 
 				// 分地层设置剖切面材质
 
@@ -133,7 +133,7 @@ class model extends model_Father {
 				po[i].onAfterRender = function (renderer) {
 					renderer.clearStencil();
 				};
-				po[i].renderOrder = j + planes.length * i + 1.1; //关键步骤：渲染顺序，一定要前一个geometry的三个剖面都渲染完毕再开始第二个geometry的剖面渲染
+				po[i].renderOrder = j + 3 * i + 1.1; //关键步骤：渲染顺序，一定要前一个geometry的三个剖面都渲染完毕再开始第二个geometry的剖面渲染
 				object.add(stencilGroup[i][j]);
 				poGroup.add(po[i]);
 				planeObjects[i].push(po[i]);
