@@ -10,10 +10,10 @@ function init() {
     renderer.localClippingEnabled = true;
     renderer.shadowMap.enabled = false;
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setClearColor( 'white' );
+    renderer.setClearColor( '#0B0B3B' );
     scene = new THREE.Scene();
-    const texture = new THREE.TextureLoader().load( '/images/sky.jpg' );
-    scene.background = texture;
+    /*const texture = new THREE.TextureLoader().load( '/images/sky.jpg' );
+    scene.background = texture;*/
 
 
     camera = new THREE.PerspectiveCamera(45, $('#model_webgl').width() / $('#model_webgl').height(), 0.1, 100000000);

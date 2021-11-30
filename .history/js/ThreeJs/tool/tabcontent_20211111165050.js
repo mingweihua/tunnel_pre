@@ -68,7 +68,7 @@ $("#tabcontent2 a").click(function () {
             
             Model_operation.drawSvg();
             drawSvg1();
-            window.open("../../../svg copy.html");
+            window.open("../../../svg.html");
             break;
         case "钻孔柱状图":
             zuankongMessage(globalModel.currentName);
