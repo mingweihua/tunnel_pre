@@ -75,8 +75,10 @@
         <div class="row mainbox">
             <div class="col-md-2">
                 <div class="boxall" style="height: 270px;">
-                    <div class="alltitle">线性静力/N</div>
-                    <div class="allnav" id="echart1"></div>
+                    <div class="alltitle">当前隧道图例汇总</div>
+                    <div class="allnav" id="echart1"
+                        style="background: url(/images/textures/MYS1.png) no-repeat center; background-size: contain;">
+                    </div>
                     <div class="boxfoot"></div>
                 </div>
                 <div class="boxall" style="height: 270px;">
@@ -96,7 +98,8 @@
                 </div>
             </div>
             <div class="col-md-8" id="webgl">
-                <h4><span class="label label-default" style="border-radius:0px">当前隧道：</span><span id="subwayName" class="label label-default" style="border-radius:0px">明月山1号隧道</span></h4>
+                <h4><span class="label label-default" style="border-radius:0px">当前隧道：</span><span id="subwayName"
+                        class="label label-default" style="border-radius:0px">明月山1号隧道</span></h4>
                 <canvas id="model_webgl" style="width:100%; height:80%; opacity: .8;"></canvas>
                 <div id="functions" style="width:100%; height:20%; opacity: .8;">
                     <div id="tabs" class="tabs-container">
@@ -105,7 +108,7 @@
                             <a id="tab2" data-tab="2" class="tab">模型显示</a>
                             <a id="tab3" data-tab="3" class="tab">数值分析</a>
                             <a id="tab4" data-tab="4" class="tab">人工智能分析</a>
-                            
+
                         </div>
                         <div class="content" style="user-select: none;">
                             <div id="tabcontent1" data-tab="1" class="tabcontent tabs">
@@ -123,14 +126,19 @@
 
                             </div>
                             <div id="tabcontent2" data-tab="2" class="tabcontent tabs">
-                                <a class="tab_func">地质剖切图</a>
+                                <a class="tab_func">选点</a>
+                                <a class="tab_func">选点重置</a>
+                                <a class="tab_func">二维剖切</a>
+                                <a class="tab_func">三维选点剖切</a>
+                                <a class="tab_func">显示剖切面板</a>
                                 <a class="tab_func">钻孔柱状图</a>
                                 <a class="tab_func">地层分离</a>
                                 <a class="tab_func">地层合并</a>
                                 <a class="tab_func">地层识别</a>
-                                <a class="tab_func">显示剖切面板</a>
-                                <a class="tab_func">隐藏剖切面板</a>
-
+                                <a class="tab_func">地层透明化</a>
+                                <a class="tab_func">地层复原</a>
+                                <a class="tab_func" id="roam">隧道漫游</a>
+                                <a class="tab_func">漫游重置</a>
                             </div>
                             <div id="tabcontent3" data-tab="3" class="tabcontent tabs">
                                 <a class="tab_func">数值模拟云图</a>
@@ -145,6 +153,8 @@
                                 <a class="tab_func">隧道出口平面分析</a>
                                 <a class="tab_func">单节点位置分析</a>
                                 <a class="tab_func">坐标文件上传分析</a>
+                                <a class="tab_func">风险分析</a>
+                                <a class="tab_func">风险评估</a>
                             </div>
                         </div>
                     </div>
@@ -176,15 +186,28 @@
         <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">节点位移分析结果</h4>
                 </div>
                 <div class="modal-body">
                     <table class="table table-bordered table-hover">
-                        <tr><td>坐标x</td><td class="x"></td></tr>
-                        <tr><td>坐标y</td><td class="y"></td></tr>
-                        <tr><td>坐标z</td><td class="z"></td></tr>
-                        <tr><td>节点位移</td><td class="data"></td></tr>
+                        <tr>
+                            <td>坐标x</td>
+                            <td class="x"></td>
+                        </tr>
+                        <tr>
+                            <td>坐标y</td>
+                            <td class="y"></td>
+                        </tr>
+                        <tr>
+                            <td>坐标z</td>
+                            <td class="z"></td>
+                        </tr>
+                        <tr>
+                            <td>节点位移</td>
+                            <td class="data"></td>
+                        </tr>
                     </table>
                 </div>
             </div>
@@ -195,13 +218,17 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">隧道入口平面分析</h4>
                 </div>
                 <div class="modal-body">
-                    <button type="button" class="btn btn-default" onclick="PFC_function.showPFC(globalModel,'in','nn_in_Chart','nn_in_Modal')">离散元分析结果</button>
-                    <button type="button" class="btn btn-default" onclick="NN_function.showNN(globalModel,'in','nn_in_Chart','nn_in_Modal')">神经网络分析结果</button>
-                    <button type="button" class="btn btn-default" onclick="NN_function.showNNError(globalModel,'in','nn_in_Chart','nn_in_Modal')">神经网络误差分析</button>
+                    <button type="button" class="btn btn-default"
+                        onclick="PFC_function.showPFC(globalModel,'in','nn_in_Chart','nn_in_Modal')">离散元分析结果</button>
+                    <button type="button" class="btn btn-default"
+                        onclick="NN_function.showNN(globalModel,'in','nn_in_Chart','nn_in_Modal')">神经网络分析结果</button>
+                    <button type="button" class="btn btn-default"
+                        onclick="NN_function.showNNError(globalModel,'in','nn_in_Chart','nn_in_Modal')">神经网络误差分析</button>
                     <div id="nn_in_Chart" style="width: 800px;height: 500px;"></div>
                 </div>
             </div>
@@ -212,13 +239,17 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">隧道出口平面分析</h4>
                 </div>
                 <div class="modal-body">
-                    <button type="button" class="btn btn-default" onclick="PFC_function.showPFC(globalModel,'out','nn_out_Chart','nn_out_Modal')">离散元分析结果</button>
-                    <button type="button" class="btn btn-default" onclick="NN_function.showNN(globalModel,'out','nn_out_Chart','nn_out_Modal')">神经网络分析结果</button>
-                    <button type="button" class="btn btn-default" onclick="NN_function.showNNError(globalModel,'out','nn_out_Chart','nn_out_Modal')">神经网络误差分析</button>
+                    <button type="button" class="btn btn-default"
+                        onclick="PFC_function.showPFC(globalModel,'out','nn_out_Chart','nn_out_Modal')">离散元分析结果</button>
+                    <button type="button" class="btn btn-default"
+                        onclick="NN_function.showNN(globalModel,'out','nn_out_Chart','nn_out_Modal')">神经网络分析结果</button>
+                    <button type="button" class="btn btn-default"
+                        onclick="NN_function.showNNError(globalModel,'out','nn_out_Chart','nn_out_Modal')">神经网络误差分析</button>
                     <div id="nn_out_Chart" style="width: 800px;height: 500px;"></div>
                 </div>
             </div>
@@ -229,12 +260,15 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">离散元分析</h4>
                 </div>
                 <div class="modal-body">
-                    <button type="button" class="btn btn-default" onclick="PFC_function.showPFC(globalModel,'in','pfcChart','PFCModal')">隧道入口分析</button>
-                    <button type="button" class="btn btn-default" onclick="PFC_function.showPFC(globalModel,'out','pfcChart','PFCModal')">隧道出口分析</button>
+                    <button type="button" class="btn btn-default"
+                        onclick="PFC_function.showPFC(globalModel,'in','pfcChart','PFCModal')">隧道入口分析</button>
+                    <button type="button" class="btn btn-default"
+                        onclick="PFC_function.showPFC(globalModel,'out','pfcChart','PFCModal')">隧道出口分析</button>
                     <div id="pfcChart" style="width: 800px;height: 500px;"></div>
                 </div>
                 <!-- <div class="modal-footer">
@@ -250,7 +284,8 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">钻孔信息表</h4>
                 </div>
                 <div class="modal-body">
@@ -264,7 +299,8 @@
         <div class="modal-dialog" role="document">
             <div id="legend-content" class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">地层详情</h4>
                 </div>
                 <div class="modal-body">
@@ -352,6 +388,7 @@
     <script src="js/ThreeJs/structureObject/model_Father.js"></script>
     <script src="js/ThreeJs/structureObject/model.js"></script>
     <script src="js/ThreeJs/structureObject/model_operation.js"></script>
+    <script src="js/ThreeJs/structureObject/geo_roam.js"></script>
     <script src="js/ThreeJs/tool/cloudPic.js"></script>
     <script src="js/ThreeJs/initThree.js"></script>
     <script src="js/btnScript.js"></script>
@@ -362,6 +399,7 @@
     <script src="js/ThreeJs/tool/tabcontent.js"></script>
     <script src="js/ThreeJs/tool/PFC_function.js"></script>
     <script src="js/ThreeJs/tool/NN_function.js"></script>
+    <!-- <script src="js/draw/svgCopy.js"></script> -->
 
 
 </body>
