@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/canvg@3.0.4/lib/umd.js"></script>
+	<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+
+
+	<!-- 	
+
+-->
+
+
+
+
+</head>
+<style type="text/css">
+	body {
+		font-family: Arial, Helvetica, sans-serif;
+	}
+
+	table {
+		font-size: 1em;
+		border: 1px solid black;
+		width: 800px;
+		height: auto;
+		font-size: 13px;
+
+		margin: 1;
+		border-collapse: collapse;
+		border-spacing: 1;
+
+
+	}
+
+	.ui-draggable,
+	.ui-droppable {
+		background-position: top;
+	}
+
+	td {
+		text-align: center;
+		width: 200px;
+		height: 30px;
+		border: 1px solid black;
+	}
+
+	input {
+		width: 200px;
+		height: 30px;
+		text-align: center;
+	}
+
+	input:hover {
+		background: yellow;
+	}
+
+	.ui-dialog-titlebar-close {
+		display: none;
+	}
+</style>
+
+<body>
+	<!-- <input id="Slice" type="button" value="Slice" onclick="drawSvg(),svgtocanvas()">
+	<div id="btn">
+		<button id="save_as_svg" onclick="downloadsvg()" >下载svg</button>
+		<button id="edit" onclick="edit()" >修改</button>
+	</div> -->
+
+	<div id="adddialog">
+
+	</div>
+
+
+
+	<div class="goodsvg" id="heresvg">
+		<svg id="mysvg" width=2400 height=1000 version="1.1" xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+
+			<text x="880" y="50" style="font-size:28px;"> 地 质 剖 面 图</text>
+
+			<defs id="mydefs">
+				<pattern id="pattern-image41" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(11,241,49)"></rect>
+						<path id="svg_9" d="m-1,-2.134228c15.282528,28.678591 37.98329,23.66988 51.744969,53.723079"
+							opacity="1" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="#000"
+							fill="#0BF131" />
+						<path stroke="#000" id="svg_10"
+							d="m-0.865772,24.000001c5.329606,16.705439 21.327218,10.637459 26.342283,26.280845"
+							opacity="1" fill-opacity="null" stroke-opacity="null" fill="#0BF131" />
+						<path stroke="#000" id="svg_13"
+							d="m25.040269,0c5.220977,16.662752 20.892523,12.271742 25.80537,27.596282" opacity="1"
+							fill-opacity="null" stroke-opacity="null" fill="#0BF131" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image40" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(11,200,241)"></rect>
+						<path id="svg_9" d="m-1,-2.134228c15.282528,28.678591 37.98329,23.66988 51.744969,53.723079"
+							opacity="1" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="#000"
+							fill="#0BC8F1" />
+						<path stroke="#000" id="svg_10"
+							d="m-0.865772,24.000001c5.329606,16.705439 21.327218,10.637459 26.342283,26.280845"
+							opacity="1" fill-opacity="null" stroke-opacity="null" fill="#0BC8F1" />
+						<path stroke="#000" id="svg_13"
+							d="m25.040269,0c5.220977,16.662752 20.892523,12.271742 25.80537,27.596282" opacity="1"
+							fill-opacity="null" stroke-opacity="null" fill="#0BC8F1" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image39" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(246,171,175)"></rect>
+						<path stroke="#000" transform="rotate(-25 10.763781547546385,6.816642284393308) " id="svg_1"
+							d="m7.96649,9.26427l2.79729,-4.89526l2.79729,4.89526l-5.59458,0z" stroke-width="0.5"
+							fill="#F6ABAF" />
+						<path transform="rotate(-76 23.23603057861328,16.255847930908203) " stroke="#000" id="svg_2"
+							d="m19.72358,19.32924l3.51245,-6.14679l3.51245,6.14679l-7.0249,0z" stroke-width="0.5"
+							fill="#F6ABAF" />
+						<path stroke="#000" transform="rotate(-76 38.98517608642578,9.986796379089359) " id="svg_3"
+							d="m36.42997,12.2226l2.55521,-4.47162l2.55521,4.47162l-5.11042,0z" stroke-width="0.5"
+							fill="#F6ABAF" />
+						<path stroke="#000" id="svg_4"
+							d="m34.76945,31.55401l3.05373,-5.34404l3.05373,5.34404l-6.10747,0z" stroke-width="0.5"
+							fill="#F6ABAF" />
+						<path stroke="#000" transform="rotate(-100 22.018657684326172,33.48702621459961) " id="svg_5"
+							d="m19.66008,35.55079l2.35858,-4.12752l2.35858,4.12752l-4.71716,0z" stroke-width="0.5"
+							fill="#F6ABAF" />
+						<path stroke="#000"
+							transform="rotate(-119.65245056152344 18.735414505004886,46.84878158569336) " id="svg_6"
+							d="m16.17732,49.08711l2.55809,-4.47666l2.55809,4.47666l-5.11619,0z" stroke-width="0.5"
+							fill="#F6ABAF" />
+						<path stroke="#000" transform="rotate(-119.65245056152344 39.91308212280273,43.25390243530272) "
+							id="svg_7" d="m38.02477,44.90617l1.88831,-3.30454l1.88832,3.30454l-3.77663,0z"
+							stroke-width="0.5" fill="#F6ABAF" />
+						<path stroke="#000" id="svg_8" d="m1.19147,33.9852l4.33815,-7.59173l4.33813,7.59173l-8.67628,0z"
+							stroke-width="0.5" fill="#F6ABAF" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image38" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(248,132,225 )"></rect>
+
+					</g>
+				</pattern>
+				<pattern id="pattern-image37" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(252,248,133)"></rect>
+						<line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3"
+							y2="19.3516" x2="13.73614" y1="9.91385" x1="13.73614" fill="none" />
+						<path stroke="#000" id="svg_10"
+							d="m26.75572,13.77148c4.73451,2.29008 4.17751,3.2061 9.19052,0.61069c5.01301,-2.59542 6.68401,0.91603 6.64918,0.88499"
+							fill-opacity="null" stroke-opacity="null" fill="none" />
+						<path stroke="#000" id="svg_11"
+							d="m6.60307,37.2829c4.73451,2.29008 4.17751,3.2061 9.19052,0.61069c5.01301,-2.59542 6.68401,0.91603 6.64918,0.88499"
+							fill-opacity="null" stroke-opacity="null" fill="none" />
+						<line transform="rotate(90 13.736145019531252,14.632725715637207) " stroke="#000"
+							stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_14" y2="19.3516"
+							x2="13.73614" y1="9.91385" x1="13.73614" fill="none" />
+						<line stroke="#000" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_15"
+							y2="42.55768" x2="36.02619" y1="33.11993" x1="36.02619" fill="none" />
+						<line transform="rotate(90 36.02619171142578,37.83880615234376) " stroke="#000"
+							stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_16" y2="42.55768"
+							x2="36.02619" y1="33.11993" x1="36.02619" fill="none" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image36" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(252,181,133)"></rect>
+						<path id="svg_19" d="m2.328269,20.183687" opacity="0.5" fill-opacity="null"
+							stroke-opacity="null" stroke="#000" fill="none" />
+						<path stroke="#000" id="svg_22"
+							d="m0.038197,14.77585c10.235073,3.053431 15.192687,1.832058 19.190763,0.152671c3.998077,-1.679387 9.755304,-1.374043 15.672457,1.068701c5.917152,2.442744 15.992302,-2.442746 15.632446,-1.557755"
+							fill-opacity="null" stroke-opacity="null" fill="none" />
+						<path stroke="#000" id="svg_23"
+							d="m-0.419818,17.981953c10.235073,3.053431 15.192687,1.832058 19.190763,0.152671c3.998077,-1.679387 9.755304,-1.374043 15.672457,1.068701c5.917152,2.442744 15.992302,-2.442746 15.632446,-1.557755"
+							fill-opacity="null" stroke-opacity="null" fill="none" />
+						<path id="svg_28" d="m2.328269,42.473737" opacity="0.5" fill-opacity="null"
+							stroke-opacity="null" stroke="#000" fill="none" />
+						<path stroke="#000" id="svg_29"
+							d="m0.038197,37.0659c10.235073,3.053431 15.192687,1.832058 19.190763,0.152671c3.998077,-1.679387 9.755304,-1.374043 15.672457,1.068701c5.917152,2.442744 15.992302,-2.442746 15.632446,-1.557755"
+							fill-opacity="null" stroke-opacity="null" fill="none" />
+						<path stroke="#000" id="svg_30"
+							d="m-0.419818,40.272003c10.235073,3.053431 15.192687,1.832058 19.190763,0.152671c3.998077,-1.679387 9.755304,-1.374043 15.672457,1.068701c5.917152,2.442744 15.992302,-2.442746 15.632446,-1.557755"
+							fill-opacity="null" stroke-opacity="null" fill="none" />
+						<polyline stroke-linecap="round" id="svg_38"
+							points="18.902673721313477,29.711894989013672 18.75,29.711894989013672 " fill-opacity="null"
+							stroke-opacity="null" stroke="#000" fill="none" />
+						<polyline stroke="#000" stroke-linecap="round" id="svg_39"
+							points="43.902671813964844,29.711894989013672 43.75,29.711894989013672 " fill-opacity="null"
+							stroke-opacity="null" fill="none" />
+						<polyline stroke-linecap="round" id="svg_40"
+							points="6.402673721313477,26.699846267700195 6.25,26.699846267700195 " fill-opacity="null"
+							stroke-opacity="null" stroke="#000" fill="none" />
+						<polyline stroke="#000" stroke-linecap="round" id="svg_41"
+							points="31.402671813964844,26.699846267700195 31.25,26.699846267700195 " fill-opacity="null"
+							stroke-opacity="null" fill="none" />
+						<polyline stroke-linecap="round" id="svg_42"
+							points="19.14363758265972,7.181774139404297 18.990963861346245,7.181774139404297 "
+							fill-opacity="null" stroke-opacity="null" stroke="#000" fill="none" />
+						<polyline stroke="#000" stroke-linecap="round" id="svg_43"
+							points="44.14363567531109,7.181774139404297 43.990963861346245,7.181774139404297 "
+							fill-opacity="null" stroke-opacity="null" fill="none" />
+						<polyline stroke-linecap="round" id="svg_44"
+							points="6.643637582659721,4.16972541809082 6.490963861346245,4.16972541809082 "
+							fill-opacity="null" stroke-opacity="null" stroke="#000" fill="none" />
+						<polyline stroke="#000" stroke-linecap="round" id="svg_45"
+							points="31.64363567531109,4.16972541809082 31.490963861346245,4.16972541809082 "
+							fill-opacity="null" stroke-opacity="null" fill="none" />
+					</g>
+				</pattern>
+
+				<pattern id="pattern-image35" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(245,133,252)"></rect>
+						<path stroke="#000" stroke-dasharray="5,5" id="svg_46"
+							d="m25,0.107093c-6.11236,14.494382 -24.88764,24.382022 -24.88764,24.274929"
+							fill-opacity="null" stroke-opacity="null" stroke-width="null" fill="none" />
+						<path stroke="#000" stroke-dasharray="5,5" id="svg_47"
+							d="m50.280899,25.275632c-16.389736,7.41573 -25.280899,24.382022 -25.280899,24.274929"
+							fill-opacity="null" stroke-opacity="null" stroke-width="null" fill="none" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image34" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(233,228,234)"></rect>
+						<line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_1" y2="22.2583"
+							x2="31.41386" y1="22.2583" x1="18.58614" stroke="#000" fill="none" />
+						<line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="24.91455"
+							x2="31.41386" y1="24.91455" x1="18.58614" stroke="#000" fill="none" />
+						<line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="27.72705"
+							x2="31.41386" y1="27.72705" x1="18.58614" stroke="#000" fill="none" />
+						<line transform="rotate(90 25.000003814697266,25.22704887390137) " stroke-linecap="undefined"
+							stroke-linejoin="undefined" id="svg_4" y2="25.22705" x2="31.41386" y1="25.22705"
+							x1="18.58614" stroke="#000" fill="none" />
+						<path stroke="#000" id="svg_5"
+							d="m18.11153,18.47167c4.52675,-2.1875 7.04161,0.3125 6.91584,0.24168" fill-opacity="null"
+							stroke-opacity="null" fill="none" />
+						<path stroke="#000" id="svg_6"
+							d="m25.14601,18.47167c4.52675,-2.1875 7.04161,0.3125 6.91584,0.24167" fill-opacity="null"
+							stroke-opacity="null" fill="none" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image33" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(205,198,206)"></rect>
+						<line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_1" y2="22.2583"
+							x2="31.41386" y1="22.2583" x1="18.58614" stroke="#000" fill="none" />
+						<line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="24.91455"
+							x2="31.41386" y1="24.91455" x1="18.58614" stroke="#000" fill="none" />
+						<line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_3" y2="26.90653"
+							x2="31.41386" y1="26.90653" x1="18.58614" stroke="#000" fill="none" />
+						<line transform="rotate(90 25,25.227050781250004) " stroke-linecap="undefined"
+							stroke-linejoin="undefined" id="svg_4" y2="25.22705" x2="31.41386" y1="25.22705"
+							x1="18.58614" stroke="#000" fill="none" />
+						<line stroke="#000"
+							transform="rotate(3.2826788425445557 22.692300796508768,17.969543457031268) "
+							stroke-linecap="null" stroke-linejoin="null" id="svg_7" y2="19.00089" x2="25.05732"
+							y1="16.9382" x1="20.32728" fill-opacity="null" stroke-opacity="null" stroke-width="null"
+							fill="none" />
+						<line stroke="#000"
+							transform="rotate(129.87364196777344 27.512819290161133,17.764415740966797) "
+							stroke-linecap="null" stroke-linejoin="null" id="svg_8" y2="18.79576" x2="29.87784"
+							y1="16.73307" x1="25.1478" fill-opacity="null" stroke-opacity="null" stroke-width="null"
+							fill="none" />
+						<line stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_9" y2="28.75269"
+							x2="31.41386" y1="28.75269" x1="18.58614" stroke="#000" fill="none" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image32" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(246,234,98)"></rect>
+						<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray="8"></path>
+						<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image31" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(147,143,238)"></rect>
+						<path stroke="#000" transform="rotate(-25 10.763781547546385,6.816642284393308) " id="svg_1"
+							d="m7.96649,9.26427l2.79729,-4.89526l2.79729,4.89526l-5.59458,0z" stroke-width="0.5"
+							fill="#938FEE" />
+						<path transform="rotate(-76 23.23603057861328,16.255847930908203) " stroke="#000" id="svg_2"
+							d="m19.72358,19.32924l3.51245,-6.14679l3.51245,6.14679l-7.0249,0z" stroke-width="0.5"
+							fill="#938FEE" />
+						<path stroke="#000" transform="rotate(-76 38.98517608642578,9.986796379089359) " id="svg_3"
+							d="m36.42997,12.2226l2.55521,-4.47162l2.55521,4.47162l-5.11042,0z" stroke-width="0.5"
+							fill="#938FEE" />
+						<path stroke="#000" id="svg_4"
+							d="m34.76945,31.55401l3.05373,-5.34404l3.05373,5.34404l-6.10747,0z" stroke-width="0.5"
+							fill="#938FEE" />
+						<path stroke="#000" transform="rotate(-100 22.018657684326172,33.48702621459961) " id="svg_5"
+							d="m19.66008,35.55079l2.35858,-4.12752l2.35858,4.12752l-4.71716,0z" stroke-width="0.5"
+							fill="#938FEE" />
+						<path stroke="#000"
+							transform="rotate(-119.65245056152344 18.735414505004886,46.84878158569336) " id="svg_6"
+							d="m16.17732,49.08711l2.55809,-4.47666l2.55809,4.47666l-5.11619,0z" stroke-width="0.5"
+							fill="#938FEE" />
+						<path stroke="#000" transform="rotate(-119.65245056152344 39.91308212280273,43.25390243530272) "
+							id="svg_7" d="m38.02477,44.90617l1.88831,-3.30454l1.88832,3.30454l-3.77663,0z"
+							stroke-width="0.5" fill="#938FEE" />
+						<path stroke="#000" id="svg_8" d="m1.19147,33.9852l4.33815,-7.59173l4.33813,7.59173l-8.67628,0z"
+							stroke-width="0.5" fill="#938FEE" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image30" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(107,238,90)"></rect>
+						<path stroke="#000" transform="rotate(-25 10.763781547546385,6.816642284393308) " id="svg_1"
+							d="m7.96649,9.26427l2.79729,-4.89526l2.79729,4.89526l-5.59458,0z" stroke-width="0.5"
+							fill="#6BEE5A" />
+						<path transform="rotate(-76 23.23603057861328,16.255847930908203) " stroke="#000" id="svg_2"
+							d="m19.72358,19.32924l3.51245,-6.14679l3.51245,6.14679l-7.0249,0z" stroke-width="0.5"
+							fill="#6BEE5A" />
+						<path stroke="#000" transform="rotate(-76 38.98517608642578,9.986796379089359) " id="svg_3"
+							d="m36.42997,12.2226l2.55521,-4.47162l2.55521,4.47162l-5.11042,0z" stroke-width="0.5"
+							fill="#6BEE5A" />
+						<path stroke="#000" id="svg_4"
+							d="m34.76945,31.55401l3.05373,-5.34404l3.05373,5.34404l-6.10747,0z" stroke-width="0.5"
+							fill="#6BEE5A" />
+						<path stroke="#000" transform="rotate(-100 22.018657684326172,33.48702621459961) " id="svg_5"
+							d="m19.66008,35.55079l2.35858,-4.12752l2.35858,4.12752l-4.71716,0z" stroke-width="0.5"
+							fill="#6BEE5A" />
+						<path stroke="#000"
+							transform="rotate(-119.65245056152344 18.735414505004886,46.84878158569336) " id="svg_6"
+							d="m16.17732,49.08711l2.55809,-4.47666l2.55809,4.47666l-5.11619,0z" stroke-width="0.5"
+							fill="#6BEE5A" />
+						<path stroke="#000" transform="rotate(-119.65245056152344 39.91308212280273,43.25390243530272) "
+							id="svg_7" d="m38.02477,44.90617l1.88831,-3.30454l1.88832,3.30454l-3.77663,0z"
+							stroke-width="0.5" fill="#6BEE5A" />
+						<path stroke="#000" id="svg_8" d="m1.19147,33.9852l4.33815,-7.59173l4.33813,7.59173l-8.67628,0z"
+							stroke-width="0.5" fill="#6BEE5A" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image29" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(187,196,82)"></rect>
+						<path d="M 0 50 Q 0 40, 10 40 T 20 30 T 30 20 T 40 10 T 50 0" stroke="black" stroke_width="1px"
+							fill="transparent"></path>
+						<path d="M 10 10 l 5 5" stroke="black" stroke_width="1px"></path>
+						<path d="M 10 15 l 5 -5" stroke="black" stroke_width="1px"></path>
+						<path d="M 35 35 l 5 5" stroke="black" stroke_width="1px"></path>
+						<path d="M 35 40 l 5 -5" stroke="black" stroke_width="1px"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image28" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(244,237,94)"></rect>
+						<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray="8"></path>
+						<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px" stroke-dasharray="6"></path>
+						<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px" stroke-dasharray="6"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image27" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(252,198,202)"></rect>
+						<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray="8"></path>
+						<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image26" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(242,173,238)"></rect>
+						<path d="M 0 0 L 50 50" stroke="black" stroke_width="1px"></path>
+						<path d="M 0 25 L 25 50" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 0 L 50 25" stroke="black" stroke_width="1px"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image25" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(200,151,151)"></rect>
+						<path stroke="#000" stroke-dasharray="5,5" id="svg_46"
+							d="m25,0.107093c-6.11236,14.494382 -24.88764,24.382022 -24.88764,24.274929"
+							fill-opacity="null" stroke-opacity="null" stroke-width="null" fill="none" />
+						<path stroke="#000" stroke-dasharray="5,5" id="svg_47"
+							d="m50.280899,25.275632c-16.389736,7.41573 -25.280899,24.382022 -25.280899,24.274929"
+							fill-opacity="null" stroke-opacity="null" stroke-width="null" fill="none" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image24" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(182,177,248)"></rect>
+						<path d="M 0 8.3 H 50" stroke="black" stroke_width="1px"></path>
+						<path d="M 0 25 H 50" stroke="black" stroke_width="1px"></path>
+						<path d="M 0 41.6 H 50" stroke="black" stroke_width="1px"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image23" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(248,217,245)"></rect>
+						<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray="8"></path>
+						<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image22" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(223,248,179)"></rect>
+					</g>
+				</pattern>
+				<pattern id="pattern-image21" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(62,37,156)"></rect>
+						<path id="svg_9" d="m-1,-2.134228c15.282528,28.678591 37.98329,23.66988 51.744969,53.723079"
+							opacity="1" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="#000"
+							fill="#3E259C" />
+						<path stroke="#000" id="svg_10"
+							d="m-0.865772,24.000001c5.329606,16.705439 21.327218,10.637459 26.342283,26.280845"
+							opacity="1" fill-opacity="null" stroke-opacity="null" fill="#3E259C" />
+						<path stroke="#000" id="svg_13"
+							d="m25.040269,0c5.220977,16.662752 20.892523,12.271742 25.80537,27.596282" opacity="1"
+							fill-opacity="null" stroke-opacity="null" fill="#3E259C" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image20" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(184,38,162)"></rect>
+						<path id="svg_9" d="m-1,-2.134228c15.282528,28.678591 37.98329,23.66988 51.744969,53.723079"
+							opacity="1" fill-opacity="null" stroke-opacity="null" stroke-width="2" stroke="#000"
+							fill="#B826A2" />
+						<path stroke="#000" id="svg_10"
+							d="m-0.865772,24.000001c5.329606,16.705439 21.327218,10.637459 26.342283,26.280845"
+							opacity="1" fill-opacity="null" stroke-opacity="null" fill="#B826A2" />
+						<path stroke="#000" id="svg_13"
+							d="m25.040269,0c5.220977,16.662752 20.892523,12.271742 25.80537,27.596282" opacity="1"
+							fill-opacity="null" stroke-opacity="null" fill="#B826A2" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image19" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(27,198,27)"></rect>
+						<path stroke="#000" transform="rotate(-116.1009292602539 9.309636116027828,18.311460494995114) "
+							id="svg_88" d="m4.54922,20.58069l4.76042,-4.53846l4.76042,4.53846l-9.52084,0z"
+							fill-opacity="null" stroke-opacity="null" stroke-width="1" fill="none" />
+						<path stroke="#000" transform="rotate(-116.1009292602539 19.77119255065918,40.67045974731445) "
+							id="svg_89" d="m15.01077,42.93969l4.76042,-4.53845l4.76042,4.53845l-9.52084,0z"
+							fill-opacity="null" stroke-opacity="null" stroke-width="1" fill="none" />
+						<path stroke="#000" transform="rotate(-116.1009292602539 25.61735153198242,23.84992790222168) "
+							id="svg_90" d="m20.85693,26.11915l4.76042,-4.53845l4.76042,4.53845l-9.52084,0z"
+							fill-opacity="null" stroke-opacity="null" stroke-width="1" fill="none" />
+						<path stroke="#000" transform="rotate(-116.1009292602539 30.437870025634762,9.38837146759033) "
+							id="svg_91" d="m25.67745,11.6576l4.76042,-4.53845l4.76042,4.53845l-9.52084,0z"
+							fill-opacity="null" stroke-opacity="null" stroke-width="1" fill="none" />
+						<path stroke="#000" transform="rotate(-116.1009292602539 43.05327224731445,29.798652648925785) "
+							id="svg_92" d="m38.29285,32.06788l4.76042,-4.53845l4.76042,4.53845l-9.52084,0z"
+							fill-opacity="null" stroke-opacity="null" stroke-width="1" fill="none" />
+						<path d="M 0 0 H 50" stroke="black" stroke-dasharray="2" stroke_width="3px"></path>
+						<path d="M 0 5 H 50" stroke="black" stroke-dasharray="2" stroke_width="3px"></path>
+						<path d="M 0 10 H 50" stroke="black" stroke-dasharray="2" stroke_width="3px"></path>
+						<path d="M 0 15 H 50" stroke="black" stroke-dasharray="2" stroke_width="3px"></path>
+						<path d="M 0 20 H 50" stroke="black" stroke-dasharray="2" stroke_width="3px"></path>
+						<path d="M 0 25 H 50" stroke="black" stroke-dasharray="2" stroke_width="3px"></path>
+						<path d="M 0 30 H 50" stroke="black" stroke-dasharray="2" stroke_width="3px"></path>
+						<path d="M 0 35 H 50" stroke="black" stroke-dasharray="2" stroke_width="3px"></path>
+						<path d="M 0 40 H 50" stroke="black" stroke-dasharray="2" stroke_width="3px"></path>
+						<path d="M 0 45 H 50" stroke="black" stroke-dasharray="2" stroke_width="3px"></path>
+						<path d="M 0 50 H 50" stroke="black" stroke-dasharray="2" stroke_width="3px"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image18" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(191,36,62)"></rect>
+						<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray="8"></path>
+						<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+
+					</g>
+				</pattern>
+				<pattern id="pattern-image17" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(183,203,232)"></rect>
+						<path stroke="#000" id="svg_95"
+							d="m3.27664,24.19831l2.3077,-4.61539l6.15385,0l2.30769,4.61539l-2.30769,4.61539l-6.15385,0l-2.3077,-4.61539z"
+							fill-opacity="null" stroke-opacity="null" stroke-width="1" fill="none" />
+						<path stroke="#000" id="svg_98"
+							d="m34.96898,24.506l2.3077,-4.61538l6.15385,0l2.3077,4.61538l-2.3077,4.61539l-6.15385,0l-2.3077,-4.61539z"
+							fill-opacity="null" stroke-opacity="null" stroke-width="1" fill="none" />
+						<path stroke="#000" id="svg_99"
+							d="m19.17409,16.09573l2.3077,-4.61538l6.15385,0l2.3077,4.61538l-2.3077,4.61539l-6.15385,0l-2.3077,-4.61539z"
+							fill-opacity="null" stroke-opacity="null" stroke-width="1" fill="none" />
+						<path stroke="#000" id="svg_100"
+							d="m19.37922,32.91626l2.3077,-4.61538l6.15385,0l2.3077,4.61538l-2.3077,4.61539l-6.15385,0l-2.3077,-4.61539z"
+							fill-opacity="null" stroke-opacity="null" stroke-width="1" fill="none" />
+						<path stroke="#000" id="svg_101"
+							d="m35.07154,41.53166l2.3077,-4.61538l6.15385,0l2.3077,4.61538l-2.3077,4.61539l-6.15385,0l-2.3077,-4.61539z"
+							fill-opacity="null" stroke-opacity="null" stroke-width="1" fill="none" />
+						<path stroke="#000" id="svg_102"
+							d="m3.3792,41.53166l2.30769,-4.61539l6.15386,0l2.30769,4.61539l-2.30769,4.61538l-6.15386,0l-2.30769,-4.61538z"
+							fill-opacity="null" stroke-opacity="null" stroke-width="1" fill="none" />
+						<path stroke="#000" id="svg_103"
+							d="m3.58433,7.99316l2.30769,-4.61539l6.15386,0l2.30769,4.61539l-2.30769,4.61538l-6.15386,0l-2.30769,-4.61538z"
+							fill-opacity="null" stroke-opacity="null" stroke-width="1" fill="none" />
+						<path stroke="#000" id="svg_104"
+							d="m35.07154,8.19829l2.30769,-4.61539l6.15386,0l2.30769,4.61539l-2.30769,4.61538l-6.15386,0l-2.30769,-4.61538z"
+							fill-opacity="null" stroke-opacity="null" stroke-width="1" fill="none" />
+						<path stroke="#000" id="svg_105"
+							d="m19.48178,49.94192l2.3077,-4.61538l6.15385,0l2.3077,4.61538l-2.3077,4.61539l-6.15385,0l-2.3077,-4.61539z"
+							fill-opacity="null" stroke-opacity="null" stroke-width="1" fill="none" />
+						<path stroke="#000" id="svg_106"
+							d="m19.17409,-0.00685l2.3077,-4.61538l6.15385,0l2.3077,4.61538l-2.3077,4.61539l-6.15385,0l-2.3077,-4.61539z"
+							fill-opacity="null" stroke-opacity="null" stroke-width="1" fill="none" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image16" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+
+						<rect x="0" y="0" height="50" width="50" fill="rgb(115,203,29)"></rect>
+						<path d="M 0 0 l 50 50" stroke="black" stroke_width="1px"></path>
+						<path d="M 0 25 l 25 25" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 0 l25 25" stroke="black" stroke_width="1px"></path>
+						<path d="M 0 25 l 12.5 -12.5" stroke="black" stroke_width="1px"></path>
+						<path d="M 0 50 l 12.5 -12.5" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 50 l 12.5 -12.5" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 25 l 12.5 -12.5" stroke="black" stroke_width="1px"></path>
+
+					</g>
+				</pattern>
+				<pattern id="pattern-image15" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(200,111,52)"></rect>
+						<path d="M 0 0 l 50 50" stroke="black" stroke_width="1px"></path>
+						<path d="M 0 25 l 25 25" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 0 l25 25" stroke="black" stroke_width="1px"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image14" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(184,38,162)"></rect>
+						<path d="M 0 0 l 50 50" stroke="black" stroke_width="1px"></path>
+						<path d="M 0 25 l 25 25" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 0 l25 25" stroke="black" stroke_width="1px"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image13" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(65,196,188)"></rect>
+						<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray="12"></path>
+						<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image12" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(191,36,62)"></rect>
+						<path d="M 0 0 H 50" stroke="black" stroke_width="1px" stroke-dasharray="14,2"></path>
+						<path d="M 0 25 H 50" stroke="black" stroke_width="1px" stroke-dasharray="14,2"></path>
+						<path d="M 0 50 H 50" stroke="black" stroke_width="1px" stroke-dasharray="14,2"></path>
+						<path d="M 27.5 12.5 Q 32.5 17.5, 37.5 12.5 T 47.5 12.5 " stroke="black" stroke_width="1px"
+							fill="transparent"></path>
+						<path d="M 2.5 37.5 Q 7.5 42.5, 12.5 37.5 T 22.5 37.5 " stroke="black" stroke_width="1px"
+							fill="transparent"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image11" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(183,203,232)"></rect>
+						<path d="M 0 0 l 50 50" stroke="black" stroke_width="1px"></path>
+						<path d="M 0 25 l 25 25" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 0 l25 25" stroke="black" stroke_width="1px"></path>
+						<path d="M 0 25 l 12.5 -12.5" stroke="black" stroke_width="1px"></path>
+						<path d="M 0 50 l 12.5 -12.5" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 50 l 12.5 -12.5" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 25 l 12.5 -12.5" stroke="black" stroke_width="1px"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image10" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(251,220,11)"></rect>
+						<path d="M 0 0 H 50" stroke="black" stroke_width="1px" stroke-dasharray="14,2"></path>
+						<path d="M 0 25 H 50" stroke="black" stroke_width="1px" stroke-dasharray="14,2"></path>
+						<path d="M 0 50 H 50" stroke="black" stroke_width="1px" stroke-dasharray="14,2"></path>
+						<path d="M 27.5 12.5 Q 32.5 17.5, 37.5 12.5 T 47.5 12.5 " stroke="black" stroke_width="1px"
+							fill="transparent"></path>
+						<path d="M 2.5 37.5 Q 7.5 42.5, 12.5 37.5 T 22.5 37.5 " stroke="black" stroke_width="1px"
+							fill="transparent"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image19" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(183,203,232)"></rect>
+						<path d="M 0 0 l 50 50" stroke="black" stroke_width="1px"></path>
+						<path d="M 0 25 l 25 25" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 0 l25 25" stroke="black" stroke_width="1px"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image8" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(141,188,22)"></rect>
+						<circle cx="8" cy="18" r="1" stroke="black" stroke-width="1" />
+						<circle cx="14" cy="8" r="1" stroke="black" stroke-width="1" />
+						<circle cx="35" cy="9" r="1" stroke="black" stroke-width="1" />
+						<circle cx="8" cy="18" r="1" stroke="black" stroke-width="1" />
+						<circle cx="38" cy="18" r="1" stroke="black" stroke-width="1" />
+						<circle cx="13" cy="42" r="1" stroke="black" stroke-width="1" />
+						<circle cx="43" cy="42" r="1" stroke="black" stroke-width="1" />
+						<text x="23" y="30" style="font-family:SimSun;font-size:20px">f</text>
+					</g>
+				</pattern>
+				<pattern id="pattern-image7" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(164,115,30)"></rect>
+						<path d="M 0 0 H 50" stroke="black" stroke_width="1px" stroke-dasharray="14,2"></path>
+						<path d="M 0 25 H 50" stroke="black" stroke_width="1px" stroke-dasharray="14,2"></path>
+						<path d="M 0 50 H 50" stroke="black" stroke_width="1px" stroke-dasharray="14,2"></path>
+						<path d="M 27.5 12.5 Q 32.5 17.5, 37.5 12.5 T 47.5 12.5 " stroke="black" stroke_width="1px"
+							fill="transparent"></path>
+						<path d="M 2.5 37.5 Q 7.5 42.5, 12.5 37.5 T 22.5 37.5 " stroke="black" stroke_width="1px"
+							fill="transparent"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image6" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(246,234,98)"></rect>
+						<path d="M 0 0 H 50" stroke="black" stroke_width="1px" stroke-dasharray="14,2"></path>
+						<path d="M 0 25 H 50" stroke="black" stroke_width="1px" stroke-dasharray="14,2"></path>
+						<path d="M 0 50 H 50" stroke="black" stroke_width="1px" stroke-dasharray="14,2"></path>
+						<path d="M 27.5 12.5 Q 32.5 17.5, 37.5 12.5 T 47.5 12.5 " stroke="black" stroke_width="1px"
+							fill="transparent"></path>
+						<path d="M 2.5 37.5 Q 7.5 42.5, 12.5 37.5 T 22.5 37.5 " stroke="black" stroke_width="1px"
+							fill="transparent"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image5" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(62,37,156)"></rect>
+						<path transform="rotate(90 24.87248420715332,24.794425964355472) " stroke="#000" id="svg_9"
+							d="m-1,-2c15.282528,28.947048 37.98329,23.535652 51.744969,53.588851" fill-opacity="null"
+							stroke-opacity="null" stroke-width="2" fill="#3E259C" />
+						<path transform="rotate(90 38.171142578125,37.14042282104493) " stroke="#000" id="svg_10"
+							d="m25,24.000001c5.329606,16.705439 21.327218,10.637459 26.342283,26.280845"
+							fill-opacity="null" stroke-opacity="null" fill="#3E259C" />
+						<path transform="rotate(90 12.90268325805664,12.79814147949219) " stroke="#000" id="svg_13"
+							d="m-0.000001,-1c5.220977,16.662752 20.892523,12.271742 25.80537,27.596282"
+							fill-opacity="null" stroke-opacity="null" fill="#3E259C" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image4" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(65,196,188)"></rect>
+						<path id="svg_19" d="m2.328269,20.183687" opacity="0.5" fill-opacity="null"
+							stroke-opacity="null" stroke="#000" fill="none" />
+						<path stroke="#000" id="svg_22"
+							d="m0.038197,14.77585c10.235073,3.053431 15.192687,1.832058 19.190763,0.152671c3.998077,-1.679387 9.755304,-1.374043 15.672457,1.068701c5.917152,2.442744 15.992302,-2.442746 15.632446,-1.557755"
+							fill-opacity="null" stroke-opacity="null" fill="none" />
+						<path stroke="#000" id="svg_23"
+							d="m-0.419818,17.981953c10.235073,3.053431 15.192687,1.832058 19.190763,0.152671c3.998077,-1.679387 9.755304,-1.374043 15.672457,1.068701c5.917152,2.442744 15.992302,-2.442746 15.632446,-1.557755"
+							fill-opacity="null" stroke-opacity="null" fill="none" />
+						<path id="svg_28" d="m2.328269,42.473737" opacity="0.5" fill-opacity="null"
+							stroke-opacity="null" stroke="#000" fill="none" />
+						<path stroke="#000" id="svg_29"
+							d="m0.038197,37.0659c10.235073,3.053431 15.192687,1.832058 19.190763,0.152671c3.998077,-1.679387 9.755304,-1.374043 15.672457,1.068701c5.917152,2.442744 15.992302,-2.442746 15.632446,-1.557755"
+							fill-opacity="null" stroke-opacity="null" fill="none" />
+						<path stroke="#000" id="svg_30"
+							d="m-0.419818,40.272003c10.235073,3.053431 15.192687,1.832058 19.190763,0.152671c3.998077,-1.679387 9.755304,-1.374043 15.672457,1.068701c5.917152,2.442744 15.992302,-2.442746 15.632446,-1.557755"
+							fill-opacity="null" stroke-opacity="null" fill="none" />
+						<polyline stroke-linecap="round" id="svg_38"
+							points="18.902673721313477,29.711894989013672 18.75,29.711894989013672 " fill-opacity="null"
+							stroke-opacity="null" stroke="#000" fill="none" />
+						<polyline stroke="#000" stroke-linecap="round" id="svg_39"
+							points="43.902671813964844,29.711894989013672 43.75,29.711894989013672 " fill-opacity="null"
+							stroke-opacity="null" fill="none" />
+						<polyline stroke-linecap="round" id="svg_40"
+							points="6.402673721313477,26.699846267700195 6.25,26.699846267700195 " fill-opacity="null"
+							stroke-opacity="null" stroke="#000" fill="none" />
+						<polyline stroke="#000" stroke-linecap="round" id="svg_41"
+							points="31.402671813964844,26.699846267700195 31.25,26.699846267700195 " fill-opacity="null"
+							stroke-opacity="null" fill="none" />
+						<polyline stroke-linecap="round" id="svg_42"
+							points="19.14363758265972,7.181774139404297 18.990963861346245,7.181774139404297 "
+							fill-opacity="null" stroke-opacity="null" stroke="#000" fill="none" />
+						<polyline stroke="#000" stroke-linecap="round" id="svg_43"
+							points="44.14363567531109,7.181774139404297 43.990963861346245,7.181774139404297 "
+							fill-opacity="null" stroke-opacity="null" fill="none" />
+						<polyline stroke-linecap="round" id="svg_44"
+							points="6.643637582659721,4.16972541809082 6.490963861346245,4.16972541809082 "
+							fill-opacity="null" stroke-opacity="null" stroke="#000" fill="none" />
+						<polyline stroke="#000" stroke-linecap="round" id="svg_45"
+							points="31.64363567531109,4.16972541809082 31.490963861346245,4.16972541809082 "
+							fill-opacity="null" stroke-opacity="null" fill="none" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image3" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(184,38,162)"></rect>
+						<path stroke="#000" stroke-dasharray="5,5" id="svg_46"
+							d="m25,0.107093c-6.11236,14.494382 -24.88764,24.382022 -24.88764,24.274929"
+							fill-opacity="null" stroke-opacity="null" stroke-width="null" fill="none" />
+						<path stroke="#000" stroke-dasharray="5,5" id="svg_47"
+							d="m50.280899,25.275632c-16.389736,7.41573 -25.280899,24.382022 -25.280899,24.274929"
+							fill-opacity="null" stroke-opacity="null" stroke-width="null" fill="none" />
+					</g>
+				</pattern>
+				<pattern id="pattern-image2" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(191,36,62)"></rect>
+						<path d="M 0 0 l 50 50" stroke="black" stroke_width="1px"></path>
+						<path d="M 0 25 l 25 25" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 0 l25 25" stroke="black" stroke_width="1px"></path>
+					</g>
+				</pattern>
+				<pattern id="pattern-image1" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+					<g>
+						<rect x="0" y="0" height="50" width="50" fill="rgb(246,234,98)"></rect>
+						<path d="M 0 50 l 50 -50" stroke="black" stroke_width="1px" stroke-dasharray="8"></path>
+						<path d="M 0 25 l 25 -25" stroke="black" stroke_width="1px"></path>
+						<path d="M 25 50 l25 -25" stroke="black" stroke_width="1px"></path>
+					</g>
+				</pattern>
+
+				<!-- <pattern id="pattern-imagegrey" x="0" y="0" width="50" height="50"  patternUnits="userSpaceOnUse">
+		<g>
+			<rect x="0" y="0" height="50" width="50" fill="rgb(211,211,211)"></rect>
+		</g>
+	</pattern> -->
+
+
+			</defs>
+			<defs id="mydefs_1"></defs>
+
+			<g id="lines">//画出大矩形框
+				<rect x="100" y="100" width="1800" height="700" stroke="black" stroke-width="1" fill=none>
+			</g>
+
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath1);"
+					fill="url(#pattern-image1)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath2);"
+					fill="url(#pattern-image2)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath3);"
+					fill="url(#pattern-image3)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath4);"
+					fill="url(#pattern-image4)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath5);"
+					fill="url(#pattern-image5)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath6);"
+					fill="url(#pattern-image6)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath7);"
+					fill="url(#pattern-image7)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath8);"
+					fill="url(#pattern-image8)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath9);"
+					fill="url(#pattern-image9)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath10);"
+					fill="url(#pattern-image10)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath11);"
+					fill="url(#pattern-image11)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath12);"
+					fill="url(#pattern-image12)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath13);"
+					fill="url(#pattern-image13)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath14);"
+					fill="url(#pattern-image14)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath15);"
+					fill="url(#pattern-image15)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath16);"
+					fill="url(#pattern-image16)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath17);"
+					fill="url(#pattern-image17)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath18);"
+					fill="url(#pattern-image18)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath19);"
+					fill="url(#pattern-image19)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath20);"
+					fill="url(#pattern-image20)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath21);"
+					fill="url(#pattern-image21)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath22);"
+					fill="url(#pattern-image22)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath23);"
+					fill="url(#pattern-image23)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath24);"
+					fill="url(#pattern-image24)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath25);"
+					fill="url(#pattern-image25)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath26);"
+					fill="url(#pattern-image26)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath27);"
+					fill="url(#pattern-image27)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath28);"
+					fill="url(#pattern-image28)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath29);"
+					fill="url(#pattern-image29)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath30);"
+					fill="url(#pattern-image30)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath31);"
+					fill="url(#pattern-image31)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath32);"
+					fill="url(#pattern-image32)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath33);"
+					fill="url(#pattern-image33)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath34);"
+					fill="url(#pattern-image34)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath35);"
+					fill="url(#pattern-image35)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath36);"
+					fill="url(#pattern-image36)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath37);"
+					fill="url(#pattern-image37)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath38);"
+					fill="url(#pattern-image38)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath39);"
+					fill="url(#pattern-image39)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath40);"
+					fill="url(#pattern-image40)" stroke="black" stroke-width="1" />
+			</g>
+			<g>
+				<rect x="100" y="100" width="1800" height="700" style="clip-path:url(#clipPath41);"
+					fill="url(#pattern-image41)" stroke="black" stroke-width="1" />
+			</g>
+			<!-- <g >
+	<rect x="100" y="100"   width="1800" height="700" style="clip-path:url(#clipPath_fill_grey);" fill="url(#pattern-imagegrey)" stroke="black" stroke-width="1"/>
+</g> -->
+
+			<g id="ruler">//画标尺和钻孔竖线
+
+
+				//画下部标尺，保证标尺均匀分布，计算出
+
+				<path id="line1" d="M 100 830 l 1800 0" stroke="black" stroke-width="5" stroke-dasharray="180,180" />
+				<path id="line1_t" d="M 100 828 l 1800 0" stroke="black" stroke-width="1" />
+				<path id="line1_b" d="M 100 832 l 1800 0" stroke="black" stroke-width="1" />
+
+
+				//画左侧标尺
+				<path id="line2" d="M 60 100 l 0 700" stroke="black" stroke-width="5" stroke-dasharray="70,70" />
+				<path id="line2_t" d="M 58 100 l 0 700" stroke="black" stroke-width="1" />
+				<path id="line2_b" d="M 62 100 l 0 700" stroke="black" stroke-width="1" />
+
+
+			</g>
+
+
+			<g id="ruler_1"></g>
+			<g id="lines_1">
+			</g>
+			<g id="tuli">
+			</g>
+			<g id="hole_lines">
+			</g>
+			<g id="text">
+			</g>
+
+		</svg>
+
+
+
+
+	</div>
+	<!-- <canvas id="canvas" z-index="1000" width="1800" height="700"></canvas>
+<input type="hidden" id="data" name="data"> -->
+</body>
+
+<script src="js/draw/svgCopy.js"></script>
+
+</html>
