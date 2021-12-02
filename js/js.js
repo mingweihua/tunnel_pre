@@ -214,7 +214,7 @@ function echarts_2() {
             myChart.resize();
         });
     }
-function echarts_5() {
+/*function echarts_5() {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('echart5'));
 
@@ -309,8 +309,117 @@ function echarts_5() {
         window.addEventListener("resize",function(){
             myChart.resize();
         });
+    }*/
+
+
+    function echarts_5(){
+        var chartDom = document.getElementById('echart5');
+        var myChart = echarts.init(chartDom, 'dark');
+        var option;
+        var url = "json/XB_in_pfc3.json";
+        $.ajax({
+            //请求方式为get
+            async: true,
+            type: "GET",
+            url: url,
+            success: function (data) {
+                // console.log(data);
+                var Array1= data.map(function (item) {
+                        return [
+                            item.x,
+                            item.y,
+                            item.z,
+                            Math.sqrt(item.disp_x*item.disp_x+item.disp_y*item.disp_y+item.disp_z*item.disp_z),
+                        ];
+                    }
+                );
+                //通过map方法得到的新数组是一个对象数组，比如以上的Array1一个对象组有四个数据，但是Array.lenght是所有数据的总和
+                // console.log(Array1[0][3]);
+                drawChart3(Array1);
+            }
+        })
+        var  drawChart3=function (Array1 ) {
+            myChart.setOption(
+                (option = {
+                    //visualMap:视觉映射组件,也就是设置颗粒属性：大小，颜色透明度，颜色随数值大小变化
+                    tooltip: {
+                        trigger: 'item',
+                        axisPointer: {
+                            type: 'cross',
+                            crossStyle: {
+                                color: '#999'
+                            }
+                        },
+                        //方法二：回调函数自己定义悬浮板内容
+                        formatter:function (params) {
+                            // 根据自己的需求返回数据
+                            return `<div>总位移(m):${params.data[3]}</div>`
+                        }
+
+                    },
+                    visualMap: {
+                        show: false,
+                        min: 7.31364E-05,
+                        max: 0.000210359,
+                        inRange: {
+                            symbolSize: 7,
+                            color: [
+                                '#313695',
+                                '#4575b4',
+                                '#74add1',
+                                '#abd9e9',
+                                '#e0f3f8',
+                                '#ffffbf',
+                                '#fee090',
+                                '#fdae61',
+                                '#f46d43',
+                                '#d73027',
+                                '#a50026'
+                            ],
+                            //颜色透明度
+                            colorAlpha: 0.8
+                        }
+                    },
+                    xAxis3D: {
+                        type: 'value'
+                    },
+                    yAxis3D: {
+                        type: 'value'
+                    },
+                    zAxis3D: {
+                        type: 'value'
+                    },
+                    grid3D: {
+                        boxWidth:180,
+                        boxHeight:120,
+                        boxDepth:40,
+                        axisLine: {
+                            lineStyle: {color: '#fff'}
+                        },
+                        axisPointer: {
+                            lineStyle: {color:'#DC143C'},
+                            label:{show: true}
+                        },
+                        viewControl: {
+                            // autoRotate: true
+                        }
+                    },
+                    series: [
+                        {
+                            type: 'scatter3D',
+                            data: Array1,
+                            emphasis:{
+                                label:{show:false}
+                            }
+                        }
+                    ]
+                })
+            );
+            option && myChart.setOption(option);
+        }
     }
-	
+
+
 function echarts_4() {
         // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('echart4'));
