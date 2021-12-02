@@ -182,29 +182,34 @@ class Model_operation {
 
     //——————————————————三维任意两点剖切获取剖切面————————————————————————————————————
     static twoPointSection() {
+        let pointsArray = [];
         let point1 = new THREE.Vector3();
         let point2 = new THREE.Vector3();
         let point3 = new THREE.Vector3();
+        let plane_tem = new THREE.Plane();
+        // let point1 = new THREE.Plane(new THREE.Vector3(-1, 0, 0), 100)
+        // let point2 = new THREE.Plane(new THREE.Vector3(0, -1, 0), 100)
+        // let point3 = new THREE.Plane(new THREE.Vector3(0, 0, -1), 100)
 
-
-        for (let i = 0; i < Model_operation.stratificationInformation.length - 1; i++) {
- 
+        for (let i = 0; i < Model_operation.stratificationInformation.length-1; i++) {
+            sectionPoint[i] = [];
+            //
             point1.setX(Model_operation.stratificationInformation[i][0].point.x);
             point1.setY(Model_operation.stratificationInformation[i][0].point.y);
             point1.setZ(Model_operation.stratificationInformation[i][0].point.z);
-            point2.setX(Model_operation.stratificationInformation[i + 1][0].point.x);
-            point2.setY(Model_operation.stratificationInformation[i + 1][0].point.y);
-            point2.setZ(Model_operation.stratificationInformation[i + 1][0].point.z);
-            point3.setX(Model_operation.stratificationInformation[i + 1][0].point.x);
-            point3.setY(Model_operation.stratificationInformation[i + 1][0].point.y + 10);
-            point3.setZ(Model_operation.stratificationInformation[i + 1][0].point.z);
+            point2.setX(Model_operation.stratificationInformation[i+1][0].point.x);
+            point2.setY(Model_operation.stratificationInformation[i+1][0].point.y);
+            point2.setZ(Model_operation.stratificationInformation[i+1][0].point.z);
+            point3.setX(Model_operation.stratificationInformation[i+1][0].point.x);
+            point3.setY(Model_operation.stratificationInformation[i+1][0].point.y+10);
+            point3.setZ(Model_operation.stratificationInformation[i+1][0].point.z);
 
-            let plane_tem = new THREE.Plane();
-            plane_tem.setFromCoplanarPoints(point1, point2, point3);
+            plane_tem.setFromCoplanarPoints(point1,point2,point3);
             planes.push(plane_tem);
-
+            
         }
-
+        console.log(planes);
+        // planes.push(point1,point2,point3);
         Model_operation.sectionModel(globalModel, globalModel.currentName);
     }
 
