@@ -77,12 +77,6 @@ class Model_operation {
         delt_h.length = 0;
         hole_mtx_1.length = 0;
         holes.length = 0;
-        Model_operation.stratificationInformation.length = 0;
-
-        //查看数组
-        console.log(hole_mtx_1);
-        console.log(delt_h);
-        console.log(holes);
 
 
 

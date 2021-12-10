@@ -8,9 +8,10 @@
 let geoSeparation_h = 0;
 
 //定义几个画svg要用到的全局变量
-let hole_mtx_1 = []; //是总的矩阵信息数组，是三维数组最外围是钻孔数量，内部包含2个数组（钻孔层信息数组和钻孔深度信息数组）
-let delt_h = []; //是最高点高度在数组里为0，然后减去对应其他钻孔孔口高度，得到正值
-let holes = []; //钻孔信息:钻孔编号，编码，x,y,空口高，总高度
+var hole_mtx_1 = []; //是总的矩阵信息数组，是三维数组最外围是钻孔数量，内部包含2个数组（钻孔层信息数组和钻孔深度信息数组）
+var delt_h = []; //是最高点高度在数组里为0，然后减去对应其他钻孔孔口高度，得到正值
+var holes = []; //钻孔信息:钻孔编号，编码，x,y,空口高，总高度
+var sectionPoint = []; //存贮组成选点剖切的剖切面三个点
 
 //用例
 // hole_mtx_1 = [[[1, 2, 3, 4, 5, 6, 7],
@@ -40,6 +41,11 @@ class Model_operation {
         } else {
             globalModel.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
         }
+
+        $("#echart1").css({
+            "background": "url(/images/textures/" + modelName.split("Model")[0] + ".png) center no-repeat",
+            "background-size": "contain"
+        });
     }
 
     //换上剖切模型的方法
@@ -58,6 +64,27 @@ class Model_operation {
     //------------------二维剖切和二维柱状图用到的选点功能----------------------
     static addPointForCutting(event) {
         Model_operation.doAddPointForCutting(globalModel.three3dObject.currentModel, event);
+    }
+
+
+    //选点重置
+    static addPointReset() {
+        //清除圆点
+        for (let j = 0; j < Model_operation.stratificationInformation.length; j++) {
+            scene.remove(scene.getObjectByName("Cutting_Point_" + j));
+        }
+        //清空3个二维剖切用的钻孔数组
+        delt_h.length = 0;
+        hole_mtx_1.length = 0;
+        holes.length = 0;
+
+        //查看数组
+        console.log(hole_mtx_1);
+        console.log(delt_h);
+        console.log(holes);
+
+
+
     }
 
     static doAddPointForCutting(object, event) {
@@ -114,25 +141,86 @@ class Model_operation {
 
     //——————————————————二维剖切svg————————————————————————————————————
     static drawSvg() {
+
+        //设置临时数组
+        let hole_mtx_first = [];
+        let hole_mtx_last = [];
+
+
         //第一次循环
         for (let i = 0; i < Model_operation.stratificationInformation.length; i++) {
             //配置delt_h：最高点高度在数组里为0，然后减去对应其他钻孔孔口高度，得到正值
             delt_h.push(Model_operation.stratificationInformation[i][0].point.y);
 
-            //配置holes：钻孔信息:钻孔编号，编码，x,y,空口高，总高度
+            //配置holes：钻孔信息:钻孔编号，编码，x,z,孔口高，总高度
+            holes[i] = [];
+            let x = Model_operation.stratificationInformation[i][0].point.x;
+            let y = Model_operation.stratificationInformation[i][0].point.y;
+            let z = Model_operation.stratificationInformation[i][0].point.z;
 
+            let a = y - modelName_url[globalModel.currentName].modelBottom;
+            holes[i].push("251200622", "Z20", x, z, y, a);
 
+            //配置hole_mtx_1 是总的矩阵信息数组，是三维数组最外围是钻孔数量，内部包含2个数组（钻孔层信息数组和钻孔深度信息数组）
+            hole_mtx_1[i] = [];
+            hole_mtx_first[i] = [];
+            hole_mtx_last[i] = [];
+
+            for (let j = 0; j < Model_operation.stratificationInformation[i].length; j++) {
+                if (isNaN(Model_operation.stratificationInformation[i][j].object.name.valueOf()) == false) { //排除holes和tunnels地层
+
+                    let c = Model_operation.stratificationInformation[i][j].object.name.valueOf();
+                    let d = y - Model_operation.stratificationInformation[i][j].point.y;
+                    hole_mtx_first[i].push(42 - geoData[globalModel.currentName][c].tuli); //将地层信息转化为统一数字序列
+                    hole_mtx_last[i].push(d); //将地层信息转化为统一数字序列
+                }
+            }
+            hole_mtx_last[i].push(a); //最后加一个最底层钻孔深度
+
+            hole_mtx_1[i] = [hole_mtx_first[i], hole_mtx_last[i]];
         }
 
-        //第二次循环
+        //第二次循环用来配置delt_h
         for (let i = 0; i < Model_operation.stratificationInformation.length; i++) {
             let a = Math.max(...delt_h);
             let b = a - delt_h[i];
             delt_h.splice(i, 1, b);
         }
 
+        //查看数组
+        console.log(hole_mtx_1);
+        console.log(delt_h);
+        console.log(holes);
+
+    }
 
 
+    //——————————————————三维任意两点剖切获取剖切面————————————————————————————————————
+    static twoPointSection() {
+        let point1 = new THREE.Vector3();
+        let point2 = new THREE.Vector3();
+        let point3 = new THREE.Vector3();
+
+
+        for (let i = 0; i < Model_operation.stratificationInformation.length - 1; i++) {
+
+            point1.setX(Model_operation.stratificationInformation[i][0].point.x);
+            point1.setY(Model_operation.stratificationInformation[i][0].point.y);
+            point1.setZ(Model_operation.stratificationInformation[i][0].point.z);
+            point2.setX(Model_operation.stratificationInformation[i + 1][0].point.x);
+            point2.setY(Model_operation.stratificationInformation[i + 1][0].point.y);
+            point2.setZ(Model_operation.stratificationInformation[i + 1][0].point.z);
+            point3.setX(Model_operation.stratificationInformation[i + 1][0].point.x);
+            point3.setY(Model_operation.stratificationInformation[i + 1][0].point.y + 10);
+            point3.setZ(Model_operation.stratificationInformation[i + 1][0].point.z);
+
+            let plane_tem = new THREE.Plane();
+            plane_tem.setFromCoplanarPoints(point1, point2, point3);
+            planes.push(plane_tem);
+
+        }
+
+        Model_operation.sectionModel(globalModel, globalModel.currentName);
     }
 
 
@@ -239,7 +327,8 @@ class Model_operation {
     }
 
     static identifyLayer(group, modelName) {
-        let name = modelName.split("Model")[0];
+        let name = modelName;
+        //let name = modelName.split("Model")[0];
         raycaster = new THREE.Raycaster();
         mouseVector = new THREE.Vector3();
         pointer = new THREE.Vector2();
@@ -258,6 +347,29 @@ class Model_operation {
                 $('#legend').attr("src", "images/textures/" + pic);
                 $('#legendModal').modal('show');
                 window.removeEventListener('click', onPointerClick, false);
+            }
+        }
+    }
+
+
+    static geoTransparent(currentModel) {
+        let length = currentModel.children.length;
+        for (let i = 0; i < length; i++) {
+            if (currentModel.children[i].name.indexOf("tunnel") == -1) {
+                let material = currentModel.children[i].material;
+                material.transparent = true;
+                material.opacity = 0.4;
+            }
+        }
+    }
+
+    static geoTransparentReset(currentModel) {
+        let length = currentModel.children.length;
+        for (let i = 0; i < length; i++) {
+            if (currentModel.children[i].name.indexOf("tunnel") == -1) {
+                let material = currentModel.children[i].material;
+                material.opacity = 1;
+                material.transparent = false;
             }
         }
     }

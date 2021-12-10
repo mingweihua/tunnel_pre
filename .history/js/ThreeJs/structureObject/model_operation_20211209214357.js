@@ -69,22 +69,9 @@ class Model_operation {
 
     //选点重置
     static addPointReset() {
-        //清除圆点
         for (let j = 0; j < Model_operation.stratificationInformation.length; j++) {
-            scene.remove(scene.getObjectByName("Cutting_Point_" + j));
+            scene.remove(getObjectByName("Cutting_Point_" + (i=+1)));
         }
-        //清空3个二维剖切用的钻孔数组
-        delt_h.length = 0;
-        hole_mtx_1.length = 0;
-        holes.length = 0;
-        Model_operation.stratificationInformation.length = 0;
-
-        //查看数组
-        console.log(hole_mtx_1);
-        console.log(delt_h);
-        console.log(holes);
-
-
 
     }
 
@@ -204,7 +191,7 @@ class Model_operation {
 
 
         for (let i = 0; i < Model_operation.stratificationInformation.length - 1; i++) {
-
+ 
             point1.setX(Model_operation.stratificationInformation[i][0].point.x);
             point1.setY(Model_operation.stratificationInformation[i][0].point.y);
             point1.setZ(Model_operation.stratificationInformation[i][0].point.z);

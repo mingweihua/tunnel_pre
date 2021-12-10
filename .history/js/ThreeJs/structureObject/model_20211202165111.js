@@ -121,7 +121,7 @@ class model extends model_Father {
 						// opacity:1,
 						// visible: false,
 						clippingPlanes: planes.filter(p => p !== plane),
-						// clipIntersection : true,
+						clipIntersection : true,
 
 						stencilWrite: true,
 						stencilRef: 0,

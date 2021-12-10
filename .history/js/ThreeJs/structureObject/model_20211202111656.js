@@ -91,7 +91,7 @@ class model extends model_Father {
 				metalness: 0.1,
 				roughness: 0.75,
 				clippingPlanes: planes,
-				// clipIntersection : true,
+				clipIntersection : true,
 				
 				clipShadows: true,
 				shadowSide: THREE.DoubleSide,
@@ -121,7 +121,7 @@ class model extends model_Father {
 						// opacity:1,
 						// visible: false,
 						clippingPlanes: planes.filter(p => p !== plane),
-						// clipIntersection : true,
+						
 
 						stencilWrite: true,
 						stencilRef: 0,
