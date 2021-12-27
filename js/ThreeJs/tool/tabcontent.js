@@ -1,4 +1,4 @@
-$("#tabcontent0 a").click(function () {
+$("#tabcontent1 a").click(function () {
     //console.log($(this).html());
     $("#subwayName").html($(this).html());
     switch ($(this).html()) {
@@ -38,7 +38,7 @@ $("#tabcontent0 a").click(function () {
     }
 })
 
-$("#tabcontent1 a").click(function () {
+$("#tabcontent2 a").click(function () {
     //console.log($(this).html());
     switch ($(this).html()) {
         case "地层分离":
@@ -107,7 +107,7 @@ $("#tabcontent1 a").click(function () {
     }
 })
 
-$("#tabcontent2 a").click(function () {
+$("#tabcontent3 a").click(function () {
     switch ($(this).html()) {
         case "数值模拟云图":
             CloudPicture.getCloudModel(globalModel, globalModel.currentName);
@@ -127,7 +127,7 @@ $("#tabcontent2 a").click(function () {
     }
 })
 
-$("#tabcontent3 a").click(function () {
+$("#tabcontent4 a").click(function () {
     switch ($(this).html()) {
         case "隧道入口平面分析":
             PFC_function.showPFC(globalModel, 'in', 'nn_in_Chart', 'nn_in_Modal');
