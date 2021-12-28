@@ -138,11 +138,5 @@ $("#tabcontent4 a").click(function () {
         case "隧道出口平面分析":
             PFC_function.showPFC(globalModel, 'out', 'nn_out_Chart', 'nn_out_Modal');
             break;
-        case "风险评估":
-            /*window.open("/pdf/test.pdf");*/
-            let name = globalModel.currentName.split("Model")[0];
-            window.open('/pdf/' + name + '.pdf', 'newwindow',
-                'height=500, width=800, top=200, left=300, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')
-            break;
     }
 })
