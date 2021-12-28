@@ -61,12 +61,8 @@ class Model_operation {
         // } else {
         //     globalModel.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1);
         // }
-        if(modelClass!=undefined){
-            object.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1, modelClass);
-        }else{
-            object.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1);
-        }
-        
+
+        object.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1, modelClass);
 
         console.log(planeObjects);
         console.log(planes);
@@ -280,7 +276,7 @@ class Model_operation {
 
         }
 
-        Model_operation.sectionModel(globalModel, globalModel.currentName,1);
+        Model_operation.sectionModel(globalModel, globalModel.currentName,"arb");
     }
 
     //井字剖切

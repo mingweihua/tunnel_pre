@@ -41,7 +41,7 @@ class Model_operation {
         // } else {
         //     globalModel.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
         // }
-        object.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
+        globalModel.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
 
         $("#echart1").css({
             "background": "url(/images/textures/" + modelName.split("Model")[0] + ".png) center no-repeat",
@@ -50,7 +50,7 @@ class Model_operation {
     }
 
     //换上剖切模型的方法
-    static sectionModel(object, modelName, modelClass) {
+    static sectionModel(object, modelName) {
         scene.remove(object.three3dObject.currentModel);
         scene.remove(object.three3dObject.cloud.currentModel);
         scene.remove(object.three3dObject.group_pouqie.currentModel);
@@ -61,12 +61,8 @@ class Model_operation {
         // } else {
         //     globalModel.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1);
         // }
-        if(modelClass!=undefined){
-            object.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1, modelClass);
-        }else{
-            object.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1);
-        }
-        
+
+        globalModel.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1);
 
         console.log(planeObjects);
         console.log(planes);
@@ -257,34 +253,6 @@ class Model_operation {
 
     //——————————————————三维任意两点剖切获取剖切面————————————————————————————————————
     static twoPointSection() {
-        let point1 = new THREE.Vector3();
-        let point2 = new THREE.Vector3();
-        let point3 = new THREE.Vector3();
-
-
-        for (let i = 0; i < Model_operation.stratificationInformation.length - 1; i++) {
-
-            point1.setX(Model_operation.stratificationInformation[i][0].point.x);
-            point1.setY(Model_operation.stratificationInformation[i][0].point.y);
-            point1.setZ(Model_operation.stratificationInformation[i][0].point.z);
-            point2.setX(Model_operation.stratificationInformation[i + 1][0].point.x);
-            point2.setY(Model_operation.stratificationInformation[i + 1][0].point.y);
-            point2.setZ(Model_operation.stratificationInformation[i + 1][0].point.z);
-            point3.setX(Model_operation.stratificationInformation[i + 1][0].point.x);
-            point3.setY(Model_operation.stratificationInformation[i + 1][0].point.y + 10);
-            point3.setZ(Model_operation.stratificationInformation[i + 1][0].point.z);
-
-            let plane_tem = new THREE.Plane();
-            plane_tem.setFromCoplanarPoints(point1, point2, point3);
-            planes.push(plane_tem);
-
-        }
-
-        Model_operation.sectionModel(globalModel, globalModel.currentName,1);
-    }
-
-    //井字剖切
-    static wellSection() {
         let point1 = new THREE.Vector3();
         let point2 = new THREE.Vector3();
         let point3 = new THREE.Vector3();

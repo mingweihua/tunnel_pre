@@ -55,7 +55,7 @@ $("#tabcontent2 a").click(function () {
             console.log(material);
             $(this).html("隐藏剖切面板");
             $("#gui").show();
-            Model_operation.sectionModel(globalModel, globalModel.currentName,"arb");
+            Model_operation.sectionModel(globalModel, globalModel.currentName,1);
             console.log(globalModel.three3dObject.group_pouqie.currentModel);
             break;
         case "隐藏剖切面板":

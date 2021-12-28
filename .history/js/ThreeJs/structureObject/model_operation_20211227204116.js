@@ -50,7 +50,7 @@ class Model_operation {
     }
 
     //换上剖切模型的方法
-    static sectionModel(object, modelName, modelClass) {
+    static sectionModel(object, modelName) {
         scene.remove(object.three3dObject.currentModel);
         scene.remove(object.three3dObject.cloud.currentModel);
         scene.remove(object.three3dObject.group_pouqie.currentModel);
@@ -61,12 +61,8 @@ class Model_operation {
         // } else {
         //     globalModel.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1);
         // }
-        if(modelClass!=undefined){
-            object.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1, modelClass);
-        }else{
-            object.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1);
-        }
-        
+
+        object.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1);
 
         console.log(planeObjects);
         console.log(planes);
@@ -280,7 +276,7 @@ class Model_operation {
 
         }
 
-        Model_operation.sectionModel(globalModel, globalModel.currentName,1);
+        Model_operation.sectionModel(globalModel, globalModel.currentName);
     }
 
     //井字剖切

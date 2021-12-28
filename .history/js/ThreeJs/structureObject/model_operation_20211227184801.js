@@ -34,14 +34,13 @@ class Model_operation {
         scene.remove(object.three3dObject.currentModel);
         scene.remove(object.three3dObject.cloud.currentModel);
         scene.remove(object.three3dObject.group_pouqie.currentModel);
-        // if (object.three3dObject[modelName] != undefined) {
-        //     object.three3dObject.currentModel = object.three3dObject[modelName];
-        //     object.currentName = modelName;
-        //     scene.add(object.three3dObject.currentModel);
-        // } else {
-        //     globalModel.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
-        // }
-        object.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
+        if (object.three3dObject[modelName] != undefined) {
+            object.three3dObject.currentModel = object.three3dObject[modelName];
+            object.currentName = modelName;
+            scene.add(object.three3dObject.currentModel);
+        } else {
+            globalModel.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
+        }
 
         $("#echart1").css({
             "background": "url(/images/textures/" + modelName.split("Model")[0] + ".png) center no-repeat",
@@ -50,26 +49,17 @@ class Model_operation {
     }
 
     //换上剖切模型的方法
-    static sectionModel(object, modelName, modelClass) {
+    static sectionModel(object, modelName) {
         scene.remove(object.three3dObject.currentModel);
         scene.remove(object.three3dObject.cloud.currentModel);
         scene.remove(object.three3dObject.group_pouqie.currentModel);
-
-        // if (object.three3dObject.group_pouqie[modelName] != undefined) {
-        //     object.three3dObject.group_pouqie.currentModel = object.three3dObject.group_pouqie[modelName];
-        //     scene.add(object.three3dObject.group_pouqie.currentModel);
-        // } else {
-        //     globalModel.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1);
-        // }
-        if(modelClass!=undefined){
-            object.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1, modelClass);
-        }else{
-            object.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1);
+        if (object.three3dObject.group_pouqie[modelName] != undefined) {
+            object.three3dObject.group_pouqie.currentModel = object.three3dObject.group_pouqie[modelName];
+            scene.add(object.three3dObject.group_pouqie.currentModel);
+        } else {
+            globalModel.load(modelName_url[modelName].objUrl, undefined, modelName, 1, 1);
         }
-        
-
         console.log(planeObjects);
-        console.log(planes);
     }
 
     //------------------二维剖切和二维柱状图用到的选点功能----------------------
@@ -99,38 +89,14 @@ class Model_operation {
         //         planeObjects[i].splice(3);
         //     }
         // }
-        scene.remove.apply(scene, scene.children);
-        // function clearThree(obj) {
-        //     while (obj.children.length > 0) {
-        //         clearThree(obj.children[0])
-        //         obj.remove(obj.children[0]);
-        //     }
-        //     if (obj.geometry) obj.geometry.dispose()
-        //     if (obj.material) obj.material.dispose()
-        //     if (obj.texture) obj.texture.dispose()
-        // }
-
-        // clearThree(scene);
-          init();
-        // for (let i = scene.children.length - 1; i >= 0; i--) { 
-        //     if(scene.children[i].type === "Mesh" ||scene.children[i].type === "Plane") 
-        //      scene.remove(scene.children[i]); 
-        // } 
+        Model_operation.clearScene();
         planes.length = 0;
-        planeObjects.length = 0;
+        planeObjects = 0;
         planes = [
             new THREE.Plane(new THREE.Vector3(-1, 0, 0), 1000),
             new THREE.Plane(new THREE.Vector3(0, -1, 0), 1000),
             new THREE.Plane(new THREE.Vector3(0, 0, -1), 1000),
         ];
-        planeHelpers.length = 0;
-        planeHelpers = planes.map(p => new THREE.PlaneHelper(p, 1000, 0xffffff));
-        planeHelpers.forEach(ph => {
-
-            ph.visible = false;
-            scene.add(ph);
-
-        });
 
         Model_operation.changeModel(globalModel, globalModel.currentName);
 
@@ -140,11 +106,33 @@ class Model_operation {
         console.log(delt_h);
         console.log(holes);
 
-        console.log(planeObjects);
-        console.log(planes);
 
     }
 
+    static clearScene() {
+        cancelAnimationFrame(this.animationId);
+        this.scene.traverse((child) => {
+          if (child.material) {
+            child.material.dispose();
+          }
+          if (child.geometry) {
+            child.geometry.dispose();
+          }
+          child = null;
+        });
+        // this.sceneDomElement.innerHTML = '';
+        // this.renderer.forceContextLoss();
+        // this.renderer.dispose();
+        // this.scene.clear();
+        // this.flows = [];
+        // this.scene = null;
+        // this.camera = null;
+        // this.controls = null;
+        // this.renderer.domElement = null;
+        // this.renderer = null;
+        // this.sceneDomElement = null;
+        console.log('clearScene');
+      }
 
 
     static doAddPointForCutting(object, event) {
@@ -257,34 +245,6 @@ class Model_operation {
 
     //——————————————————三维任意两点剖切获取剖切面————————————————————————————————————
     static twoPointSection() {
-        let point1 = new THREE.Vector3();
-        let point2 = new THREE.Vector3();
-        let point3 = new THREE.Vector3();
-
-
-        for (let i = 0; i < Model_operation.stratificationInformation.length - 1; i++) {
-
-            point1.setX(Model_operation.stratificationInformation[i][0].point.x);
-            point1.setY(Model_operation.stratificationInformation[i][0].point.y);
-            point1.setZ(Model_operation.stratificationInformation[i][0].point.z);
-            point2.setX(Model_operation.stratificationInformation[i + 1][0].point.x);
-            point2.setY(Model_operation.stratificationInformation[i + 1][0].point.y);
-            point2.setZ(Model_operation.stratificationInformation[i + 1][0].point.z);
-            point3.setX(Model_operation.stratificationInformation[i + 1][0].point.x);
-            point3.setY(Model_operation.stratificationInformation[i + 1][0].point.y + 10);
-            point3.setZ(Model_operation.stratificationInformation[i + 1][0].point.z);
-
-            let plane_tem = new THREE.Plane();
-            plane_tem.setFromCoplanarPoints(point1, point2, point3);
-            planes.push(plane_tem);
-
-        }
-
-        Model_operation.sectionModel(globalModel, globalModel.currentName,1);
-    }
-
-    //井字剖切
-    static wellSection() {
         let point1 = new THREE.Vector3();
         let point2 = new THREE.Vector3();
         let point3 = new THREE.Vector3();

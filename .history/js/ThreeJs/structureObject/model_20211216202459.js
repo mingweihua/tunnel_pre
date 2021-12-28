@@ -121,7 +121,7 @@ class model extends model_Father {
 						// transparent:true,
 						// opacity:1,
 						// visible: false,
-						clippingPlanes: planes.filter(p => p !== plane),
+						// clippingPlanes: planes.filter(p => p !== plane),
 						// clipIntersection : true,
 
 						stencilWrite: true,
@@ -151,7 +151,7 @@ class model extends model_Father {
 			clippedColorFront[i].castShadow = true;
 			clippedColorFront[i].renderOrder = 100;
 			clippedColorFront[i].name = thisObject.meshName(group.children[i].name);
-			object.add(clippedColorFront[i]);
+			// object.add(clippedColorFront[i]);
 
 
 		} // 结束i循环

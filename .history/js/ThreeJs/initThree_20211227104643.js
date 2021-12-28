@@ -1,4 +1,4 @@
-function init() {
+function init() { 
     // init renderer
     renderer = new THREE.WebGLRenderer({
         canvas: document.getElementById('model_webgl'),
@@ -10,14 +10,14 @@ function init() {
     renderer.localClippingEnabled = true;
     renderer.shadowMap.enabled = false;
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setClearColor('#0B0B3B');
+    renderer.setClearColor( '#0B0B3B' );
     scene = new THREE.Scene();
     /*const texture = new THREE.TextureLoader().load( '/images/sky.jpg' );
     scene.background = texture;*/
 
 
     camera = new THREE.PerspectiveCamera(45, $('#model_webgl').width() / $('#model_webgl').height(), 0.1, 100000000);
-    camera.position.set(800, 500, 500);
+    camera.position.set( 800, 500, 500 );
 
 
 
@@ -32,19 +32,19 @@ function init() {
     controls.target = new THREE.Vector3(0, 1, -500);
 
 
-    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+    scene.add( new THREE.AmbientLight( 0xffffff, 0.5 ) );
 
-    let dirLight = new THREE.DirectionalLight(0xffffff, 1);
-    dirLight.position.set(50, 100, 75);
+    let dirLight = new THREE.DirectionalLight( 0xffffff, 1 );
+    dirLight.position.set( 50, 100, 75 );
     dirLight.castShadow = true;
     dirLight.shadow.camera.right = 2;
-    dirLight.shadow.camera.left = -2;
-    dirLight.shadow.camera.top = 2;
-    dirLight.shadow.camera.bottom = -2;
+    dirLight.shadow.camera.left = - 2;
+    dirLight.shadow.camera.top	= 2;
+    dirLight.shadow.camera.bottom = - 2;
 
     dirLight.shadow.mapSize.width = 1024;
     dirLight.shadow.mapSize.height = 1024;
-    scene.add(dirLight);
+    scene.add( dirLight );
 
     // add helper
     /*three_helper = new THREE.GridHelper(4000, 60, 0xFF4444, 0x404040);
@@ -52,27 +52,28 @@ function init() {
     three_helper.scale.z = 1;
     scene.add(three_helper);*/
 
-
+    //加载模型
+    globalModel = new model('tunnel');
+    globalModel.load("model/MYS1.obj","model/MYS1.mtl","MYS1Model",1);
+    //globalModel.load("model/618_all.obj");
+    //console.log(globalModel.three3dObject.group_pouqie.currentModel);
 
 
     //设置云图需要的对象
-    lut = new THREE.Lut(colorMap, numberOfColors);
+    lut = new THREE.Lut( colorMap, numberOfColors );
 
 
     window.addEventListener('resize', onWindowResize, false);
 
 
-}
-
-//添加gui控件
-function intGUI() {
+    //添加gui控件
     gui = new dat.GUI({
         autoPlace: false,
         closeOnTop: false
     });
     gui.domElement.id = 'gui';
     document.getElementById("webgl").appendChild(gui.domElement);
-    // gui.open();
+    gui.open();
     gui.add(params, '旋转');
 
     var control1 = gui.addFolder('剖面控制');
@@ -92,17 +93,9 @@ function intGUI() {
     control2.open();
 
     $('#gui').hide();
+
+
 }
-
-function intModel() {
-    //加载模型
-    globalModel = new model('tunnel');
-    globalModel.load("model/MYS1.obj", "model/MYS1.mtl", "MYS1Model", 1,1,1);
-    //globalModel.load("model/618_all.obj");
-    //console.log(globalModel.three3dObject.group_pouqie.currentModel);
-}
-
-
 
 function onWindowResize() {
     camera.aspect = $('#model_webgl').width() / $('#model_webgl').height();
@@ -137,19 +130,17 @@ function animate() {
     controls.update();
     requestAnimationFrame(animate);
     if (tween != undefined) {
-        TWEEN.update();
-    }
+    	TWEEN.update();
+	}
     render();
 }
 
-function render() {
+function render(){
     renderer.render(scene, camera);
 }
 
 //运行函数
 init();
-intGUI();
-intModel();
 animate();
 
 //测试
