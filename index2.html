@@ -146,15 +146,14 @@
                                 <a class="tab_func">选点分析</a>
                                 <a class="tab_func">选点取消</a>
                                 <a class="tab_func">离散元分析</a>
-
+                                <a class="tab_func" type="button"  data-toggle="modal" data-target="#fx_Modal">风险分析</a>
+                                <a class="tab_func" type="button"  data-toggle="modal" data-target="#fx_Modal1">风险评估</a>
                             </div>
                             <div id="tabcontent4" data-tab="4" class="tabcontent tabs">
                                 <a class="tab_func">隧道入口平面分析</a>
                                 <a class="tab_func">隧道出口平面分析</a>
-                                <a class="tab_func">单节点位置分析</a>
-                                <a class="tab_func">坐标文件上传分析</a>
-                                <a class="tab_func">风险分析</a>
-                                <a class="tab_func">风险评估</a>
+                                <a class="tab_func" type="button"  data-toggle="modal" data-target="#fx_Modal2">风险分析</a>
+                                <a class="tab_func" type="button"  data-toggle="modal" data-target="#fx_Modal3">风险评估</a>
                             </div>
                         </div>
                     </div>
@@ -342,6 +341,91 @@
         </div>
     </div>
 
+    <!-- 松安-->
+    <div id="fx_Modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">风险分析</h4>
+                </div>
+                <div class="modal-body" >
+                    <button type="button" class="btn btn-default"
+                            onclick="FX_function.showFX(globalModel,'in','f','fx_Chart')">隧道入口风险分析</button>
+                    <button type="button" class="btn btn-default"
+                            onclick="FX_function.showFX(globalModel,'out','f','fx_Chart')">隧道出口风险分析</button>
+                    <button type="button" class="btn btn-default" id="sc" name=""
+                            onclick="FX_function.showPDF(globalModel,'in','f')">隧道入口风险分析报告下载</button>
+                    <button type="button" class="btn btn-default" id="sd" name=""
+                            onclick="FX_function.showPDF(globalModel,'out','f')">隧道出口风险分析报告下载</button>
+                    <div id="fx_Chart" style="width: 1000px;height: 500px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fx_Modal1" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">风险评估</h4>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-default"
+                            onclick="FX_function.showFX(globalModel,'in','p','fx_Chart1')">隧道入口风险评估</button>
+                    <button type="button" class="btn btn-default"
+                            onclick="FX_function.showFX(globalModel,'out','p','fx_Chart1')">隧道出口风险评估</button>
+                    <button type="button" class="btn btn-default"  name=""
+                            onclick="FX_function.showPDF(globalModel,'in','p')">隧道入口风险评估报告下载</button>
+                    <button type="button" class="btn btn-default"  name=""
+                            onclick="FX_function.showPDF(globalModel,'out','p')">隧道出口风险评估报告下载</button>
+                    <div id="fx_Chart1" style="width: 1000px;height: 500px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fx_Modal2" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">风险分析</h4>
+                </div>
+                <div class="modal-body" >
+                    <button type="button" class="btn btn-default"
+                            onclick="FX_function.showFX1(globalModel,'f','fx_Chart2')">隧道风险分析</button>
+                    <button type="button" class="btn btn-default" name=""
+                            onclick="FX_function.showPDF1(globalModel,'f')">隧道风险分析报告下载</button>
+                    <div id="fx_Chart2" style="width: 1000px;height: 500px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="fx_Modal3" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">风险评估</h4>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-default"
+                            onclick="FX_function.showFX1(globalModel,'p','fx_Chart3')">隧道风险评估</button>
+                    <button type="button" class="btn btn-default"
+                            onclick="FX_function.showPDF1(globalModel,'p')">隧道风险评估报告下载</button>
+                    <div id="fx_Chart3" style="width: 1000px;height: 500px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 松安-->
     <script>
         $('#PFCModal').modal({
             backdrop: 'static',
@@ -400,6 +484,7 @@
     <script src="js/ThreeJs/tool/tabcontent.js"></script>
     <script src="js/ThreeJs/tool/PFC_function.js"></script>
     <script src="js/ThreeJs/tool/NN_function.js"></script>
+    <script src="js/ThreeJs/tool/FX_function.js"></script>
     <!-- <script src="js/draw/svgCopy.js"></script> -->
 
 
