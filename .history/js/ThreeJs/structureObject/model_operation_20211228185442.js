@@ -47,7 +47,7 @@ class Model_operation {
             "background": "url(/images/textures/" + modelName.split("Model")[0] + ".png) center no-repeat",
             "background-size": "contain"
         });
-        
+        console.log(currentName);
     }
 
     //换上剖切模型的方法

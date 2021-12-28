@@ -101,7 +101,7 @@ class model_Father {
                         scene.add(thisObject.three3dObject.currentModel);
                     }, onProgress, onError);
 
-            });console.log(currentName);
+            });
     }
 
 

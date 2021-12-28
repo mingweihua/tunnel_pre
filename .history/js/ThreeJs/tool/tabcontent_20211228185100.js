@@ -2,16 +2,9 @@ $("#tabcontent1 a").click(function () {
     //console.log($(this).html());
     $("#subwayName").html($(this).html());
     switch ($(this).html()) {
-
         case "切换纵剖模型":
-            $(this).html("恢复原模型");
-            Model_operation.changeModel(globalModel, globalModel.currentName + "_Sec");
+            Model_operation.changeModel(globalModel, currentName+"_Sec");
             break;
-        case "恢复原模型":
-            $(this).html("切换纵剖模型");
-            Model_operation.changeModel(globalModel, globalModel.currentName.replace("_Sec", ""));
-            break;
-
         case "白鹭山隧道":
             Model_operation.changeModel(globalModel, "BLSModel");
             break;
@@ -65,7 +58,7 @@ $("#tabcontent2 a").click(function () {
             console.log(material);
             $(this).html("隐藏剖切面板");
             $("#gui").show();
-            Model_operation.sectionModel(globalModel, globalModel.currentName, "arb");
+            Model_operation.sectionModel(globalModel, globalModel.currentName,"arb");
             console.log(globalModel.three3dObject.group_pouqie.currentModel);
             break;
         case "隐藏剖切面板":

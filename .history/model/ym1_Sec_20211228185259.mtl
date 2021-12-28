@@ -1,0 +1,70 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# 创建的文件:28.12.2021 18:52:58
+
+newmtl Material__29
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.2600 0.2600 0.2700
+	Kd 0.2600 0.2600 0.2700
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl 03___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\yang.Jason\xinxizu qianduan\tasks\suidao pouqie\总图2\28.png
+	map_Kd D:\yang.Jason\xinxizu qianduan\tasks\suidao pouqie\总图2\28.png
+
+newmtl 07___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\yang.Jason\xinxizu qianduan\tasks\suidao pouqie\总图2\27.png
+	map_Kd D:\yang.Jason\xinxizu qianduan\tasks\suidao pouqie\总图2\27.png
+
+newmtl wire_204204204
+	Ns 32.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.3500 0.3500 0.3500
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\yang.Jason\xinxizu qianduan\tasks\suidao pouqie\总图2\26.png
+	map_Kd D:\yang.Jason\xinxizu qianduan\tasks\suidao pouqie\总图2\26.png
+
+newmtl 09___Default
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5882 0.5882 0.5882
+	Kd 0.5882 0.5882 0.5882
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka D:\yang.Jason\xinxizu qianduan\tasks\suidao pouqie\总图2\30.png
+	map_Kd D:\yang.Jason\xinxizu qianduan\tasks\suidao pouqie\总图2\30.png

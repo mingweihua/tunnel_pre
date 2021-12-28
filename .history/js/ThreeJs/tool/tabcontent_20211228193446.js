@@ -9,6 +9,7 @@ $("#tabcontent1 a").click(function () {
             break;
         case "恢复原模型":
             $(this).html("切换纵剖模型");
+            // globalModel.currentName = globalModel.currentName.replace("_Sec", "");
             Model_operation.changeModel(globalModel, globalModel.currentName.replace("_Sec", ""));
             break;
 

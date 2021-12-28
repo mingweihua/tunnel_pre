@@ -31,15 +31,15 @@ let modelName_url = {
 
 	//纵剖模型
 	BLSModel_Sec : {objUrl:"model/bls_Sec.obj",mtlUrl:"model/bls_Sec.mtl",modelBottom:-73,name:"白鹭山纵剖"},
-	XBModel_Sec : {objUrl:"model/xb_Sec.obj",mtlUrl:"model/xb_Sec.mtl",modelBottom:-50,name:"西边隧道纵剖"},
-	ZZModel_Sec : {objUrl:"model/zz_Sec.obj",mtlUrl:"model/zz_Sec.mtl",modelBottom:-45,name:"章庄隧道纵剖"},
-    YM1Model_Sec : {objUrl:"model/ym1_Sec.obj",mtlUrl:"model/ym1_Sec.mtl",modelBottom:-45,name:"杨梅一隧道纵剖"},
-    YM2Model_Sec : {objUrl:"model/ym2_Sec.obj",mtlUrl:"model/ym2_Sec.mtl",modelBottom:-46,name:"杨梅二隧道纵剖"},
-    YTModel_Sec : {objUrl:"model/yt_Sec.obj",mtlUrl:"model/yt_Sec.mtl",modelBottom:-38,name:"严田隧道纵剖"},
-    XFDModel_Sec : {objUrl:"model/XFD.obj",mtlUrl:"model/XFD.mtl",modelBottom:-73,name:"先锋顶隧道纵剖"},
-    MYS1Model_Sec : {objUrl:"model/mys1_Sec.obj",mtlUrl:"model/mys1_Sec.mtl",modelBottom:-30,name:"明月山1号隧道纵剖"},
-    MYS2Model_Sec : {objUrl:"model/mys2_Sec.obj",mtlUrl:"model/mys2_Sec.mtl",modelBottom:-31,name:"明月山2号隧道纵剖"},
-    MYS3Model_Sec : {objUrl:"model/mys3_Sec.obj",mtlUrl:"model/mys3_Sec.mtl",modelBottom:-60,name:"明月山3号隧道纵剖"},
+	XBModel_Sec : {objUrl:"model/xb_Sec.obj",mtlUrl:"model/xb_Sec.mtl",modelBottom:-50,name:"西边隧道"},
+	ZZModel_Sec : {objUrl:"model/zz_Sec.obj",mtlUrl:"model/zz_Sec.mtl",modelBottom:-45,name:"章庄隧道"},
+    YM1Model_Sec : {objUrl:"model/ym1_Sec.obj",mtlUrl:"model/ym1_Sec.mtl",modelBottom:-45,name:"杨梅一隧道"},
+    YM2Model_Sec : {objUrl:"model/ym2_Sec.obj",mtlUrl:"model/ym2_Sec.mtl",modelBottom:-46,name:"杨梅二隧道"},
+    YTModel_Sec : {objUrl:"model/yt_Sec.obj",mtlUrl:"model/yt_Sec.mtl",modelBottom:-38,name:"严田隧道"},
+    XFDModel_Sec : {objUrl:"model/XFD.obj",mtlUrl:"model/XFD.mtl",modelBottom:-73,name:"先锋顶隧道"},
+    MYS1Model_Sec : {objUrl:"model/mys1_Sec.obj",mtlUrl:"model/mys1_Sec.mtl",modelBottom:-30,name:"明月山1号隧道"},
+    MYS2Model_Sec : {objUrl:"model/mys2_Sec.obj",mtlUrl:"model/mys2_Sec.mtl",modelBottom:-31,name:"明月山2号隧道"},
+    MYS3Model_Sec : {objUrl:"model/mys3_Sec.obj",mtlUrl:"model/mys3_Sec.mtl",modelBottom:-60,name:"明月山3号隧道"},
 };
 
 //modelBottom为记录每个模型最底部高程
