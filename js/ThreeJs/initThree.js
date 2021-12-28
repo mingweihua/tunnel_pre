@@ -54,7 +54,6 @@ function init() {
 
 
 
-
     //设置云图需要的对象
     lut = new THREE.Lut(colorMap, numberOfColors);
 

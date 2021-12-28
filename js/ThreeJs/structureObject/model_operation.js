@@ -34,6 +34,7 @@ class Model_operation {
         scene.remove(object.three3dObject.currentModel);
         scene.remove(object.three3dObject.cloud.currentModel);
         scene.remove(object.three3dObject.group_pouqie.currentModel);
+<<<<<<< HEAD
         // if (object.three3dObject[modelName] != undefined) {
         //     object.three3dObject.currentModel = object.three3dObject[modelName];
         //     object.currentName = modelName;
@@ -42,6 +43,16 @@ class Model_operation {
         //     globalModel.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
         // }
         object.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
+=======
+        if (object.three3dObject[modelName] != undefined) {
+            object.three3dObject.currentModel = object.three3dObject[modelName];
+            object.currentName = modelName;
+            scene.add(object.three3dObject.currentModel);
+        } else {
+            globalModel.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
+            $("#subwayName").html(modelName_url[modelName].name);
+        }
+>>>>>>> b728c44ece5f9029441f4f5da44755f4cef09ebf
 
         $("#echart1").css({
             "background": "url(/images/textures/" + modelName.split("Model")[0] + ".png) center no-repeat",

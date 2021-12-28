@@ -1,0 +1,406 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>index</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <link rel="stylesheet" href="css/comon0.css">
+    <link href="plugins/bootstrap-3.3.0/css/bootstrap.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="plugins/bootstrap-4.5.2/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="plugins/jquery.1.12.4.min.js"></script>
+    <script src="plugins/bootstrap-3.3.0/js/bootstrap.js" type="text/javascript"></script>
+
+    <!-- bootstrap-table -->
+    <link href="plugins/bootstrap-table/bootstrap-table.css" rel="stylesheet" />
+    <script src="plugins/bootstrap-table/bootstrap-table.js"></script>
+    <!-- 导出数据 -->
+    <script src="plugins/bootstrap-table/bootstrap-table-export.js"></script>
+    <script src="plugins/export-libs/tableExport.js"></script>
+</head>
+<script>
+    $(document).ready(function () {
+        var whei = $(window).width()
+        $("html").css({
+            fontSize: whei / 20
+        })
+        $(window).resize(function () {
+            var whei = $(window).width()
+            $("html").css({
+                fontSize: whei / 20
+            })
+        });
+    });
+</script>
+<script type="text/javascript" src="plugins/echarts-4.8.0/echarts.min.js"></script>
+
+<!--<script src="plugins/echarts-4.8.0/echarts.min.js"></script>-->
+<script src="plugins/echarts-4.8.0/echarts.js"></script>
+<script src="js/echarts-gl.min.js"></script>
+<script src="js/js.js"></script>
+
+<body>
+    <!--<div class="canvas" style="opacity: .2">
+        <iframe frameborder="0" src="js/index.html" style="width: 100%; height: 100%"></iframe>
+    </div>-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 head">
+                <h1>宜遂高速公路隧道工程</h1>
+                <div class="weather"><span id="showTime"></span></div>
+
+                <script>
+                    var t = null;
+                    t = setTimeout(time, 1000);
+
+                    function time() {
+                        clearTimeout(t);
+                        var dt = new Date();
+                        var y = dt.getFullYear();
+                        var mt = dt.getMonth() + 1;
+                        var day = dt.getDate();
+                        var h = dt.getHours();
+                        var m = dt.getMinutes();
+                        var s = dt.getSeconds();
+                        document.getElementById("showTime").innerHTML = y + "年" + mt + "月" + day + "日-" + h + "时" + m +
+                            "分" + s + "秒";
+                        t = setTimeout(time, 1000);
+                    }
+                </script>
+            </div>
+        </div>
+        <div class="row mainbox">
+            <div class="col-md-2">
+                <div class="boxall" style="height: 270px;">
+                    <div class="alltitle">当前隧道图例汇总</div>
+                    <div class="allnav" id="echart1"
+                        style="background: url(/images/textures/MYS1.png) no-repeat center; background-size: contain;">
+                    </div>
+                    <div class="boxfoot"></div>
+                </div>
+                <div class="boxall" style="height: 270px;">
+                    <div class="alltitle">隧道钻孔数量</div>
+                    <div class="allnav" id="echart2"></div>
+                    <div class="boxfoot"></div>
+                </div>
+                <div class="boxall" style="height: 270px;">
+                    <div style="height:100%; width: 100%;">
+                        <div class="sy" id="fb1"></div>
+                        <div class="sy" id="fb2"></div>
+                        <div class="sy" id="fb3"></div>
+                    </div>
+                    <div class="boxfoot">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8" id="webgl">
+                <h4><span class="label label-default" style="border-radius:0px">当前隧道：</span><span id="subwayName"
+                        class="label label-default" style="border-radius:0px">明月山1号隧道</span></h4>
+                <canvas id="model_webgl" style="width:100%; height:80%; opacity: .8;"></canvas>
+                <div id="functions" style="width:100%; height:20%; opacity: .8;">
+                    <div id="tabs" class="tabs-container">
+                        <div class="tabs" style="user-select: none;">
+                            <a id="tab1" data-tab="1" class="tab">智能信息模型</a>
+                            <a id="tab2" data-tab="2" class="tab">模型显示</a>
+                            <a id="tab3" data-tab="3" class="tab">数值分析</a>
+                            <a id="tab4" data-tab="4" class="tab">人工智能分析</a>
+
+                        </div>
+                        <div class="content" style="user-select: none;">
+                            <div id="tabcontent1" data-tab="1" class="tabcontent tabs">
+                                <!--<a id="tunnel" class="tab_func">完整隧道群</a>-->
+                                <a id="tunnel1" class="tab_func">先锋顶隧道</a>
+                                <a id="tunnel2" class="tab_func">明月山1号隧道</a>
+                                <a id="tunnel3" class="tab_func">明月山2号隧道</a>
+                                <a id="tunnel4" class="tab_func">明月山3号隧道</a>
+                                <a id="tunnel5" class="tab_func">章庄隧道</a>
+                                <a id="tunnel6" class="tab_func">白鹭山隧道</a>
+                                <a id="tunnel7" class="tab_func">西边隧道</a>
+                                <a id="tunnel8" class="tab_func">杨梅一隧道</a>
+                                <a id="tunnel9" class="tab_func">杨梅二隧道</a>
+                                <a id="tunnel10" class="tab_func">严田隧道</a>
+                            </div>
+                            <div id="tabcontent2" data-tab="2" class="tabcontent tabs">
+                                <a class="tab_func">选点</a>
+                                <a class="tab_func">选点重置</a>
+                                <a class="tab_func">二维剖切</a>
+                                <a class="tab_func">三维选点剖切</a>
+                                <a class="tab_func">显示剖切面板</a>
+                                <a class="tab_func">钻孔柱状图</a>
+                                <a class="tab_func">地层分离</a>
+                                <a class="tab_func">地层合并</a>
+                                <a class="tab_func">地层识别</a>
+                                <a class="tab_func">地层透明化</a>
+                                <a class="tab_func">地层复原</a>
+                                <a class="tab_func" id="roam">隧道漫游</a>
+                                <a class="tab_func">漫游重置</a>
+                            </div>
+                            <div id="tabcontent3" data-tab="3" class="tabcontent tabs">
+                                <a class="tab_func">数值模拟云图</a>
+                                <a class="tab_func">模型重置</a>
+                                <a class="tab_func">选点分析</a>
+                                <a class="tab_func">选点取消</a>
+                                <a class="tab_func">离散元分析</a>
+
+                            </div>
+                            <div id="tabcontent4" data-tab="4" class="tabcontent tabs">
+                                <a class="tab_func">隧道入口平面分析</a>
+                                <a class="tab_func">隧道出口平面分析</a>
+                                <a class="tab_func">单节点位置分析</a>
+                                <a class="tab_func">坐标文件上传分析</a>
+                                <a class="tab_func">风险分析</a>
+                                <a class="tab_func">风险评估</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="boxall" style="height: 270px;">
+                    <div class="alltitle">隧道地质环境概况</div>
+                    <div class="allnav" id="echart4"></div>
+                    <div class="boxfoot"></div>
+                </div>
+                <div class="boxall" style="height: 270px;">
+                    <div class="alltitle">隧道观察点数</div>
+                    <div class="allnav" id="echart5"></div>
+                    <div class="boxfoot"></div>
+                </div>
+                <div class="boxall" style="height: 270px;">
+                    <div class="alltitle">隧道长度</div>
+                    <div class="allnav" id="echart6"></div>
+                    <div class="boxfoot"></div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="numericalModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">节点位移分析结果</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-bordered table-hover">
+                        <tr>
+                            <td>坐标x</td>
+                            <td class="x"></td>
+                        </tr>
+                        <tr>
+                            <td>坐标y</td>
+                            <td class="y"></td>
+                        </tr>
+                        <tr>
+                            <td>坐标z</td>
+                            <td class="z"></td>
+                        </tr>
+                        <tr>
+                            <td>节点位移</td>
+                            <td class="data"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="nn_in_Modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">隧道入口平面分析</h4>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-default"
+                        onclick="PFC_function.showPFC(globalModel,'in','nn_in_Chart','nn_in_Modal')">离散元分析结果</button>
+                    <button type="button" class="btn btn-default"
+                        onclick="NN_function.showNN(globalModel,'in','nn_in_Chart','nn_in_Modal')">神经网络分析结果</button>
+                    <button type="button" class="btn btn-default"
+                        onclick="NN_function.showNNError(globalModel,'in','nn_in_Chart','nn_in_Modal')">神经网络误差分析</button>
+                    <div id="nn_in_Chart" style="width: 800px;height: 500px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="nn_out_Modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">隧道出口平面分析</h4>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-default"
+                        onclick="PFC_function.showPFC(globalModel,'out','nn_out_Chart','nn_out_Modal')">离散元分析结果</button>
+                    <button type="button" class="btn btn-default"
+                        onclick="NN_function.showNN(globalModel,'out','nn_out_Chart','nn_out_Modal')">神经网络分析结果</button>
+                    <button type="button" class="btn btn-default"
+                        onclick="NN_function.showNNError(globalModel,'out','nn_out_Chart','nn_out_Modal')">神经网络误差分析</button>
+                    <div id="nn_out_Chart" style="width: 800px;height: 500px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="PFCModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">离散元分析</h4>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-default"
+                        onclick="PFC_function.showPFC(globalModel,'in','pfcChart','PFCModal')">隧道入口分析</button>
+                    <button type="button" class="btn btn-default"
+                        onclick="PFC_function.showPFC(globalModel,'out','pfcChart','PFCModal')">隧道出口分析</button>
+                    <div id="pfcChart" style="width: 800px;height: 500px;"></div>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div> -->
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+    <div id="ZuanKongModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">钻孔信息表</h4>
+                </div>
+                <div class="modal-body">
+                    <table id="ZuanKongMessage"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="legendModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div id="legend-content" class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">地层详情</h4>
+                </div>
+                <div class="modal-body">
+                    <!--<div class="row">
+                        <div class="col-xs-6">
+                            <p class="">年代符号：</p>
+                        </div>
+                        <div class="col-xs-6">
+                            <p id="AGE" class=""></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p class="">年代：</p>
+                        </div>
+                        <div class="col-xs-6">
+                            <p id="geoYear" class=""></p>
+                        </div>
+                    </div>-->
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p class="">岩性：</p>
+                        </div>
+                        <div class="col-xs-6">
+                            <p id="STRATUME" class=""></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p style="width: 100%;height: 100%;">图例：</p>
+                        </div>
+                        <div class="clearfix visible-xs-block"></div>
+                        <div class="col-xs-6">
+                            <img style="width: 100px; height: 100px;" id="legend" src="" alt="" class="img-thumbnail">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('#PFCModal').modal({
+            backdrop: 'static',
+        });
+        $('#PFCModal').modal('hide');
+        $('#numericalModal').modal({
+            backdrop: 'static',
+        });
+        $('#numericalModal').modal('hide');
+        $('#nn_in_Modal').modal({
+            backdrop: 'static',
+        });
+        $('#nn_in_Modal').modal('hide');
+        $('#nn_out_Modal').modal({
+            backdrop: 'static',
+        });
+        $('#nn_out_Modal').modal('hide');
+        $('#legendModal').modal({
+            backdrop: 'static',
+        });
+        $('#legendModal').modal('hide');
+        $('#ZuanKongModal').modal({
+            backdrop: 'static',
+        });
+        $('#ZuanKongModal').modal('hide');
+    </script>
+
+    <script src="plugins/build/three.min.js"></script>
+    <script src='plugins/threejs/js/libs/dat.gui.min.js'></script>
+    <script src='plugins/threejs/js/libs/stats.min.js'></script>
+    <script src="plugins/threejs/js/controls/TrackballControls.js"></script>
+    <script src="plugins/threejs/js/controls/OrbitControls.js"></script>
+    <script src="plugins/threejs/js/loaders/MTLLoader.js"></script>
+    <script src="plugins/threejs/js/loaders/OBJLoader.js"></script>
+    <script src="plugins/threejs/js/loaders/DDSLoader.js"></script>
+    <script src="plugins/threejs/js/loaders/DRACOLoader.js"></script>
+    <script src="plugins/threejs/js/loaders/ColladaLoader.js"></script>
+    <script src="plugins/threejs/js/math/Lut.js"></script>
+    <script src="plugins/tween.min.js"></script>
+    <script src="plugins/lodash.min.js"></script>
+
+    <script src="js/ThreeJs/globalVar.js"></script>
+    <script src="js/ThreeJs/globalVar_geo.js"></script>
+    <script src="js/ThreeJs/structureObject/model_Father.js"></script>
+    <script src="js/ThreeJs/structureObject/model.js"></script>
+    <script src="js/ThreeJs/structureObject/model_operation.js"></script>
+    <script src="js/ThreeJs/structureObject/geo_roam.js"></script>
+    <script src="js/ThreeJs/tool/cloudPic.js"></script>
+    <script src="js/ThreeJs/initThree.js"></script>
+    <script src="js/btnScript.js"></script>
+    <script src="js/ThreeJs/clipping.js"></script>
+
+    <!--辅助制图-->
+    <script src="js/draw/main.js"></script>
+    <script src="js/ThreeJs/tool/tabcontent.js"></script>
+    <script src="js/ThreeJs/tool/PFC_function.js"></script>
+    <script src="js/ThreeJs/tool/NN_function.js"></script>
+    <!-- <script src="js/draw/svgCopy.js"></script> -->
+
+
+</body>
+
+</html>

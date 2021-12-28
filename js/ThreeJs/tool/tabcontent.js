@@ -71,7 +71,7 @@ $("#tabcontent2 a").click(function () {
             break;
         case "二维剖切":
             Model_operation.drawSvg();
-            window.open("/svg.html");
+            window.open("./svg.html");
             // drawSvg1();
             break;
         case "三维选点剖切":

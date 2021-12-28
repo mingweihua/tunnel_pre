@@ -17,17 +17,17 @@ pointer = new THREE.Vector2();
 let globalModel,currentName;
 
 let modelName_url = {
-    BLSModel : {objUrl:"model/BLS.obj",mtlUrl:"model/BLS.mtl",modelBottom:-72},
-    XBModel : {objUrl:"model/XB.obj",mtlUrl:"model/XB.mtl",modelBottom:-50},
-    ZZModel : {objUrl:"model/ZZ.obj",mtlUrl:"model/ZZ.mtl",modelBottom:-45},
-    YM1Model : {objUrl:"model/YM1.obj",mtlUrl:"model/YM1.mtl",modelBottom:-45},
-    YM2Model : {objUrl:"model/YM2.obj",mtlUrl:"model/YM2.mtl",modelBottom:-46},
-    YTModel : {objUrl:"model/YT.obj",mtlUrl:"model/YT.mtl",modelBottom:-38},
-    XFDModel : {objUrl:"model/XFD.obj",mtlUrl:"model/XFD.mtl",modelBottom:-73},
-    MYS1Model : {objUrl:"model/MYS1.obj",mtlUrl:"model/MYS1.mtl",modelBottom:-30},
-    MYS2Model : {objUrl:"model/MYS2.obj",mtlUrl:"model/MYS2.mtl",modelBottom:-31},
-    MYS3Model : {objUrl:"model/MYS3.obj",mtlUrl:"model/MYS3.mtl",modelBottom:-60},
-    AllModel : {objUrl:"model/all.obj",mtlUrl:"model/all.mtl",modelBottom:-73},
+    BLSModel : {objUrl:"model/BLS.obj",mtlUrl:"model/BLS.mtl",modelBottom:-72,name:"白鹭山隧道"},
+    XBModel : {objUrl:"model/XB.obj",mtlUrl:"model/XB.mtl",modelBottom:-50,name:"西边隧道"},
+    ZZModel : {objUrl:"model/ZZ.obj",mtlUrl:"model/ZZ.mtl",modelBottom:-45,name:"章庄隧道"},
+    YM1Model : {objUrl:"model/YM1.obj",mtlUrl:"model/YM1.mtl",modelBottom:-45,name:"杨梅一隧道"},
+    YM2Model : {objUrl:"model/YM2.obj",mtlUrl:"model/YM2.mtl",modelBottom:-46,name:"杨梅二隧道"},
+    YTModel : {objUrl:"model/YT.obj",mtlUrl:"model/YT.mtl",modelBottom:-38,name:"严田隧道"},
+    XFDModel : {objUrl:"model/XFD.obj",mtlUrl:"model/XFD.mtl",modelBottom:-73,name:"先锋顶隧道"},
+    MYS1Model : {objUrl:"model/MYS1.obj",mtlUrl:"model/MYS1.mtl",modelBottom:-30,name:"明月山1号隧道"},
+    MYS2Model : {objUrl:"model/MYS2.obj",mtlUrl:"model/MYS2.mtl",modelBottom:-31,name:"明月山2号隧道"},
+    MYS3Model : {objUrl:"model/MYS3.obj",mtlUrl:"model/MYS3.mtl",modelBottom:-60,name:"明月山3号隧道"},
+    AllModel : {objUrl:"model/all.obj",mtlUrl:"model/all.mtl",modelBottom:-73,name:"完整隧道群"},
 };
 
 //modelBottom为记录每个模型最底部高程
