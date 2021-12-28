@@ -8,7 +8,7 @@ class model_2 extends model_Father {
 			super.load(obj_url, mtl_url, keyName, scale);
 		} else {
 			if (sectionMathod != undefined) {
-				var thisObject = this;
+				let thisObject = this;
 				new THREE.OBJLoader()
 					.load(obj_url, function (result) {
 						//thisObject.setScaleAndOffset(result)
@@ -19,7 +19,7 @@ class model_2 extends model_Father {
 						thisObject.currentName = keyName;
 						currentName = thisObject.currentName;
 
-						var newObject_pouqie = thisObject.createMaterial_pouqie(result);
+						let newObject_pouqie = thisObject.createMaterial_pouqie(result);
 						thisObject.three3dObject.group_pouqie[keyName] = newObject_pouqie;
 						thisObject.three3dObject.group_pouqie.currentModel = newObject_pouqie;
 
@@ -31,8 +31,8 @@ class model_2 extends model_Father {
 						}
 
 					});
-			} else { 
-				var thisObject = this;
+			} else {
+				let thisObject = this;
 				new THREE.OBJLoader()
 					.load(obj_url, function (result) {
 						//thisObject.setScaleAndOffset(result)
@@ -43,7 +43,7 @@ class model_2 extends model_Father {
 						thisObject.currentName = keyName;
 						currentName = thisObject.currentName;
 
-						var newObject_pouqie = thisObject.createMaterial_pouqie2(result);
+						let newObject_pouqie = thisObject.createMaterial_pouqie2(result);
 						thisObject.three3dObject.group_pouqie[keyName] = newObject_pouqie;
 						thisObject.three3dObject.group_pouqie.currentModel = newObject_pouqie;
 
@@ -119,7 +119,7 @@ class model_2 extends model_Father {
 				metalness: 0.1,
 				roughness: 0.75,
 				clippingPlanes: planes,
-				// clipIntersection: true,
+				clipIntersection: true,
 
 				clipShadows: true,
 				shadowSide: THREE.DoubleSide,
@@ -145,7 +145,7 @@ class model_2 extends model_Father {
 						color: geoData[thisObject.currentName][group.children[i].name].color,
 						metalness: 0.1,
 						roughness: 0.75,
-						// side: THREE.DoubleSide,
+						side: THREE.DoubleSide,
 						// transparent:true,
 						// opacity:1,
 						// visible: false,

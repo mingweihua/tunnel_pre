@@ -39,7 +39,7 @@ class Model_operation {
         //     object.currentName = modelName;
         //     scene.add(object.three3dObject.currentModel);
         // } else {
-            object.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
+        globalModel.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
         $("#subwayName").html(modelName_url[modelName].name);
         // }
 

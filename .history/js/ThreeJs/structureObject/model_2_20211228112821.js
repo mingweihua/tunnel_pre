@@ -31,7 +31,7 @@ class model_2 extends model_Father {
 						}
 
 					});
-			} else { 
+			} else {
 				var thisObject = this;
 				new THREE.OBJLoader()
 					.load(obj_url, function (result) {
@@ -119,7 +119,7 @@ class model_2 extends model_Father {
 				metalness: 0.1,
 				roughness: 0.75,
 				clippingPlanes: planes,
-				// clipIntersection: true,
+				clipIntersection: true,
 
 				clipShadows: true,
 				shadowSide: THREE.DoubleSide,
@@ -145,7 +145,7 @@ class model_2 extends model_Father {
 						color: geoData[thisObject.currentName][group.children[i].name].color,
 						metalness: 0.1,
 						roughness: 0.75,
-						// side: THREE.DoubleSide,
+						side: THREE.DoubleSide,
 						// transparent:true,
 						// opacity:1,
 						// visible: false,
