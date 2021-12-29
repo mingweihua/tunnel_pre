@@ -40,6 +40,19 @@ let modelName_url = {
     MYS1Model_Sec : {objUrl:"model/mys1_Sec.obj",mtlUrl:"model/mys1_Sec.mtl",modelBottom:-30,name:"明月山1号隧道纵剖"},
     MYS2Model_Sec : {objUrl:"model/mys2_Sec.obj",mtlUrl:"model/mys2_Sec.mtl",modelBottom:-31,name:"明月山2号隧道纵剖"},
     MYS3Model_Sec : {objUrl:"model/mys3_Sec.obj",mtlUrl:"model/mys3_Sec.mtl",modelBottom:-60,name:"明月山3号隧道纵剖"},
+
+	//三维钻孔模型
+	BLSModel_zk : {objUrl:"model/zuankong/BLS.obj",mtlUrl:"model/zuankong/BLS.mtl",modelBottom:-72,name:"白鹭山隧道钻孔模型"},
+	XBModel_zk : {objUrl:"model/zuankong/XB.obj",mtlUrl:"model/zuankong/XB.mtl",modelBottom:-50,name:"西边隧道钻孔模型"},
+	ZZModel_zk : {objUrl:"model/zuankong/ZZ.obj",mtlUrl:"model/zuankong/ZZ.mtl",modelBottom:-45,name:"章庄隧道钻孔模型"},
+	YM1Model_zk : {objUrl:"model/zuankong/YM1.obj",mtlUrl:"model/zuankong/YM1.mtl",modelBottom:-45,name:"杨梅一隧道钻孔模型"},
+	YM2Model_zk : {objUrl:"model/zuankong/YM2.obj",mtlUrl:"model/zuankong/YM2.mtl",modelBottom:-46,name:"杨梅二隧道钻孔模型"},
+	YTModel_zk : {objUrl:"model/zuankong/YT.obj",mtlUrl:"model/zuankong/YT.mtl",modelBottom:-38,name:"严田隧道钻孔模型"},
+	XFDModel_zk : {objUrl:"model/zuankong/XFD.obj",mtlUrl:"model/zuankong/XFD.mtl",modelBottom:-73,name:"先锋顶隧道钻孔模型"},
+	MYS1Model_zk : {objUrl:"model/zuankong/MYS1.obj",mtlUrl:"model/zuankong/MYS1.mtl",modelBottom:-30,name:"明月山1号隧道钻孔模型"},
+	MYS2Model_zk : {objUrl:"model/zuankong/MYS2.obj",mtlUrl:"model/zuankong/MYS2.mtl",modelBottom:-31,name:"明月山2号隧道钻孔模型"},
+	MYS3Model_zk : {objUrl:"model/zuankong/MYS3.obj",mtlUrl:"model/zuankong/MYS3.mtl",modelBottom:-60,name:"明月山3号隧道钻孔模型"},
+
 };
 
 //modelBottom为记录每个模型最底部高程

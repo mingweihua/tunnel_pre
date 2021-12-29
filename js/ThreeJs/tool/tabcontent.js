@@ -1,6 +1,6 @@
 $("#tabcontent1 a").click(function () {
     //console.log($(this).html());
-    $("#subwayName").html($(this).html());
+
     switch ($(this).html()) {
 
         case "切换纵剖模型":
@@ -11,6 +11,16 @@ $("#tabcontent1 a").click(function () {
             $(this).html("切换纵剖模型");
             Model_operation.changeModel(globalModel, globalModel.currentName.replace("_Sec", ""));
             break;
+
+        case "显示三维钻孔模型":
+            $(this).html("隐藏三维钻孔模型");
+            Model_operation.changeModel(globalModel, globalModel.currentName+"_zk");
+            break;
+        case "隐藏三维钻孔模型":
+            $(this).html("显示三维钻孔模型");
+            Model_operation.changeModel(globalModel, globalModel.currentName.replace("_zk", ""));
+            break;
+
 
         case "白鹭山隧道":
             Model_operation.changeModel(globalModel, "BLSModel");

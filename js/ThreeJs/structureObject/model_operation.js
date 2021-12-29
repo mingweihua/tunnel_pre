@@ -34,15 +34,16 @@ class Model_operation {
         scene.remove(object.three3dObject.currentModel);
         scene.remove(object.three3dObject.cloud.currentModel);
         scene.remove(object.three3dObject.group_pouqie.currentModel);
-        // if (object.three3dObject[modelName] != undefined) {
-        //     object.three3dObject.currentModel = object.three3dObject[modelName];
-        //     object.currentName = modelName;
-        //     scene.add(object.three3dObject.currentModel);
-        // } else {
-            object.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
-        $("#subwayName").html(modelName_url[modelName].name);
-        // }
 
+        /*if (object.three3dObject[modelName] != undefined) {
+            object.three3dObject.currentModel = object.three3dObject[modelName];
+            object.currentName = modelName;
+            scene.add(object.three3dObject.currentModel);
+        } else {
+            object.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
+        }*/
+        object.load(modelName_url[modelName].objUrl, modelName_url[modelName].mtlUrl, modelName, 1);
+        $("#subwayName").html(modelName_url[modelName].name);
         $("#echart1").css({
             "background": "url(/images/textures/" + modelName.split("Model")[0] + ".png) center no-repeat",
             "background-size": "contain"
