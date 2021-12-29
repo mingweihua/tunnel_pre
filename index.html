@@ -5,18 +5,38 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<style type="text/css">
-    body, html,#container {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        margin: 0;
-    }
-</style>
+
+
+    <style>
+        body, html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+        }
+        body{ background:#000d4a url(../images/bg.jpg) center top; background-size:cover;color:#666;}
+        #container{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin-top: 0px;
+        }
+        .head{ height:80px; background: url(../images/head_bg.png) no-repeat center center; background-size: 100% 100%; position: relative; z-index: 100;}
+        .head h1{ color:#fff; text-align: center; line-height:80px;font-family: inherit;font-weight: 500;font-size: 38.4px}
+
+    </style>
+
     <script type="text/javascript" src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=oDYHxuyumkHxeQOyLyG7gfpbGgtnl6xu"></script>
     <title>宜遂高速隧道群</title>
 </head>
 <body>
+
+    <div class="head">
+        <h1>宜遂高速公路隧道工程</h1>
+    </div>
+
+
+
     <div id="container"></div>
 </body>
 </html>
