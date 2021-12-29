@@ -102,10 +102,13 @@ var pp = [
         addClickHandler(content[a], MP, P);
     }
     function addClickHandler(content, marker, p) {
+        var infoWindow = new BMapGL.InfoWindow(content, opts);
         marker.addEventListener("mouseover", function (e) {
-            var infoWindow = new BMapGL.InfoWindow(content, opts);
-            map.openInfoWindow(infoWindow, p);}
-        );
+            map.openInfoWindow(infoWindow, p)
+        });
+        /*marker.addEventListener("mouseout", function (e) {
+            map.closeInfoWindow(infoWindow)
+        });*/
     }
 var polyline1 = new BMapGL.Polyline([
     new BMapGL.Point(114.344815,27.764357),
@@ -114,7 +117,7 @@ var polyline1 = new BMapGL.Polyline([
     new BMapGL.Point(114.356888,27.764421)
 ], {
     strokeColor: '#247BA0',
-    strokeWeight: 8,
+    strokeWeight: 10,
     strokeOpacity: 50
 });
 var polyline2 = new BMapGL.Polyline([
@@ -128,7 +131,7 @@ var polyline2 = new BMapGL.Polyline([
 	
 ], {
     strokeColor: '#70C1B3',
-    strokeWeight: 8,
+    strokeWeight: 10,
     strokeOpacity: 50
 });
 var polyline3 = new BMapGL.Polyline([
@@ -139,7 +142,7 @@ var polyline3 = new BMapGL.Polyline([
     new BMapGL.Point(114.408558,27.641989),
 ], {
     strokeColor: '#B2DBBF',
-    strokeWeight: 8,
+    strokeWeight: 10,
     strokeOpacity: 50
 });
 var polyline4 = new BMapGL.Polyline([
@@ -152,7 +155,7 @@ var polyline4 = new BMapGL.Polyline([
 	new BMapGL.Point(114.404175,27.59292),
 ], {
     strokeColor: '#F3FFBD',
-    strokeWeight: 8,
+    strokeWeight: 10,
     strokeOpacity: 50
 });
 var polyline5 = new BMapGL.Polyline([
@@ -167,7 +170,7 @@ var polyline5 = new BMapGL.Polyline([
     new BMapGL.Point(114.384178,27.497167),
 ], {
     strokeColor: '#FF1654',
-    strokeWeight: 8,
+    strokeWeight: 10,
     strokeOpacity: 50
 });
 var polyline6 = new BMapGL.Polyline([
@@ -180,7 +183,7 @@ var polyline6 = new BMapGL.Polyline([
 	new BMapGL.Point(114.393862,27.46031),
 ], {
     strokeColor: '#1A535C',
-    strokeWeight: 8,
+    strokeWeight: 10,
     strokeOpacity: 50
 });
 var polyline7 = new BMapGL.Polyline([
@@ -190,7 +193,7 @@ var polyline7 = new BMapGL.Polyline([
 	new BMapGL.Point(114.388005,27.433068),
 ], {
     strokeColor: '#4ECDC4',
-    strokeWeight: 8,
+    strokeWeight: 10,
     strokeOpacity: 50
 });
 var polyline8 = new BMapGL.Polyline([
@@ -200,7 +203,7 @@ var polyline8 = new BMapGL.Polyline([
 	new BMapGL.Point(114.380477,27.418663),
 ], {
     strokeColor: '#EAD2AC',
-    strokeWeight: 8,
+    strokeWeight: 10,
     strokeOpacity: 50
 });
 var polyline9 = new BMapGL.Polyline([
@@ -210,7 +213,7 @@ var polyline9 = new BMapGL.Polyline([
 	new BMapGL.Point(114.381052,27.409202),
 ], {
     strokeColor: '#2A9D8F',
-    strokeWeight: 8,
+    strokeWeight: 10,
     strokeOpacity: 50
 });
 var polyline10 = new BMapGL.Polyline([
@@ -225,7 +228,7 @@ var polyline10 = new BMapGL.Polyline([
 	new BMapGL.Point(114.33814,27.35155),
 ], {
     strokeColor: '#1D3557',
-    strokeWeight: 8,
+    strokeWeight: 10,
     strokeOpacity: 50
 });
 
