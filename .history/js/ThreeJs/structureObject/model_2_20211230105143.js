@@ -119,7 +119,6 @@ class model_2 extends model_Father {
 				metalness: 0.1,
 				roughness: 0.75,
 				clippingPlanes: planes,
-				
 				// clipIntersection: true,
 
 				clipShadows: true,
@@ -227,7 +226,7 @@ class model_2 extends model_Father {
 				metalness: 0.1,
 				roughness: 0.75,
 				clippingPlanes: planes,
-				
+				side: THREE.DoubleSide,
 				// clipIntersection : true,
 
 				clipShadows: true,
